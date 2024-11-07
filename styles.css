@@ -1,0 +1,207 @@
+/* styles.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "DynaPuff", system-ui;
+    background: #fbe7ea; /* Muted light blush pink for background */
+    color: #4a4a4a; /* Muted charcoal for readability */
+    overflow-x: hidden;
+  }
+  
+  
+  header {
+    background: #d96a8d; /* Muted warm pink for header */
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  
+  header:hover {
+    transform: translateY(-2px); /* Slight 3D hover effect */
+  }
+  
+  nav a {
+    color: white;
+    margin: 0 1.5rem;
+    text-decoration: none;
+    font-weight: 400;
+  }
+  
+  .hero {
+    background: linear-gradient(145deg, #fce2e7, #e89aa6); /* Subtle gradient for depth */
+    color: #d96a8d;
+    padding: 3rem;
+    text-align: center;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    animation: heroAnimation 5s ease-in-out infinite;
+    transform-style: preserve-3d;
+  }
+  
+  .hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  @keyframes heroAnimation {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+  
+  /* styles.css */
+
+/* Styling the button to create a 3D effect */
+button {
+    padding: 1rem 2rem;
+    background: linear-gradient(145deg, #f7a8b8, #d96a8d); /* Soft gradient simulating light */
+    border: none;
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: "DynaPuff", system-ui;
+    border-radius: 50px; /* Rounded button */
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2), inset -4px -4px 8px rgba(255, 255, 255, 0.3); /* Outer and inner shadow for 3D effect */
+    transition: all 0.3s ease; /* Smooth transition for hover and active states */
+  }
+  
+  /* Hover effect to simulate light change and make it "pop" */
+  button:hover {
+    background: linear-gradient(145deg, #f7a8b8, #ec407a); /* Lightens the gradient */
+    transform: translateY(-3px); /* Button lifts up slightly */
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2), inset -6px -6px 12px rgba(255, 255, 255, 0.4); /* Stronger shadows */
+  }
+  
+  /* Active effect when button is clicked */
+  button:active {
+    background: linear-gradient(145deg, #f7a8b8, #f06292); /* Darkens the gradient to simulate depth */
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), inset 2px 2px 4px rgba(255, 255, 255, 0.4); /* Subtle inset shadow */
+    transform: translateY(1px); /* Button presses down slightly */
+  }
+  
+  .features {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem;
+    background: #fbe7ea; /* Muted light blush for background */
+    perspective: 1000px; /* Add 3D perspective */
+  }
+  
+  .feature {
+    width: 30%;
+    background: white;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .feature:hover {
+    transform: translateY(-10px) rotateX(3deg); /* 3D lift and slight rotation */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .feature h3 {
+    color: #d96a8d;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+  }
+  
+  footer {
+    background: #d96a8d;
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .content {
+    padding: 2rem;
+    color: #4a4a4a;
+    animation: fadeIn 1.5s ease;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transform: scale(1);
+    transition: transform 0.3s ease;
+  }
+  
+  form:hover {
+    transform: scale(1.02); /* Slight zoom on hover */
+  }
+  
+  input, textarea {
+    padding: 1rem;
+    border: 1px solid #d78496;
+    border-radius: 4px;
+    background: #f9e4e8;
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  button[type="submit"] {
+    background: #d96a8d;
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background: #d78496;
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
