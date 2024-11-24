@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Together</title>
+    <title>Login - Together</title>
     <link rel="stylesheet" href="../css/page_styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -24,23 +24,24 @@
     </header>
 
     <div class="form-container">
-        <h2>Contact Us</h2>
-        <p>We’d love to hear from you</p>
-        <form action="#" method="POST" class="contact-form">
-            <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
-            </div>
+        <h2>Welcome Back</h2>
+        <p>Login to access your account</p>
+        <form action="#" method="POST" class="login-form">
             <div class="form-group">
                 <label for="email">Email Address</label>
                 <input type="email" id="email" name="email" placeholder="Enter your email" required>
             </div>
             <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" placeholder="Type your message here" rows="5" required></textarea>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
             </div>
-            <button type="submit" class="btn-primary">Send Message</button>
+            <div class="form-options">
+                <label><input type="checkbox" name="remember"> Remember me</label>
+                <a href="#" class="forgot-password">Forgot Password?</a>
+            </div>
+            <button type="submit" class="btn-primary">Login</button>
         </form>
+        <p class="register-link">Don’t have an account? <a href="#">Register Now</a></p>
     </div>
 </body>
 </html>
