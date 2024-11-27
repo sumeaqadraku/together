@@ -3,49 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Together</title>
-    <link rel="stylesheet" href="css/styles.css">
-     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
+    <title>Mind Space Menu</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">together</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="news.html">News</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-                <li><a href="login.html" class="btn">Login</a></li>
-            </ul>
-        </nav>
-    </header>
-
-
-
-    <!--komwnti-->
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Find inner harmony 
-                    <br>
-                    <span class="together">together.</span></h1>
-                <p>Our professional psychologists are ready to listen, support, and help you find a way to inner harmony and mental health.</p>
-                <div class="cta-buttons">
-                    <a href="contact.html" class="btn-primary">Free Consultation</a>
-                    <a href="about.html" class="btn-secondary">Learn More</a>
+    <nav class="navbar">
+        <div class="logo">Mind Space</div>
+        <ul class="menu">
+            <li><a href="#">Home</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Services</a>
+                <div class="dropdown-content">
+                    <a href="#">Counseling</a>
+                    <a href="#">Therapy</a>
+                    <a href="#">Workshops</a>
                 </div>
-            </div>
-            <div class="hero-image">
-                <img src="Photos/toger-removebg-preview (1).png" alt="Together Illustration">
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>© 2024 Together. All Rights Reserved.</p>
-    </footer>
+            </li>
+            <li><a href="#">Booking</a></li>
+            <li><a href="#">For Business</a></li>
+            <li><a href="#">Log In</a></li>
+        </ul>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </nav>
+    <script src="script.js"></script>
 </body>
 </html>
