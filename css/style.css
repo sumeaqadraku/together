@@ -1,4 +1,4 @@
-
+/* General Styles */
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
@@ -19,12 +19,15 @@ body {
     color: #333;
 }
 
+/* Centered Main Menu */
 .menu {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
     gap: 15px;
+    flex-grow: 1;
+    justify-content: center;
 }
 
 .menu li {
@@ -43,6 +46,27 @@ body {
     color: #0078ff;
 }
 
+/* Log In Button on the Right */
+.menu-right {
+    margin-left: auto;
+}
+
+.login-btn {
+    text-decoration: none;
+    color: #333;
+    font-size: 1em;
+    padding: 10px 20px;
+    background-color: #0078ff;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #0056cc;
+}
+
+/* Dropdown Styles */
 .dropdown-content {
     display: none;
     position: absolute;
@@ -67,6 +91,7 @@ body {
     display: block;
 }
 
+/* Responsive Toggle Button */
 .menu-toggle {
     display: none;
     background: none;
@@ -82,13 +107,13 @@ body {
         background-color: #f5f5f5;
         position: absolute;
         top: 60px;
-        right: 0;
-        width: 200px;
+        left: 0;
+        width: 100%;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
-    .menu li {
-        text-align: left;
+    .menu-right {
+        display: none;
     }
 
     .menu.show {
