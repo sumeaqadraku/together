@@ -1,4 +1,4 @@
-/* General Styles */
+
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
@@ -8,8 +8,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #f5f5f5;
-    padding: 10px 20px;
+   
+    padding: 23px 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -19,7 +19,7 @@ body {
     color: #333;
 }
 
-/* Centered Main Menu */
+
 .menu {
     list-style: none;
     margin: 0;
@@ -46,7 +46,6 @@ body {
     color: #0078ff;
 }
 
-/* Log In Button on the Right */
 .menu-right {
     margin-left: auto;
 }
@@ -61,11 +60,31 @@ body {
     border-radius: 5px;
     transition: background-color 0.3s;
 }
-
+.btn {
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 50px;
+}
+.homee-control{
+    margin-top: 20px;
+}
+.btn-blue {
+    background-color: #0466c8;
+    color: white;
+    
+}
+.btn-transparent {
+    background-color: transparent;
+    color: #0466c8;
+    border: 2px solid #0466c8;
+}
 .login-btn:hover {
     background-color: #0056cc;
 }
-/* Dropdown Styles */
+
 .dropdown {
     position: relative;
 }
@@ -94,17 +113,17 @@ body {
     color: #0078ff;
 }
 
-/* Dropdown Activation */
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
 
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
-/* Responsive Toggle Button */
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
 .menu-toggle {
     display: none;
     background: none;
@@ -112,7 +131,7 @@ body {
     font-size: 1.5em;
     cursor: pointer;
 }
-.hero {
+.homee {
     background-color: rgba(255, 255, 255, 0.9);
     padding: 50px;
     border-radius: 30px;
@@ -121,11 +140,11 @@ body {
    flex-direction: column;
    justify-content: center;
   }
-  
-  .hero-title {
+
+  .homee-title {
     font-size: 55px;
-    color: #424242;
-    margin-bottom: 20px;
+    color: #023e7d;
+    margin-bottom: 20px
   }
   .home {
     display: flex
@@ -157,23 +176,39 @@ body {
     margin: 0 auto;
     text-align: center;
   }
-  
- .container h1 {
-    font-size: 2em;
-    color: #007777;
-    margin-bottom: 20px;
-  
-  }
+.container i{
+    font-size: 20px;
+    color: white;
+    margin-bottom: 10px;
+}
+.titulli2{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+   
+}
+.titulli2 i{
+    margin-top: 25px;
+    font-size: 20px;
+    color:  #023e7d;
+    margin-right: 10px;
+}
+.container h1 {
+    font-size: 30px;
+    color: #023e7d;
+    font-weight: bold;
+    margin-bottom: 70px;
+}
   
   .benefit-flex {
     display: flex;
     margin-top: 15px;
-    justify-content: center; /* Center horizontally */
+    justify-content: center; 
   }
   
   .benefit-card {
-    background-color: #e0f2f7;
-    padding: 20px;
+    background-color: #00779ee6;
+    padding: 50px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -183,27 +218,31 @@ body {
   
   
   .icon {
-    font-size: 2em;
+    font-size: 2.5em;
     color: #007777;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
   }
   
   .container h2 {
     font-size: 1.2em;
-    color: #333;
+    color: #FFF5E1;
     margin-top: 0;
   }
   .Pjesa3 {
     display: flex;
-    justify-content: space-between; /* Distributes space evenly */
-    align-items: stretch; /* Ensures all child divs stretch to the same height */
+    justify-content: space-between; 
+    align-items: stretch;
+    color: #0a1128;
+}
+.Pjesa3 h2{
+    color:#023e7d
 }
 
 .Pjesa3 > div {
-    flex: 1; /* Makes each div take an equal share of available space */
-    padding: 10px; /* Optional padding for better visuals */
+    flex: 1; 
+    padding: 10px; 
     box-sizing: border-box; 
-    padding: 5%;/* Ensures padding doesn't affect width */
+    padding: 5%;
 }
 
 .majte {
@@ -224,13 +263,12 @@ body {
     max-width: 100%; 
     height: auto; 
 }
-/* Footer Styling */
+
 .footer {
-    background: #2d2d2d;
+    background: #002855;
     color: #ffffff;
     padding: 40px 20px;
-    font-family: Arial, sans-serif;
-}
+    font-family: Arial, sans-serif}
 
 .footer-container {
     display: flex;
@@ -247,7 +285,7 @@ body {
 .footer-section h2 {
     font-size: 20px;
     margin-bottom: 15px;
-    border-bottom: 2px solid #f0a500;
+   
     display: inline-block;
 }
 
@@ -273,7 +311,7 @@ body {
 }
 
 .footer-section ul li a:hover {
-    color: #f0a500;
+    color: #81a4cd
 }
 
 .footer-section .social-icons a {
@@ -284,7 +322,7 @@ body {
 }
 
 .footer-section .social-icons a:hover {
-    color: #f0a500;
+    color: #81a4cd;
 }
 
 .footer-bottom {
@@ -299,16 +337,17 @@ body {
     margin: 0;
 }
 
-/* FontAwesome Icons */
 i {
     margin-right: 5px;
 }
-.carousel-container {
+
+.slider {
     position: relative;
     max-width: 80%;
     margin: 50px auto;
     overflow: hidden;
 }
+
 
 .carousel {
     display: flex;
@@ -316,7 +355,7 @@ i {
 }
 
 .slide {
-    flex: 0 0 25%; /* Secures 4 slides visible at once */
+    flex: 0 0 25%;
     text-align: center;
     padding: 10px;
     box-sizing: border-box;
@@ -324,39 +363,120 @@ i {
 
 .slide img {
     width: 100%;
-    max-height: 200px;
+    max-height: 300px;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
 }
 
 .caption {
     margin-top: 10px;
-    font-size: 16px;
+    font-size: 1rem;
     color: #333;
 }
 
-.prev, .next {
-    cursor: pointer;
+button.prev, button.next {
     position: absolute;
-    top: 50%;
+    top: 60%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
-    padding: 10px 20px;
-    font-size: 18px;
-    border-radius: 5px;
-    transition: background 0.3s;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1000;
 }
 
-.prev:hover, .next:hover {
-    background: rgba(0, 0, 0, 0.8);
-}
-
-.prev {
+button.prev {
     left: 10px;
 }
 
-.next {
+button.next {
     right: 10px;
+}
+
+button.prev:hover, button.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.slider h1{
+    text-align: center;
+    margin-bottom: 50px;
+    color: #0a1128;
+}
+.related-resources {
+    max-width: 80%;
+    margin: 100px auto;
+    font-family: Arial, sans-serif;
+}
+
+.related-resources h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.resources {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+    justify-content: space-between;
+}
+.resources a{
+    display: block;
+    font-size: 1rem;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.resource {
+    flex: 1;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.resource img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+
+.resource:hover img {
+    transform: scale(1.1); 
+}
+
+
+
+.resources-container a:hover {
+    color: #0073e6;
+    text-decoration: none;
+}
+
+.okii a{
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #0073e6;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.view-all:hover {
+    text-decoration: underline;
+}
+.okii
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 30px;
+    
+}
+.okii h2{
+    color: #002855;
 }

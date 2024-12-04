@@ -1,27 +1,19 @@
-let currentIndex = 0; // Current starting index
-const slidesToShow = 4; // Number of slides to show at a time
-const slideWidth = 100 / slidesToShow; // Width of each slide
-const slides = document.querySelectorAll('.slide');
-const carousel = document.querySelector('.carousel');
-
-// Set up initial widths dynamically
-document.addEventListener('DOMContentLoaded', () => {
-    slides.forEach(slide => {
-        slide.style.flex = `0 0 ${slideWidth}%`;
-    });
-});
+let currentSlide = 0;
 
 function changeSlide(direction) {
+    const carousel = document.querySelector('.carousel');
+    const slides = document.querySelectorAll('.slide');
     const totalSlides = slides.length;
-    const maxIndex = totalSlides - slidesToShow;
+    const visibleSlides = 4;
 
-    currentIndex += direction;
-    if (currentIndex < 0) {
-        currentIndex = maxIndex;
-    } else if (currentIndex > maxIndex) {
-        currentIndex = 0;
+    currentSlide += direction;
+
+    if (currentSlide < 0) {
+        currentSlide = totalSlides - visibleSlides;
+    } else if (currentSlide > totalSlides - visibleSlides) {
+        currentSlide = 0;
     }
 
-    const translateX = -currentIndex * slideWidth * slidesToShow;
+    const translateX = -currentSlide * (100 / visibleSlides);
     carousel.style.transform = `translateX(${translateX}%)`;
 }
