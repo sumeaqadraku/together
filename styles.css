@@ -3,7 +3,7 @@
 
 *{
   font-family: "Montserrat", serif;
-  font-weight: 300;
+  font-weight: 200;
   font-style: normal;
 }
 body {
@@ -12,12 +12,11 @@ body {
  /* Replace with your image path */
    /* Centers the image */
     box-sizing: border-box;
-    font-family: "Montserrat Alternates", serif;
+    font-family: "Montserrat", serif;
     font-weight: 300;
     font-style: normal;
     height: 100%;
     cursor: none; /* Hide default cursor */
-
     background-color: #f3f3f3; /* Background color for non-main parts */
     font-family: "Urbanist", sans-serif;
   }
@@ -287,15 +286,16 @@ body {
   border-radius: 15px; /* Rounded corners */
   max-width: 80%; /* Limit the width of the section */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  font-family: "Montserrat", serif;
 }
 
 /* Heading in the Problem-Solving Section */
 .problem-solving h2 {
-  font-size: 2em; /* Larger font size */
-  font-weight: 600; /* Slightly bold */
+  font-size: 1.5em; /* Larger font size */
+  font-weight: 200; /* Slightly bold */
   line-height: 1.4; /* Better spacing between lines */
   margin: 0; /* Remove default margins */
-  font-family: "Urbanist", sans-serif; /* Match font with your site */
+  font-family: "Montserrat", serif;
 }
 
 
