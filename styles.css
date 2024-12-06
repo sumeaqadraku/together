@@ -1,12 +1,20 @@
 /* Reset default browser styles */
 /* Set background image for the whole body */
+
+*{
+  font-family: "Montserrat", serif;
+  font-weight: 300;
+  font-style: normal;
+}
 body {
     margin: 0;
     padding: 0;
  /* Replace with your image path */
    /* Centers the image */
     box-sizing: border-box;
-    font-family: "Urbanist", serif;
+    font-family: "Montserrat Alternates", serif;
+    font-weight: 300;
+    font-style: normal;
     height: 100%;
     cursor: none; /* Hide default cursor */
 
@@ -24,7 +32,7 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border-radius: 30px;
+   
   
   }
 
