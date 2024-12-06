@@ -122,95 +122,182 @@ body {
   }
   
     
-   /* Position the navbar and style links */
+/* General Navbar Styling */
 .navbar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   padding: 15px 30px;
   background-color: white;
   color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo Styling */
+.logo-container {
+  flex: 0 0 auto; /* Prevent the logo from resizing */
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+}
+
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Logo */
+.logo {
+  height: 50px;
+  flex-shrink: 0;
+}
+
+/* Center the Navigation */
+.nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
+  gap: 20px; /* Adjust spacing between items */
   margin: 0;
   padding: 0;
 }
 
 .nav-links li {
-  position: relative; /* Needed for dropdown positioning */
-  margin-right: 20px;
+  position: relative;
 }
 
 .nav-links a {
   text-decoration: none;
   color: black;
-  font-size: 1.1em;
+  font-size: 1em;
   font-weight: 500;
-  padding: 10px;
   transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: #008CBA; /* Highlight color */
+  color: #008CBA;
 }
 
-/* Dropdown menu styles */
+/* Dropdown Menu */
 .dropdown-menu {
+  display: none;
   position: absolute;
-  top: 100%; /* Position below the parent item */
+  top: 100%;
   left: 0;
   background-color: white;
   list-style: none;
   padding: 10px 0;
-  margin: 0;
-  border: 1px solid #ddd;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  display: none; /* Initially hidden */
-  z-index: 1000; /* Keep it above other content */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
 }
 
 .dropdown-menu li {
   padding: 5px 20px;
 }
 
-.dropdown-menu li a {
+.dropdown-menu a {
   color: black;
-  font-size: 1em;
-  text-decoration: none;
-  display: block;
+  font-size: 0.9em;
 }
 
-.dropdown-menu li a:hover {
-  background-color: #f3f3f3; /* Hover effect */
+.dropdown-menu a:hover {
   color: #008CBA;
 }
 
-/* Show dropdown menu on hover */
-.dropdown:hover .dropdown-menu {
-  display: block; /* Show on hover */
+/* Right Actions: Search Bar */
+.right-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0; /* Prevents shrinking */
 }
 
-    
-    /* Button styling */
-    .start-button {
-      background-color: #fcfeff; /* Button background color */
-      color: rgb(91, 89, 89); /* Button text color */
-      border: none;
-      padding: 10px 20px;
-      font-size: 1.1em;
-      cursor: pointer;
-      border-radius: 25px; /* Rounded button */
-      transition: background-color 0.3s ease;
-      margin-right: 70px; /* Margin to ensure it's not right up against the edge */
-    }
-    
-    .start-button:hover {
-      background-color: #ffffff; /* Darker shade on hover */
-    }
-    
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.search-input {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  width: 150px;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #008CBA;
+  box-shadow: 0 0 5px rgba(0, 140, 186, 0.5);
+}
+
+.search-button {
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  padding: 5px ;
+  border-radius: 5px;
+  margin-right:25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #005f7f;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 15px;
+  }
+
+  .search-input {
+    width: 100px;
+  }
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .search-input {
+    width: 100px; /* Reduce size on smaller screens */
+  }
+
+  .nav-links {
+    font-size: 0.9em; /* Adjust link size */
+  }
+
+  .right-actions {
+    gap: 10px;
+  }
+}
     /* Main content styling */
     main {
       margin-top: 80px; /* Add margin to prevent content from being hidden under the navbar */
@@ -257,7 +344,7 @@ body {
   
   .carousel {
       display: flex;
-      transition: transform 6s ease;
+      transition: transform 1s ease-in;
   }
   
   .slide {

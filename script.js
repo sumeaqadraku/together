@@ -19,7 +19,7 @@ function changeSlide(direction) {
 }
 
 // Set up the automatic slide transition (every 2 seconds for forward direction)
-setInterval(() => changeSlide(1), 1000); // Change slide every 2 seconds (direction: 1 means forward)
+setInterval(() => changeSlide(1), 3000); // Change slide every 2 seconds (direction: 1 means forward)
 
 
 
