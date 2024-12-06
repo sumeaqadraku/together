@@ -369,47 +369,15 @@ body {
   
   /* Footer styling */
   .footer {
-    background-color: rgba(255, 255, 255, 0.8); /* Dark background */
-    color: white; /* White text color */
-    padding: 20px 0; /* Padding around the footer content */
+
     text-align: center; /* Center-align text */
     position: relative;
-  
     width: 100%;
-    margin-top: 100px; /* Adds a bit of space above the footer */
-    bottom: -20px;
+  
   }
   
-  /* Footer content styling */
-  .footer-content {
-    max-width: 100%;
-    margin: 0 auto; /* Center content */
-    padding: 0 1px; /* Add horizontal padding */
-  }
   
-  /* Footer navigation styling */
-  .footer-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 1px 0 0;
-    display: flex;
-    justify-content: center; /* Center the footer links */
-  }
   
-  .footer-nav li {
-    margin: 0 1px; /* Space between links */
-  }
-  
-  .footer-nav a {
-    text-decoration: none;
-    color: white; /* Link color */
-    font-size: 1em;
-   
-  }
-  
-  .footer-nav a:hover {
-    color: #008CBA; /* Change link color on hover */
-  }
   
    /* Problem-Solving Section Styling */
 .problem-solving {
@@ -482,12 +450,6 @@ html {
   transition: all 0.3s ease;
 }
 
-/* Hover effects for footer links */
-.footer-nav a:hover {
-  text-decoration: underline;
-  color: #00bcd4; /* Brighter hover color */
-}
-
 /* Section animations */
 .problem-solving {
   animation: fadeUp 2s ease;
@@ -501,5 +463,56 @@ html {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+
+/* Footer Section */
+.footer {
+ 
+  color: #373737; /* White text for readability */
+  padding: 20px 10px;
+  text-align: center; /* Center-align text */
+  font-size: 14px; /* Smaller font size for footer */
+}
+
+.footer-content {
+  color:#333;
+  max-width: 1200px; /* Constrain content width */
+  margin: 0 auto; /* Center content */
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  align-items: center; /* Center align items */
+  gap: 10px;
+}
+
+.footer-nav ul {
+  list-style: none; /* Remove bullet points */
+  padding: 0;
+  margin: 0;
+  display: flex; /* Arrange links horizontally */
+  gap: 15px;
+}
+
+.footer-nav a {
+  color: #7b7b7b; /* White links */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+  color: #00c6ff; /* Subtle hover effect */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column; /* Stack content on smaller screens */
+    text-align: center;
+  }
+
+  .footer-nav ul {
+    flex-direction: column; /* Stack links vertically */
+    gap: 5px;
   }
 }
