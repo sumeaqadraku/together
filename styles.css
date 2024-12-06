@@ -122,29 +122,77 @@ body {
   }
   
     
-    /* Navigation links */
-    .nav-links {
-      display: flex;
-      list-style: none; /* Remove default bullet points */
-      margin: 0;
-      padding: 0;
-    }
-    
-    .nav-links li {
-      margin: 0 20px;
-    }
-    
-    .nav-links a {
-      text-decoration: none;
-      color: black; /* Text color */
-      font-size: 1.1em;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-    
-    .nav-links a:hover {
-      color: #bdbdbd; /* Change color on hover (light blue) */
-    }
+   /* Position the navbar and style links */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: white;
+  color: black;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  position: relative; /* Needed for dropdown positioning */
+  margin-right: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.1em;
+  font-weight: 500;
+  padding: 10px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #008CBA; /* Highlight color */
+}
+
+/* Dropdown menu styles */
+.dropdown-menu {
+  position: absolute;
+  top: 100%; /* Position below the parent item */
+  left: 0;
+  background-color: white;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: none; /* Initially hidden */
+  z-index: 1000; /* Keep it above other content */
+}
+
+.dropdown-menu li {
+  padding: 5px 20px;
+}
+
+.dropdown-menu li a {
+  color: black;
+  font-size: 1em;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #f3f3f3; /* Hover effect */
+  color: #008CBA;
+}
+
+/* Show dropdown menu on hover */
+.dropdown:hover .dropdown-menu {
+  display: block; /* Show on hover */
+}
+
     
     /* Button styling */
     .start-button {
