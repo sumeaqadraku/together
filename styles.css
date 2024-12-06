@@ -1,0 +1,240 @@
+/* Reset default browser styles */
+/* Set background image for the whole body */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(255, 255, 255); /* Optional: default background color */
+    background-image: url('your-image-path.jpg'); /* Replace with your image path */
+    background-size: cover; /* Ensures the image covers the full page */
+    background-position: center center; /* Centers the image */
+    box-sizing: border-box;
+    font-family: "Urbanist", serif;
+    height: 100%;
+    cursor: none; /* Hide default cursor */
+  }
+  
+  /* Navbar container */
+  .navbar {
+    display: flex;
+    justify-content: space-between; /* Space between logo, nav items, and button */
+    align-items: center;
+    background-color: rgb(255, 255, 255); /* Explicit white background for navbar */
+    color: black; /* Black text color */
+    padding: 15px 30px; /* Padding for spacing */
+    position: fixed; /* Fix the navbar at the top */
+    top: 0; /* Align with top of the page */
+    left: 0; /* Align with left of the page */
+    right: 0; /* Align with right of the page */
+    width: 100%; /* Full-width navbar */
+    z-index: 1000; /* Ensure it stays on top */
+  }
+  
+  
+  /* Apply the custom cursor to the whole document */
+  * {
+    cursor: url('data:image/svg+xml,%3Csvg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"%3E%3Ccircle cx="10" cy="10" r="8" fill="black" /%3E%3C/svg%3E'), auto;
+    transition: transform 0.5s ease-in-out; /* Increase transition time for slower cursor movement */
+  }
+  
+  /* Optional: Slow down the cursor when hovering over certain elements */
+  body:hover {
+    transition: transform 0.5s ease-in-out; /* Longer transition for slower movement */
+  }
+  
+  
+  /* Style the custom cursor */
+  .custom-cursor {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: black; /* Black circle cursor */
+    pointer-events: none; /* Ensure it doesn't interact with any elements */
+    transition: transform 0.2s ease; /* Smooth transition for moving cursor */
+  }
+  
+  /* Style for the trail dots */
+  .cursor-trail {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: rgba(63, 63, 63, 0.7); /* Dark trail */
+    pointer-events: none;
+    animation: trail 1.3s ease-out forwards;
+  }
+  
+  @keyframes trail {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0);
+      opacity: 0;
+    }
+  }
+   
+    
+  /* Logo styling */
+  .logo {
+    height: 50px; /* Adjust logo size */
+    width: auto;;
+  }
+  
+    
+    /* Navigation links */
+    .nav-links {
+      display: flex;
+      list-style: none; /* Remove default bullet points */
+      margin: 0;
+      padding: 0;
+    }
+    
+    .nav-links li {
+      margin: 0 20px;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: black; /* Text color */
+      font-size: 1.1em;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: #bdbdbd; /* Change color on hover (light blue) */
+    }
+    
+    /* Button styling */
+    .start-button {
+      background-color: #fcfeff; /* Button background color */
+      color: rgb(91, 89, 89); /* Button text color */
+      border: none;
+      padding: 10px 20px;
+      font-size: 1.1em;
+      cursor: pointer;
+      border-radius: 25px; /* Rounded button */
+      transition: background-color 0.3s ease;
+      margin-right: 70px; /* Margin to ensure it's not right up against the edge */
+    }
+    
+    .start-button:hover {
+      background-color: #ffffff; /* Darker shade on hover */
+    }
+    
+    /* Main content styling */
+    main {
+      margin-top: 80px; /* Add margin to prevent content from being hidden under the navbar */
+      text-align: center;
+      height: calc(80vh - 50px); /* Take up the remaining height of the screen */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+  
+    }
+    
+    h1 {
+      font-size: 3em;
+      font-weight: bold;
+      color: #333;
+      animation: fadeIn 2.5s ease-out forwards; 
+    }
+    /* Define the fadeIn animation */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0; /* Start with 0 opacity */
+      transform: translateY(50px); /* Start with it slightly below */
+    }
+    100% {
+      opacity: 1; /* End with full opacity */
+      transform: translateY(0); /* End at its original position */
+    }
+  }
+    p {
+      font-size: 1.2em;
+      color: #555;
+      animation: fadeIn 2.5s ease-out forwards; 
+    }
+  
+    .slider {
+      position: relative;
+      max-width: 80%;
+      margin: 50px auto;
+      overflow: hidden;
+      
+  }
+  
+  
+  .carousel {
+      display: flex;
+      transition: transform 0.5s ease-in;
+  }
+  
+  .slide {
+      flex: 0 0 25%;
+      text-align: center;
+      padding: 10px;
+      box-sizing: border-box;
+  }
+  
+  .slide img {
+      width: 100%;
+      max-height: 300px;
+      border-radius: 10px;
+      object-fit: cover;
+  }
+  
+  .caption {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: #333;
+  }
+  
+  /* Footer styling */
+  .footer {
+    background-color: rgba(255, 255, 255, 0.8); /* Dark background */
+    color: white; /* White text color */
+    padding: 20px 0; /* Padding around the footer content */
+    text-align: center; /* Center-align text */
+    position: relative;
+  
+    width: 100%;
+    margin-top: 100px; /* Adds a bit of space above the footer */
+    bottom: -20px;
+  }
+  
+  /* Footer content styling */
+  .footer-content {
+    max-width: 100%;
+    margin: 0 auto; /* Center content */
+    padding: 0 1px; /* Add horizontal padding */
+  }
+  
+  /* Footer navigation styling */
+  .footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 1px 0 0;
+    display: flex;
+    justify-content: center; /* Center the footer links */
+  }
+  
+  .footer-nav li {
+    margin: 0 1px; /* Space between links */
+  }
+  
+  .footer-nav a {
+    text-decoration: none;
+    color: white; /* Link color */
+    font-size: 1em;
+   
+  }
+  
+  .footer-nav a:hover {
+    color: #008CBA; /* Change link color on hover */
+  }
+  
+   
