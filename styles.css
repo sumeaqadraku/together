@@ -20,19 +20,20 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh; /* Full viewport height */
+    background-image: url('images/pexels-cottonbro-4325466.jpg'); /* Replace with your image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   
   }
-  
-  /* Main content styling */
-  .main-content {
-    background-color: #ffffff; /* White background for main content */
-    padding: 30px;
-    border-radius: 20px; /* Rounded corners */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    width: 100%; /* Increase percentage for more width */
-    max-width: 1300px; /* Increase the max-width for larger screens */
-    text-align: center; /* Center the content */
-  }
+
+
+.main-content {
+  padding: 30px; /* Optional: Space around text */
+  text-align: center; /* Center-align the text */
+  border-radius: 15px; /* Optional: For rounded corners of text content */
+  color: #fff; /* Adjust text color for better visibility on the background image */
+}
   
   /* Additional spacing for text */
   .main-content h1 {
@@ -62,7 +63,7 @@ body {
   
   /* Apply the custom cursor to the whole document */
   * {
-    cursor: url('data:image/svg+xml,%3Csvg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"%3E%3Ccircle cx="10" cy="10" r="8" fill="black" /%3E%3C/svg%3E'), auto;
+    cursor: url('data:image/svg+xml,%3Csvg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"%3E%3Ccircle cx="10" cy="10" r="8" fill="white" /%3E%3C/svg%3E'), auto;
     transition: transform 0.5s ease-in-out; /* Increase transition time for slower cursor movement */
   }
   
@@ -78,7 +79,7 @@ body {
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background-color: black; /* Black circle cursor */
+    background-color: rgb(255, 255, 255); /* Black circle cursor */
     pointer-events: none; /* Ensure it doesn't interact with any elements */
     transition: transform 0.2s ease; /* Smooth transition for moving cursor */
   }
@@ -89,7 +90,7 @@ body {
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background-color: rgba(63, 63, 63, 0.7); /* Dark trail */
+    background-color: rgba(225, 225, 225, 0.7); /* Dark trail */
     pointer-events: none;
     animation: trail 1.3s ease-out forwards;
   }
@@ -169,7 +170,7 @@ body {
     h1 {
       font-size: 3em;
       font-weight: bold;
-      color: #333;
+      color: #e1e1e1;
       animation: fadeIn 2.5s ease-out forwards; 
     }
     /* Define the fadeIn animation */
@@ -185,7 +186,7 @@ body {
   }
     p {
       font-size: 1.2em;
-      color: #555;
+      color: #e8e8e8;
       animation: fadeIn 2.5s ease-out forwards; 
     }
   
@@ -286,4 +287,75 @@ body {
   line-height: 1.4; /* Better spacing between lines */
   margin: 0; /* Remove default margins */
   font-family: "Urbanist", sans-serif; /* Match font with your site */
+}
+
+
+
+
+/* Add smooth scrolling for the page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Navbar: Change background color on scroll */
+.navbar {
+  transition: background-color 0.5s ease;
+}
+.navbar.scrolled {
+  background-color: rgba(255, 255, 255, 0.9); /* Add slight transparency */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add shadow */
+}
+
+/* Smooth fade-in effect for sections */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Carousel animation */
+@keyframes slide {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-25%); }
+  40% { transform: translateX(-50%); }
+  60% { transform: translateX(-75%); }
+  80% { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}
+.carousel {
+  animation: slide 10s infinite;
+}
+
+/* Hover effects for buttons */
+.start-button:hover {
+  transform: scale(1.1); /* Slight zoom on hover */
+  background-color: #008CBA; /* Change background */
+  color: #fff; /* Change text color */
+  transition: all 0.3s ease;
+}
+
+/* Hover effects for footer links */
+.footer-nav a:hover {
+  text-decoration: underline;
+  color: #00bcd4; /* Brighter hover color */
+}
+
+/* Section animations */
+.problem-solving {
+  animation: fadeUp 2s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

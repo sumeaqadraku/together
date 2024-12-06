@@ -42,3 +42,28 @@ document.addEventListener('mousemove', function(event) {
 
 
 
+// Add scrolling effect for navbar
+document.addEventListener("scroll", () => {
+    const navbar = document.querySelector(".navbar");
+    if (window.scrollY > 50) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  });
+  
+  // Fade-in effect for sections
+  const sections = document.querySelectorAll(".fade-in");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.2 } // Trigger when 20% of the section is visible
+  );
+  
+  sections.forEach((section) => observer.observe(section));
+  
