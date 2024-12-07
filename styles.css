@@ -381,14 +381,14 @@ body {
   
    /* Problem-Solving Section Styling */
 .problem-solving {
-  background-color: rgba(255, 255, 255, 0.9); /* Light, semi-transparent background */
+  background-color: #f3f3f3; /* Light, semi-transparent background */
   color: #333; /* Text color */
   padding: 50px 20px; /* Space around the content */
   text-align: center; /* Center-align the text */
   margin: 40px auto; /* Add spacing above and below the section */
   border-radius: 15px; /* Rounded corners */
   max-width: 80%; /* Limit the width of the section */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+
   font-family: "Montserrat", serif;
 }
 
