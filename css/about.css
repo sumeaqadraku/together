@@ -1,0 +1,191 @@
+/* Mission Section */
+*{
+    font-family: "Montserrat", serif;
+}
+/* Mission Section Styling */
+.mission-section {
+    text-align: center;
+    padding: 50px 20px;
+    background: #f9f9f9;
+  }
+  
+  .mission-content {
+    margin-bottom: 40px;
+  }
+  
+  .mission-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .mission-content p {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+ 
+  /* General Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Space between logo and other items */
+    align-items: center; /* Center vertically */
+    background-color: #ffffff; /* Dark background */
+    padding: 10px 20px; /* Spacing around navbar */
+    color: #030303; /* White text color */
+    position: sticky; /* Keeps navbar fixed on top */
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Logo Styling */
+  .logo {
+    height: 50px; /* Adjust as needed */
+    object-fit: contain;
+  }
+  
+  /* Navbar Links Styling */
+  .nav-links {
+    display: flex;
+    list-style: none; /* Remove bullet points */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-links li {
+    margin: 0 15px; /* Space between links */
+  }
+  
+  .nav-links a {
+    text-decoration: none; /* Remove underline */
+    color: #040404; /* White text color */
+    font-size: 16px;
+    transition: color 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .nav-links a:hover {
+    color: #00bcd4; /* Highlight color on hover */
+  }
+  
+  /* Dropdown Menu */
+  .dropdown {
+    position: relative;
+  }
+  
+  .dropdown-menu {
+    display: none; /* Hide by default */
+    position: absolute;
+    top: 100%; /* Dropdown below the parent link */
+    left: 0;
+    background-color: #444; /* Dark background for dropdown */
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    z-index: 1000;
+  }
+  
+  .dropdown-menu li {
+    padding: 5px 20px;
+  }
+  
+  .dropdown-menu li a {
+    color: #fff; /* White text color for dropdown items */
+  }
+  
+  .dropdown-menu li a:hover {
+    color: #00bcd4; /* Highlight on hover */
+  }
+  
+  .dropdown:hover .dropdown-menu {
+    display: block; /* Show dropdown on hover */
+  }
+  
+  /* Right Actions (Search Bar, etc.) */
+  .right-actions {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Search Bar */
+  .search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #fff; /* White background */
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .search-input {
+    border: none;
+    padding: 8px;
+    outline: none;
+    width: 150px; /* Adjust width */
+  }
+  
+  .search-button {
+    background: #00bcd4; /* Button color */
+    border: none;
+    color: #fff;
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+  
+  .search-button:hover {
+    background: #0097a7; /* Darker hover color */
+  }
+  
+  /* Responsive Navbar */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none; /* Hide links on small screens */
+    }
+  
+    .navbar {
+      flex-wrap: wrap; /* Stack items */
+    }
+  
+    .right-actions {
+      margin-top: 10px;
+    }
+  }
+  
+  /* About Section */
+.about-section {
+  text-align: center;
+  padding: 50px;
+  background-color: #f9f9f9;
+}
+
+.about-section h2 {
+  font-size: 4em;
+  margin-bottom: 20px;
+}
+
+.about-section p {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+/* Grid Container */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjusts based on screen size */
+  gap: 20px;
+  justify-items: center;
+}
+
+/* Grid Item */
+.grid-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grid-item img:hover {
+  transform: scale(1.05); /* Slight zoom effect */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
