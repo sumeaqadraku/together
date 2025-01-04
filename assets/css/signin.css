@@ -1,0 +1,193 @@
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(to bottom, #cce7f6, #f7fcff);
+}
+
+.background {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Styling the signin card */
+.signin-card {
+  background: rgba(255, 255, 255, 0.8);  /* Optional: Semi-transparent background for the card */
+  padding: 30px;  /* Reduced padding to make the card shorter */
+  border-radius: 16px;  /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  height: auto;  
+  min-height: 250px;  /* Minimum height to keep the card from shrinking too much */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;  /* Ensures content starts from the top */
+}
+
+/* Icon styling */
+.signin-icon img {
+  width: 50px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;  /* Reduced margin to shorten the card */
+}
+
+.form-group {
+  margin-bottom: 15px;  /* Reduced margin for inputs */
+}
+
+input {
+  width: 100%;
+  padding: 12px;  /* Reduced padding to make the inputs shorter */
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+}
+
+input:focus {
+  border-color: #7A8A6A;
+}
+
+.btn {
+  background: #7A8A6A;
+  color: white;
+  padding: 8px 18px;  /* Reduced padding for the button */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #7A8A6A;
+}
+
+.divider {
+  margin: 10px 0;
+  font-size: 14px;
+  color: #666;
+  position: relative;
+}
+
+.divider:before,
+.divider:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 30%;
+  height: 1px;
+  background: #ddd;
+}
+
+.divider:before {
+  left: 0;
+}
+
+.divider:after {
+  right: 0;
+}
+
+.social-login {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.social-btn {
+  padding: 8px 18px;  /* Reduced padding for social buttons */
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  flex: 1;
+  margin: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.social-btn.google {
+  background: #4285F4;
+  color: white;
+}
+
+.social-btn.facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.social-btn.apple {
+  background: #333;
+  color: white;
+}
+
+.footer-text {
+  font-size: 12px;
+  color: #666;
+  margin-top: 20px;
+}
+
+.footer-text a {
+  color: #1a74e7;
+  text-decoration: none;
+}
+
+.footer-text a:hover {
+  text-decoration: underline;
+}
+
+/* Background image with blur */
+.background {
+  background-image: url("../../images/pexels-kampus-6299280.jpg");
+  background-size: cover;  /* Ensures the background covers the entire screen */
+  background-position: center;  /* Centers the image */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;  /* Full height of the viewport */
+  position: relative;  /* Ensures the background image stays in place */
+  overflow: hidden;  /* Hides any excess blur from the image */
+}
+
+/* Apply blur effect only to the image */
+.background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: inherit;
+  background-size: inherit;
+  background-position: inherit;
+  filter: blur(8px);  /* Adjust blur amount here */
+  z-index: -1;  /* Ensure the blurred image stays behind the content */
+  pointer-events: none;  /* Ensure the background doesn't interfere with interactions */
+}

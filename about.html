@@ -3,68 +3,124 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us</title>
-  <link rel="stylesheet" href="css/about.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Jura:wght@300..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Oi&family=Poiret+One&family=Rubik:ital,wght@0,300..900;1,300..900&family=Russo+One&family=Syne:wght@400..800&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <title>About Us - Together</title>
+  <link rel="stylesheet" href="assets/css/about.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Navbar -->
+
   <header class="navbar">
-    <img src="images/Screenshot_2024-12-06_134447-removebg-preview.png" alt="Logo" class="logo">
-    <ul class="nav-links">
-      <li><a href="login.html">Log In</a></li>
-      <li><a href="#">About</a></li>
-      <li class="dropdown">
-        <a href="#">Services</a>
-        <ul class="dropdown-menu">
-          <a href="Teen.html">Individual therapy</a>
-          <a href="Teen.html">Couples therapy</a>
-          <a href="Teen.html">Teen therapy</a>
-        </ul>
-      </li>
-      <li><a href="#">Booking</a></li>
-      <li><a href="#">FAQs</a></li>
-    </ul>
-    <div class="right-actions">
-      <div class="search-bar">
-        <input type="text" class="search-input" placeholder="Search...">
-        <button class="search-button">🔍</button>
-      </div>
-    </div>
+    <a href="index.html" class="logo">together</a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="about.html">About Us</a></li>
+        <li class="dropdown">
+          <a href="services.html" class="dropbtn">Services</a>
+          <ul class="dropdown-content">
+            <li><a href="individual_therapy.html">Individual Therapy</a></li>
+            <li><a href="couples_counseling.html">Couples Counseling</a></li>
+            <li><a href="group_sessions.html">Group Sessions</a></li>
+          </ul>
+        </li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+    <a href="contact.html" class="contact-button">Log In</a>
   </header>
-  <section class="about-section">
-    <h2>Our Mission?</h2>
-    <p>We break the silence around mental health, offering a compassionate space where every voice is heard, every struggle is acknowledged, and healing begins, one step at a time.</p>
   
-    <div class="grid-container">
-      <div class="grid-item">
-        <img src="images/pexels-shvets-production-7176319.jpg" alt="Image 1">
+
+  <section class="about-us">
+    <!-- Hero Image Section -->
+    <header class="hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1>Welcome to Together</h1>
+          <p>Supporting your mental well-being and guiding you through life's challenges.</p>
+        </div>
+        <div class="hero-image">
+          <video autoplay muted loop playsinline>
+            <source src="images/3253970-uhd_3840_2160_25fps.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        
       </div>
-      <div class="grid-item">
-        <img src="images/pexels-shvets-production-7176317.jpg" alt="Image 2">
-      </div>
-      <div class="grid-item">
-        <img src="images/pexels-shvets-production-7176027.jpg" alt="Image 3">
-      </div>
-      <div class="grid-item">
-        <img src="images/pexels-shvets-production-7176026.jpg" alt="Image 4">
-      </div>
-      <div class="grid-item">
-        <img src="images/pexels-cottonbro-4325466.jpg" alt="Image 5">
-      </div>
-      <div class="grid-item">
-        <img src="images/pexels-alex-green-5699424.jpg" alt="Image 6">
-      </div>
-      <div class="grid-item">
-        <img src="images/pexels-alex-green-5699463.jpg" alt="Image 5">
-      </div>
-      <div class="grid-item">
-        <img src="images/pexels-rdne-9064387.jpg" alt="Image 6">
-      </div>
+    </header>
+    
+
+    <!-- Our Story Section -->
+    <section class="our-story">
+      <h2>Our Story</h2>
+      <p>At Together, we understand that life can be difficult, and everyone’s journey is unique. We started this business to help people heal, grow, and thrive in a safe, compassionate space.</p>
+    </section>
+
+    <!-- Meet Our Team Section (Slider) -->
+    <div class="slider">
+      <center><h3>Your well-being is our priority. Trust our team of licensed therapists to guide you toward mental clarity with proven methods</h3>
+    </center>
+      <br>
+      <div class="carousel">
+          <div class="slide">
+              <img src="images/Screenshot 2025-01-02 004537.png" alt="Therapist 1">
+              <div class="caption">Dr. Emily Parker</div>
+          </div>
+          <div class="slide">
+              <img src="images/Screenshot 2025-01-02 004626.png" alt="Therapist 1">
+              <div class="caption">Dr. James Anderson</div>
+          </div>
+          <div class="slide">
+              <img src="images/Screenshot 2025-01-02 004720.png" alt="Therapist 1">
+              <div class="caption">Dr. Olivia Benett</div>
+          </div>
+          <div class="slide">
+              <img src="images/Screenshot 2025-01-02 134940.png" alt="Therapist 1">
+              <div class="caption">Dr. Daniel Williams</div>
+          </div>
+        
+          </div>
+          
+          </div>
+  
+    
+    
+    
+    </section>
+    
+
+    
+   <!-- Our Values Section -->
+<!-- Our Values Section -->
+<section class="our-values">
+  <div class="values-container">
+    <div class="values-video">
+      <video autoplay muted loop playsinline>
+        <source src="images/8530343-uhd_3840_2160_25fps.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
     </div>
+    <div class="values-text">
+      <h2>Our Values</h2>
+      <ul>
+        <li><strong>Empathy:</strong> We listen with understanding and compassion.</li>
+        <li><strong>Growth:</strong> We help you grow emotionally, mentally, and spiritually.</li>
+        <li><strong>Trust:</strong> We create a safe and trusting space for healing.</li>
+        <li><strong>Community:</strong> We believe in the power of community and connection.</li>
+        <li><strong>Inclusivity:</strong> We welcome everyone, regardless of background or identity.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- Call to Action Section -->
+    <section class="cta">
+      <p>Ready to start your journey? <a href="services.html">Learn more about our services</a> or <a href="contact.html">contact us</a> to take the first step.</p>
+    </section>
   </section>
 
+  <script src="main.js"></script>
 </body>
 </html>
