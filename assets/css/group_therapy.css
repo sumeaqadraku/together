@@ -71,6 +71,125 @@ body {
     height: auto;
     border-radius: 10px;
   }
+  .pjesa1{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+  }
+  .pjesa2{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+  /* Therapy Overview Section */
+  .therapy-overview {
+    background-color: #e6e6e6;
+    padding: 5rem;
+    text-align: center;
+    width: 50%;
+  }
+  
+  .therapy-overview h2 {
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  .therapy-overview p {
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.6;
+  }
+  
+  /* Therapy Benefits Section */
+  .therapy-benefits {
+    background-color: #fff;
+    padding: 5rem;
+    width: 50%;
+  }
+  
+  .therapy-benefits h2 {
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+  }
+  
+  .therapy-benefits ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .therapy-benefits li {
+    font-size: 1.1rem;
+    color: #444;
+    margin: 0.5rem 0;
+  }
+  
+  /* How It Works Section */
+  .how-it-works {
+    background-color: #f5f5f5;
+    padding: 5rem;
+    text-align: center;
+    width: 50%;
+  }
+  
+  .how-it-works h2 {
+    font-size: 2rem;
+    color: #333;
+  }
+  
+  .how-it-works p {
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.6;
+  }
+  .your-journey{
+    background-color: #ababab;
+    padding: 5rem;
+    text-align: center;
+    width: 50%;
+  }
+  .your-journey h2{
+    font-size: 2rem;
+    color: #333;
+  }
+  .your-journe p{
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.6;
+  }
+
+  
+  /* Call to Action Section */
+  .cta-section {
+    background-color: #456859;
+    color: white;
+    padding: 10rem;
+    text-align: center;
+    width: 100%;
+
+  }
+  
+  .cta-section h2 {
+    font-size: 2rem;
+    color: white;
+  }
+  
+  .cta-section p {
+    font-size: 1.1rem;
+    color: white;
+    margin-bottom: 1rem;
+  }
+  
+  .cta-button {
+    background-color: #ba845f;
+    color: white;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
   
   /* Footer Styles */
   footer {
