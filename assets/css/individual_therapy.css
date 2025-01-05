@@ -5,6 +5,7 @@
     padding: 2rem 0;
   }
   
+  
   .header-banner h1 {
     font-size: 2.5rem;
     color: #333;
@@ -19,12 +20,25 @@
     width: 500px;
     height: auto;
   }
+  /* Contant */
   
+  .pjesa1{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+  }
+  .pjesa2{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
   /* Therapy Overview Section */
   .therapy-overview {
     background-color: #e6e6e6;
-    padding: 2rem;
+    padding: 5rem;
     text-align: center;
+    width: 50%;
   }
   
   .therapy-overview h2 {
@@ -41,7 +55,8 @@
   /* Therapy Benefits Section */
   .therapy-benefits {
     background-color: #fff;
-    padding: 2rem;
+    padding: 5rem;
+    width: 50%;
   }
   
   .therapy-benefits h2 {
@@ -65,8 +80,9 @@
   /* How It Works Section */
   .how-it-works {
     background-color: #f5f5f5;
-    padding: 2rem;
+    padding: 5rem;
     text-align: center;
+    width: 50%;
   }
   
   .how-it-works h2 {
@@ -79,13 +95,31 @@
     color: #444;
     line-height: 1.6;
   }
+  .your-journey{
+    background-color: #ababab;
+    padding: 5rem;
+    text-align: center;
+    width: 50%;
+  }
+  .your-journey h2{
+    font-size: 2rem;
+    color: #333;
+  }
+  .your-journe p{
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.6;
+  }
+
   
   /* Call to Action Section */
   .cta-section {
     background-color: #456859;
     color: white;
-    padding: 2rem;
+    padding: 10rem;
     text-align: center;
+    width: 100%;
+
   }
   
   .cta-section h2 {
@@ -229,5 +263,54 @@
   .dropdown:hover .dropdown-content {
     display: block; /* Show dropdown on hover */
   }
+  .video-text-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    background-color: #f5f5f5;
+  }
+  
+  .video-container {
+    flex: 1;
+    padding-right: 2rem;
+  }
+  
+  .service-video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .text-container {
+    flex: 1;
+    padding-left: 2rem;
+  }
+  
+  .text-container h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .text-container p {
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  
+  .cta-button {
+    background-color: #ba845f;
+    color: white;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .cta-button:hover {
+    background-color: #ba845f;
+  }
+    
   
   
