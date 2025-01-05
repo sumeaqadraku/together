@@ -452,6 +452,8 @@ h2 {
   padding: 4rem 0;
   background-color: #f8f8f8;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .testimonials h2 {
@@ -462,6 +464,7 @@ h2 {
 
 .testimonial-slider {
   display: flex;
+  flex-direction: row;
   gap: 2rem;
   justify-content: center;
 
@@ -471,9 +474,10 @@ h2 {
 .testimonial {
   background-color: #fff;
   padding: 2rem;
+  
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 250px;
+  width: 300px;
   font-style: italic;
   color: #555;
   transition: transform 0.3s ease;
@@ -481,6 +485,11 @@ h2 {
 
 .testimonial:hover {
   transform: translateY(-5px);
+}
+.testimonialn{
+  display: flex;
+  flex-direction: row;
+  gap: 17px;
 }
 
 
