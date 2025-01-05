@@ -1,9 +1,20 @@
 
-  
+.pjesa1{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+
+}
+.pjesa2{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
   /* Counseling Overview Section */
   .counseling-overview {
     background-color: #e6e6e6;
-    padding: 2rem;
+    padding: 5rem;
+    width: 50%;
     text-align: center;
   }
   
@@ -21,7 +32,8 @@
   /* Counseling Benefits Section */
   .counseling-benefits {
     background-color: #fff;
-    padding: 2rem;
+    padding: 5rem;
+    width: 50%;
   }
   
   .counseling-benefits h2 {
@@ -45,7 +57,8 @@
   /* How It Works Section */
   .how-it-works {
     background-color: #f5f5f5;
-    padding: 2rem;
+    padding: 5rem;
+    width: 50%;
     text-align: center;
   }
   
@@ -64,8 +77,10 @@
   .cta-section {
     background-color: #456859;
     color: white;
-    padding: 2rem;
+    padding: 10rem;
     text-align: center;
+    width: 100%;
+
   }
   
   .cta-section h2 {
@@ -90,7 +105,21 @@
   .cta-button:hover {
     background-color: #ba845f;
   }
-  
+  .your-journey{
+    background-color: #ababab;
+    padding: 5rem;
+    text-align: center;
+    width: 50%;
+  }
+  .your-journey h2{
+    font-size: 2rem;
+    color: #333;
+  }
+  .your-journe p{
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.6;
+  }
   /* Footer */
   footer {
     background-color: #ffffff;
@@ -220,6 +249,7 @@
     justify-content: space-between;
     padding: 2rem;
     background-color: #f5f5f5;
+    padding-bottom: 4rem;
   }
   
   .video-container {
@@ -262,4 +292,5 @@
   .cta-button:hover {
     background-color: #ba845f;
   }
+  
     
