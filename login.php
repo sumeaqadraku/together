@@ -9,10 +9,51 @@ include 'include/db.php';
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - Together</title>
   <link rel="stylesheet" href="assets/css/login.css">
-  <!-- Add Font Awesome for Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
+
+
 <body>
+<?php
+// Start the session
+session_start();
+
+// Include the database connection
+include('db.php');
+
+// Check if the form was submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Get the username and password entered by the user
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Prepare a query to check if the username exists in the database
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
+    $stmt->execute([$username]);
+    $user = $stmt->fetch(); // Fetch the user data from the database
+
+    // If the user exists and the password matches
+    if ($user && password_verify($password, $user['password'])) {
+        // Store user data in the session
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['username'] = $user['username'];
+        $_SESSION['role'] = $user['role']; // This will be used to check if the user is an admin
+
+        // Redirect to the dashboard or home page
+        if ($user['role'] == 'admin') {
+            header('Location: dashboard.php'); // Admin goes to the dashboard
+        } else {
+            header('Location: index.php'); // Regular user goes to the home page
+        }
+        exit(); // Stop further code execution after redirection
+    } else {
+        // If the login failed, show an error message
+        echo 'Invalid username or password';
+    }
+}
+?>
+
+
   <div class="background">
     <div class="login-card">
       <div class="login-icon">

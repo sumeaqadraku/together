@@ -11,6 +11,25 @@ include 'include/db.php';
   <title>Our Services</title>
 </head>
 <body>
+<?php
+    
+    $query = "SELECT * FROM services";  
+    $result = $conn->query($query);
+
+
+    if ($result->num_rows > 0) {
+    
+        while ($row = $result->fetch_assoc()) {
+            echo "<h3>" . $row['name'] . "</h3>"; 
+            echo "<p>" . $row['description'] . "</p>";  
+        }
+    } else {
+        echo "No services available.";
+    }
+
+    // Close the connection
+    $conn->close();
+    ?>
   <header class="navbar">
     <a href="index.html" class="logo">together</a>
     <nav>
