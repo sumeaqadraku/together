@@ -100,24 +100,35 @@ $testimonials_result = $conn->query($testimonials_sql);
     ?>
   </div>
 </section>
- <section id="services-overview" class="services-overview">
+<section id="services-overview" class="services-overview">
     <h2>Our Services</h2>
     <div class="service-cards">
-      <?php
-      if ($services_result->num_rows > 0) {
-          while ($service = $services_result->fetch_assoc()) {
-              echo "<div class='service-card'>";
-              echo "<img src='" . $service['image_url'] . "' alt='" . $service['name'] . "' class='service-icon'>";
-              echo "<h3>" . $service['name'] . "</h3>";
-              echo "<p>" . $service['description'] . "</p>";
-              echo "</div>";
-          }
-      } else {
-          echo "<p>No services available</p>";
-      }
-      ?>
+        <?php
+        if ($services_result->num_rows > 0) {
+            while ($service = $services_result->fetch_assoc()) {
+                echo "<div class='service-card'>";
+                
+                // Debugging: Check the image URL
+                echo "<p>Image Path: " . $service['image_url'] . "</p>"; // Debugging line
+
+                // Display the image from the image_url field
+                if (isset($service['image_url']) && !empty($service['image_url'])) {
+                    echo "<img src='" . $service['image_url'] . "' alt='" . $service['name'] . "' class='service-icon'>";
+                } else {
+                    echo "<img src='uploads/images/default_image.jpg' alt='No image available' class='service-icon'>";
+                }
+
+                echo "<h3>" . $service['name'] . "</h3>";
+                echo "<p>" . $service['description'] . "</p>";
+                echo "</div>";
+            }
+        } else {
+            echo "<p>No services available</p>";
+        }
+        ?>
     </div>
-  </section>
+</section>
+
 
   <section id="testimonials" class="testimonials">
     <h2>What Our Clients Say</h2>
