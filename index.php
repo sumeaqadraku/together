@@ -71,6 +71,36 @@ $testimonials_result = $conn->query($testimonials_sql);
   </section>
 
   <section id="services-overview" class="services-overview">
+  <h2>Our Services</h2>
+  <div class="service-cards">
+    <?php
+    // Fetch all services from the database
+    $services_sql = "SELECT * FROM services";  
+    $services_result = $conn->query($services_sql);
+
+    // Check if there are any services
+    if ($services_result->num_rows > 0) {
+        while ($service = $services_result->fetch_assoc()) {
+            echo "<div class='service-card'>";
+            // Display service name and description
+            echo "<h3>" . htmlspecialchars($service['name']) . "</h3>";
+            echo "<p>" . htmlspecialchars($service['description']) . "</p>";
+            
+            // Display the price
+            echo "<p><strong>Price:</strong> $" . number_format($service['price'], 2) . "</p>"; // Format price to 2 decimal places
+
+            // Display creation date (optional, if you want to show it)
+            echo "<p><small>Created on: " . date("F j, Y", strtotime($service['created_at'])) . "</small></p>";
+            
+            echo "</div>";
+        }
+    } else {
+        echo "<p>No services available.</p>";
+    }
+    ?>
+  </div>
+</section>
+ <section id="services-overview" class="services-overview">
     <h2>Our Services</h2>
     <div class="service-cards">
       <?php
