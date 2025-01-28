@@ -105,6 +105,7 @@ $testimonials_result = $conn->query($testimonials_sql);
         ?>
     </div>
 </section>
+<div>
 
     </div>
   </section>
