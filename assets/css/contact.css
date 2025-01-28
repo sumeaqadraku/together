@@ -280,5 +280,44 @@
   }
   
   @media (min-device-width: 320px) and (max-device-width: 900px){
-    
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0px;
+      color: #5e4a39;
+      font-weight: 300;
+      transition: color 0.3s;
+    }
+    .contact-details {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      gap: 50px;
+  }
+  .contact-item {
+    border-radius: 20px;
+    width:100%;
+    padding: 15px 30px;
+    border: 1px solid #ddd;
+    background-color: #e6e6e6;
+}
+.contact-us {
+  display: flex;
+  flex-direction: column;
+}
+.contact-form {
+  padding: 60px 30px;
+  width: 100%;
+  background-color: #f9f9f9;
+}
+.video {
+  display: flex;
+  padding: 50px 10px;
+  justify-content: center;
+  box-sizing: border-box;
+  align-items: center;
+}
+.service-video {
+  
+  display: none;
+}
   }

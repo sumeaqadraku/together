@@ -1,36 +1,9 @@
 <?php
-include 'include/db.php';  
+include 'include/db.php'; 
+include 'include/hearder.php'; 
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/css/resources.css">
-  <title>Resources</title>
-</head>
-<body>
-  <header class="navbar">
-    <a href="index.html" class="logo">together</a>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="about.html">About Us</a></li>
-        <li class="dropdown">
-          <a href="services.html" class="dropbtn">Services</a>
-          <ul class="dropdown-content">
-            <li><a href="individual_therapy.html">Individual Therapy</a></li>
-            <li><a href="couples_counseling.html">Couples Counseling</a></li>
-            <li><a href="group_sessions.html">Group Sessions</a></li>
-          </ul>
-        </li>
-        <li><a href="#testimonials">Testimonials</a></li>
-        <li><a href="resources.html">Resources</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-      </ul>
-    </nav>
-    <a href="login.html" class="contact-button">Log In</a>
-  </header>
 
   <!-- Resources Section -->
   <section class="resources">

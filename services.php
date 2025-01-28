@@ -1,5 +1,6 @@
 <?php
 include 'include/db.php';  
+include 'include/hearder.php';
 
 // Fetch the introductory text from the service_intro table
 $intro_sql = "SELECT * FROM service_intro LIMIT 1"; 
@@ -25,26 +26,7 @@ $services_result = $conn->query($services_sql);
 </head>
 <body>
 
-  <header class="navbar">
-    <a href="index.php" class="logo">together</a>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="about.php">About Us</a></li>
-        <li class="dropdown">
-          <a href="services.php" class="dropbtn">Services</a>
-          <ul class="dropdown-content">
-            <li><a href="individual_therapy.php">Individual Therapy</a></li>
-            <li><a href="couples_counseling.php">Couples Counseling</a></li>
-            <li><a href="group_sessions.php">Group Sessions</a></li>
-          </ul>
-        </li>
-        <li><a href="#testimonials">Testimonials</a></li>
-        <li><a href="resources.php">Resources</a></li>
-        <li><a href="contact.php">Contact Us</a></li>
-      </ul>
-    </nav>
-    <a href="login.php" class="contact-button">Log In</a>
-  </header>
+  
 
   <!-- Header Section -->
   <section class="header-banner">

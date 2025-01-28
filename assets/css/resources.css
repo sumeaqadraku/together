@@ -188,3 +188,25 @@ body {
     color: #fff;
   }
   
+  @media (min-device-width: 320px) and (max-device-width: 900px){
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0px;
+    color: #5e4a39;
+    font-weight: 300;
+    transition: color 0.3s;
+  }
+  .resource-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+.resource-category {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+  }

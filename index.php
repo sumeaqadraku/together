@@ -1,5 +1,6 @@
 <?php
 include 'include/db.php';  
+include 'include/hearder.php';
 
 // Fetch services
 $services_sql = "SELECT * FROM services";
@@ -20,28 +21,7 @@ $testimonials_result = $conn->query($testimonials_sql);
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<header class="navbar">
-  <a href="index.php" class="logo">together</a>
-  <nav>
-    <ul class="nav-links">
-      <li><a href="about.php">About Us</a></li>
-      <li class="dropdown">
-        <a href="services.php" class="dropbtn">Services</a>
-        <ul class="dropdown-content">
-          <li><a href="individual_therapy.php">Individual Therapy</a></li>
-          <li><a href="couples_counseling.php">Couples Counseling</a></li>
-          <li><a href="group_sessions.php">Group Sessions</a></li>
-        </ul>
-      </li>
-      <li><a href="index.php#testimonials">Testimonials</a></li>
-      <li><a href="resources.php">Resources</a></li>
-      <li><a href="contact.php">Contact Us</a></li>
-    </ul>
-  </nav>
-  <a href="login.php" class="contact-button">Log In</a>
-</header>
 
-<main>
   <section class="hero">
     <div class="hero-content">
       <h1>Building brighter tomorrows, together</h1>
