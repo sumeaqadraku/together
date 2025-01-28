@@ -1,6 +1,7 @@
 <?php
 include 'include/db.php';  
 
+<<<<<<< Updated upstream
 $services_sql = "SELECT * FROM services";
 $services_result = $conn->query($services_sql);
 
@@ -9,6 +10,14 @@ $testimonials_sql = "SELECT * FROM testimonials";
 $testimonials_result = $conn->query($testimonials_sql);
 ?>
 
+=======
+
+$services_sql = "SELECT * FROM services";
+$services_result = $conn->query($services_sql);
+
+
+?>
+>>>>>>> Stashed changes
 
 <!DOCTYPE html>
 <html lang="en">
@@ -92,6 +101,7 @@ $testimonials_result = $conn->query($testimonials_sql);
   <section id="testimonials" class="testimonials">
     <h2>What Our Clients Say</h2>
     <div class="testimonial-slider">
+<<<<<<< Updated upstream
         <?php
         if ($testimonials_result->num_rows > 0) {
             while ($testimonial = $testimonials_result->fetch_assoc()) {
@@ -107,6 +117,19 @@ $testimonials_result = $conn->query($testimonials_sql);
 </section>
 <div>
 
+=======
+      <?php
+      if ($testimonials_result->num_rows > 0) {
+          while ($testimonial = $testimonials_result->fetch_assoc()) {
+              echo "<div class='testimonial'>";
+              echo "<p>\"{$testimonial['quote']}\" – {$testimonial['author']}</p>";
+              echo "</div>";
+          }
+      } else {
+          echo "<p>No testimonials available</p>";
+      }
+      ?>
+>>>>>>> Stashed changes
     </div>
   </section>
 
