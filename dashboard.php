@@ -1,8 +1,13 @@
 <?php
+// Start the session
 session_start();
+
+// Debug: Check the session variables
+var_dump($_SESSION); // This will print the session data
 
 // Ensure the user is logged in and has an admin role
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
+    echo "Redirecting to login...";  // Debug output
     header('Location: login.php');
     exit();
 }
