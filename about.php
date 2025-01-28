@@ -18,27 +18,26 @@ $about = $about_result->fetch_assoc();  // Fetching the content as an associativ
 </head>
 <body>
 
-  <header class="navbar">
-    <a href="index.html" class="logo">together</a>
+<header class="navbar">
+    <a href="index.php" class="logo">together</a>
     <nav>
       <ul class="nav-links">
-        <li><a href="about.html">About Us</a></li>
+        <li><a href="about.php">About Us</a></li>
         <li class="dropdown">
-          <a href="services.html" class="dropbtn">Services</a>
+          <a href="services.php" class="dropbtn">Services</a>
           <ul class="dropdown-content">
-            <li><a href="individual_therapy.html">Individual Therapy</a></li>
-            <li><a href="couples_counseling.html">Couples Counseling</a></li>
-            <li><a href="group_sessions.html">Group Sessions</a></li>
+            <li><a href="individual_therapy.php">Individual Therapy</a></li>
+            <li><a href="couples_counseling.php">Couples Counseling</a></li>
+            <li><a href="group_sessions.php">Group Sessions</a></li>
           </ul>
         </li>
         <li><a href="#testimonials">Testimonials</a></li>
-        <li><a href="resources.html">Resources</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="resources.php">Resources</a></li>
+        <li><a href="contact.php">Contact Us</a></li>
       </ul>
     </nav>
-    <a href="login.html" class="contact-button">Log In</a>
+    <a href="login.php" class="contact-button">Log In</a>
   </header>
-  
   <section class="about-us">
     <!-- Hero Image Section -->
     <header class="hero">
