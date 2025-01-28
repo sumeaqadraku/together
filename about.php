@@ -1,6 +1,10 @@
 <?php
 include 'include/db.php';  
 
+// Fetch About Us content from the database
+$about_sql = "SELECT * FROM about_us WHERE id = 1";  // assuming we have only one record for "About Us"
+$about_result = $conn->query($about_sql);
+$about = $about_result->fetch_assoc();  // Fetching the content as an associative array
 ?>
 
 <!DOCTYPE html>
@@ -34,16 +38,14 @@ include 'include/db.php';
     </nav>
     <a href="login.html" class="contact-button">Log In</a>
   </header>
-  <script src="js/main.js"></script>
   
-
   <section class="about-us">
     <!-- Hero Image Section -->
     <header class="hero">
       <div class="hero-container">
         <div class="hero-content">
-          <h1>Welcome to Together</h1>
-          <p>Supporting your mental well-being and guiding you through life's challenges.</p>
+          <h1><?php echo $about['title']; ?></h1>
+          <p><?php echo $about['description']; ?></p>
         </div>
         <div class="hero-image">
           <video autoplay muted loop playsinline>
@@ -51,91 +53,56 @@ include 'include/db.php';
             Your browser does not support the video tag.
           </video>
         </div>
-        
       </div>
     </header>
-    
 
     <!-- Our Story Section -->
     <section class="our-story">
       <h2>Our Story</h2>
-      <p>At Together, we understand that life can be difficult, and everyone’s journey is unique. We started this business to help people heal, grow, and thrive in a safe, compassionate space.</p>
+      <p><?php echo $about['our_story']; ?></p>
     </section>
 
     <!-- Meet Our Team Section (Slider) -->
     <div class="slider">
-      <center><h3>Your well-being is our priority. Trust our team of licensed therapists to guide you toward mental clarity with proven methods</h3></center>
+      <center><h3><?php echo $about['team_message']; ?></h3></center>
       <br>
       <div class="carousel">
-          <div class="slide">
-              <img src="images/Screenshot 2025-01-02 004537.png" alt="Therapist 1">
-              <div class="caption">Dr. Emily Parker</div>
-          </div>
-          <div class="slide">
-              <img src="images/Screenshot 2025-01-02 004626.png" alt="Therapist 1">
-              <div class="caption">Dr. James Anderson</div>
-          </div>
-          <div class="slide">
-              <img src="images/Screenshot 2025-01-02 004720.png" alt="Therapist 1">
-              <div class="caption">Dr. Olivia Benett</div>
-          </div>
-          <div class="slide">
-              <img src="images/Screenshot 2025-01-02 134940.png" alt="Therapist 1">
-              <div class="caption">Dr. Daniel Williams</div>
-          </div>
-          <div class="slide">
-            <img src="images/Screenshot 2025-01-02 134940.png" alt="Therapist 1">
-            <div class="caption">Dr. Daniel Williams</div>
-        </div>
+        <!-- Add your team member images and captions here -->
+        <!-- This can also be dynamically fetched from a database table if needed -->
         <div class="slide">
-          <img src="images/Screenshot 2025-01-02 004720.png" alt="Therapist 1">
-          <div class="caption">Dr. Daniel Williams</div>
+            <img src="images/Screenshot 2025-01-02 004537.png" alt="Therapist 1">
+            <div class="caption">Dr. Emily Parker</div>
+        </div>
+        <!-- Additional team members can be added in similar slides -->
       </div>
-      <div class="slide">
-        <img src="images/Screenshot 2025-01-02 004537.png" alt="Therapist 1">
-        <div class="caption">Dr. Daniel Williams</div>
     </div>
-        
-          </div>
-          
-          </div>
-  
-    
-    
-    
-    </section>
-    
+  </section>
 
-    
-   <!-- Our Values Section -->
-<!-- Our Values Section -->
-<section class="our-values">
-  <div class="values-container">
-    <div class="values-video">
-      <video autoplay muted loop playsinline>
-        <source src="images/8530343-uhd_3840_2160_25fps.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+  <!-- Our Values Section -->
+  <section class="our-values">
+    <div class="values-container">
+      <div class="values-video">
+        <video autoplay muted loop playsinline>
+          <source src="images/8530343-uhd_3840_2160_25fps.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="values-text">
+        <h2>Our Values</h2>
+        <ul>
+          <li><strong>Empathy:</strong> We listen with understanding and compassion.</li>
+          <li><strong>Growth:</strong> We help you grow emotionally, mentally, and spiritually.</li>
+          <li><strong>Trust:</strong> We create a safe and trusting space for healing.</li>
+          <li><strong>Community:</strong> We believe in the power of community and connection.</li>
+          <li><strong>Inclusivity:</strong> We welcome everyone, regardless of background or identity.</li>
+        </ul>
+      </div>
     </div>
-    <div class="values-text">
-      <h2>Our Values</h2>
-      <ul>
-        <li><strong>Empathy:</strong> We listen with understanding and compassion.</li>
-        <li><strong>Growth:</strong> We help you grow emotionally, mentally, and spiritually.</li>
-        <li><strong>Trust:</strong> We create a safe and trusting space for healing.</li>
-        <li><strong>Community:</strong> We believe in the power of community and connection.</li>
-        <li><strong>Inclusivity:</strong> We welcome everyone, regardless of background or identity.</li>
-      </ul>
-    </div>
-  </div>
-</section>
+  </section>
 
-
-
-    <!-- Call to Action Section -->
-    <section class="cta">
-      <p>Ready to start your journey? <a href="services.html">Learn more about our services</a> or <a href="contact.html">contact us</a> to take the first step.</p>
-    </section>
+  <!-- Call to Action Section -->
+  <section class="cta">
+    <p>Ready to start your journey? <a href="services.html">Learn more about our services</a> or <a href="contact.html">contact us</a> to take the first step.</p>
   </section>
 
   <script src="js/main.js"></script>
