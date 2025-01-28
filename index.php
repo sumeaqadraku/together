@@ -1,7 +1,7 @@
 <?php
 include 'include/db.php';  
 
-<<<<<<< Updated upstream
+// Fetch services
 $services_sql = "SELECT * FROM services";
 $services_result = $conn->query($services_sql);
 
@@ -9,15 +9,6 @@ $services_result = $conn->query($services_sql);
 $testimonials_sql = "SELECT * FROM testimonials";
 $testimonials_result = $conn->query($testimonials_sql);
 ?>
-
-=======
-
-$services_sql = "SELECT * FROM services";
-$services_result = $conn->query($services_sql);
-
-
-?>
->>>>>>> Stashed changes
 
 <!DOCTYPE html>
 <html lang="en">
@@ -101,35 +92,17 @@ $services_result = $conn->query($services_sql);
   <section id="testimonials" class="testimonials">
     <h2>What Our Clients Say</h2>
     <div class="testimonial-slider">
-<<<<<<< Updated upstream
-        <?php
-        if ($testimonials_result->num_rows > 0) {
-            while ($testimonial = $testimonials_result->fetch_assoc()) {
-                echo "<div class='testimonial'>";
-                echo "<p>\"{$testimonial['quote']}\" – <strong>{$testimonial['author']}</strong></p>";
-                echo "</div>";
-            }
-        } else {
-            echo "<p>No testimonials available at the moment.</p>";
-        }
-        ?>
-    </div>
-</section>
-<div>
-
-=======
       <?php
       if ($testimonials_result->num_rows > 0) {
           while ($testimonial = $testimonials_result->fetch_assoc()) {
               echo "<div class='testimonial'>";
-              echo "<p>\"{$testimonial['quote']}\" – {$testimonial['author']}</p>";
+              echo "<p>\"{$testimonial['quote']}\" – <strong>{$testimonial['author']}</strong></p>";
               echo "</div>";
           }
       } else {
-          echo "<p>No testimonials available</p>";
+          echo "<p>No testimonials available at the moment.</p>";
       }
       ?>
->>>>>>> Stashed changes
     </div>
   </section>
 
