@@ -19,18 +19,7 @@
     align-items: center; /* Vertically align content */
     gap: 20px; /* Optional: Adds some space between the text and video */
   }
-  
-  .text-left {
-    flex: 1; /* Allow text to take available space */
-    max-width: 50%; /* Limit the width of the text section */
-  }
-  
-  .video-container {
-    flex: 1; /* Allow the video to take available space */
-    display: flex;
-    justify-content: flex-end; /* Align the video to the right */
-  }
-  
+ 
   video {
     width: 100%; /* Make the video take up the full width of its container */
     max-width: 600px; /* Limit the video width to 600px */
@@ -239,7 +228,7 @@
     border-radius: 16px; /* Rounded corners */
     margin: 1rem auto; /* Center spacing */
     width: 95%; /* Adjust width for better alignment */
-    max-width: 1200px; /* Prevent stretching on large screens */
+    max-width: 80%; /* Prevent stretching on large screens */
     border: 1px solid #e2d6c5; /* Subtle border */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
   }

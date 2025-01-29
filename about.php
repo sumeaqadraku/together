@@ -24,6 +24,7 @@ $about = $about_result->fetch_assoc();  // Fetching the content as an associativ
       Your browser does not support the video tag.
     </video>
   </div>
+<br>
 
     <head>
     <link rel="stylesheet" href="assets/css/about.css">
@@ -95,7 +96,7 @@ $about = $about_result->fetch_assoc();  // Fetching the content as an associativ
 
   <!-- Call to Action Section -->
   <section class="cta">
-    <p>Ready to start your journey? <a href="services.html">Learn more about our services</a> or <a href="contact.html">contact us</a> to take the first step.</p>
+    <p>Ready to start your journey? <a href="services.php">Learn more about our services</a> or <a href="contact.php">contact us</a> to take the first step.</p>
   </section>
 
   <script src="js/main.js"></script>
