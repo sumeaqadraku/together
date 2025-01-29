@@ -8,7 +8,9 @@ $about_sql = "SELECT * FROM about_us WHERE id = 1";  // assuming we have only on
 $about_result = $conn->query($about_sql);
 $about = $about_result->fetch_assoc();  // Fetching the content as an associative array
 ?>
-  
+    <head>
+    <link rel="stylesheet" href="assets/css/about.css">
+    </head>
     <section class="our-story">
       <h2>Our Story</h2>
       <p><?php echo $about['our_story']; ?></p>
