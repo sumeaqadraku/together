@@ -20,9 +20,9 @@
             <li><a href="group_sessions.php">Group Sessions</a></li>
           </ul>
         </li>
-        <li><a href="#testimonials">Testimonials</a></li>
         <li><a href="resources.php">Resources</a></li>
         <li><a href="contact.php">Contact Us</a></li>
+        <li><a href="profile.php">Profile</a></li>
       </ul>
     </nav>
     <a href="login.php" class="contact-button">Log In</a>
