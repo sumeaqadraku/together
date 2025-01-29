@@ -97,7 +97,7 @@
     border-radius: 16px; /* Rounded corners */
     margin: 1rem auto; /* Center spacing */
     width: 95%; /* Adjust width for better alignment */
-    max-width: 1200px; /* Prevent stretching on large screens */
+    max-width: 80%; /* Prevent stretching on large screens */
     border: 1px solid #e2d6c5; /* Subtle border */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
   }
