@@ -10,7 +10,7 @@ include 'include/header.php';
     <div class="text-section">
       <h2>Find Strength in Community</h2>
       <p>Group therapy provides an opportunity to connect with others who understand your struggles. Share, learn, and heal together in a supportive, non-judgmental environment. If you’ve been feeling isolated or overwhelmed, group therapy can help you gain valuable insights and encouragement. Come and join our community where you’re never alone.</p>
-      <a href="contact.html" class="cta-button">Book a Free Consultation</a>
+      <a href="contact.php" class="cta-button">Book a Free Consultation</a>
     </div>
     <div class="image-section">
         <img src="images/pexels-tima-miroshnichenko-5711017.jpg">
@@ -53,7 +53,7 @@ include 'include/header.php';
     <h2>Strengthen Your Relationship Today</h2><br><br>
     <p>If you're ready to take the first step toward healing and connection—join a group therapy session today.</p>
    <br><br>
-    <a href="contact.html" class="cta-button">Book a Free Consultation</a>
+    <a href="contact.php" class="cta-button">Book a Free Consultation</a>
   </section>
 
   <!-- Footer -->

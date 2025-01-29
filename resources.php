@@ -54,7 +54,7 @@ include 'include/header.php';
     </div>
 
     <br><br>
-    <a href="contact.html" class="cta-button">Contact Us for More Resources</a>
+    <a href="contact.php" class="cta-button">Contact Us for More Resources</a>
 </section>
 
 <!-- Footer -->

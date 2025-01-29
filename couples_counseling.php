@@ -21,7 +21,7 @@ include 'include/header.php';
       <h2>Struggling with Communication? We Can Help.</h2>
       <p>Are you feeling stuck? Struggling with communication or emotional connection in your relationship? Therapy can help you find clarity, healing, and understanding. Our professional therapists are here to guide you through the process, offering a safe and supportive environment to work through your challenges.</p>
       <br>
-      <a href="contact.html" class="cta-button">Reach Out Now</a>
+      <a href="contact.php" class="cta-button">Reach Out Now</a>
     </div>
   </section>
   
