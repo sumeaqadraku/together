@@ -1,6 +1,6 @@
 <?php
 include 'include/db.php';  
-include 'include/hearder.php';
+include 'include/header.php';
 
 ?>
   <link rel="stylesheet" href="assets/css/individual_therapy.css">
@@ -16,7 +16,7 @@ include 'include/hearder.php';
       <h2>Feeling Stuck? Therapy Can Help You Move Forward</h2>
       <p>Are you feeling overwhelmed, uncertain, or disconnected from yourself? Struggling with self-confidence, anxiety, or emotional clarity? Individual therapy offers a supportive space to explore your challenges, heal, and grow. Our compassionate therapists are here to help you find understanding, strength, and a path toward a more fulfilling life.</p>
       <br>
-      <a href="contact.html" class="cta-button">Reach Out Now</a>
+      <a href="contact.php" class="cta-button">Reach Out Now</a>
     </div>
   </section>
 <div class="contant">
@@ -55,7 +55,7 @@ include 'include/hearder.php';
     <h2>Ready to Start Your Therapy Journey?</h2><br><br>
     <p>If you're ready to begin therapy or want to learn more about how it can help you, schedule a free consultation with one of our therapists today. Together, we can help you navigate life's challenges with support, compassion, and understanding.</p>
     <br><br>
-    <a href="contact.html" class="cta-button">Book a Free Consultation</a>
+    <a href="contact.php" class="cta-button">Book a Free Consultation</a>
   </section>
 
   <!-- Footer -->

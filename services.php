@@ -1,6 +1,6 @@
 <?php
 include 'include/db.php';  
-include 'include/hearder.php';
+include 'include/header.php';
 
 // Fetch the introductory text from the service_intro table
 $intro_sql = "SELECT * FROM service_intro LIMIT 1"; 

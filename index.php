@@ -1,6 +1,6 @@
 <?php
 include 'include/db.php';  
-include 'include/hearder.php';
+include 'include/header.php';
 
 // Fetch services
 $services_sql = "SELECT * FROM services";
@@ -26,7 +26,7 @@ $testimonials_result = $conn->query($testimonials_sql);
     <div class="hero-content">
       <h1>Building brighter tomorrows, together</h1>
       <p>Join us in making a difference. Start your journey today.</p>
-      <a href="#get-started" class="button">Get Started</a>
+      <a href="contact.php" class="button">Get Started</a>
     </div>
   </section>
 
@@ -46,40 +46,11 @@ $testimonials_result = $conn->query($testimonials_sql);
       </div>
     </div>
     <div class="cta">
-      <a href="#services" class="cta-button">Learn More About Our Story</a>
+      <a href="about.php" class="cta-button">Learn More About Our Story</a>
     </div>
   </section>
 
-  <section id="services-overview" class="services-overview">
-  <h2>Our Services</h2>
-  <div class="service-cards">
-    <?php
-    // Fetch all services from the database
-    $services_sql = "SELECT * FROM services";  
-    $services_result = $conn->query($services_sql);
-
-    // Check if there are any services
-    if ($services_result->num_rows > 0) {
-        while ($service = $services_result->fetch_assoc()) {
-            echo "<div class='service-card'>";
-            // Display service name and description
-            echo "<h3>" . htmlspecialchars($service['name']) . "</h3>";
-            echo "<p>" . htmlspecialchars($service['description']) . "</p>";
-            
-            // Display the price
-            echo "<p><strong>Price:</strong> $" . number_format($service['price'], 2) . "</p>"; // Format price to 2 decimal places
-
-            // Display creation date (optional, if you want to show it)
-            echo "<p><small>Created on: " . date("F j, Y", strtotime($service['created_at'])) . "</small></p>";
-            
-            echo "</div>";
-        }
-    } else {
-        echo "<p>No services available.</p>";
-    }
-    ?>
-  </div>
-</section>
+  
 <section id="services-overview" class="services-overview">
     <h2>Our Services</h2>
     <div class="service-cards">
@@ -88,14 +59,13 @@ $testimonials_result = $conn->query($testimonials_sql);
             while ($service = $services_result->fetch_assoc()) {
                 echo "<div class='service-card'>";
                 
-                // Debugging: Check the image URL
-                echo "<p>Image Path: " . $service['image_url'] . "</p>"; // Debugging line
+               
 
                 // Display the image from the image_url field
                 if (isset($service['image_url']) && !empty($service['image_url'])) {
                     echo "<img src='" . $service['image_url'] . "' alt='" . $service['name'] . "' class='service-icon'>";
                 } else {
-                    echo "<img src='uploads/images/default_image.jpg' alt='No image available' class='service-icon'>";
+                    echo "' alt='No image available' class='service-icon'>";
                 }
 
                 echo "<h3>" . $service['name'] . "</h3>";
