@@ -2,9 +2,9 @@
 include 'include/db.php';  
 include 'include/header.php';
 ?>
-
+<head>
 <link rel="stylesheet" href="assets/css/contact.css">
-
+</head>
 <!-- Hero Section -->
 <section class="hero">
     <div class="hero-content">

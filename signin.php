@@ -43,7 +43,7 @@ include 'include/db.php';
       </div>
 
       <p class="footer-text">
-        Already have an account? <a href="login.html" class="signin-link">Log in here</a>.
+        Already have an account? <a href="login.php" class="signin-link">Log in here</a>.
       </p>
     </div>
   </div>
