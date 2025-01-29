@@ -46,7 +46,7 @@ $testimonials_result = $conn->query($testimonials_sql);
       </div>
     </div>
     <div class="cta">
-      <a href="#services" class="cta-button">Learn More About Our Story</a>
+      <a href="about.php" class="cta-button">Learn More About Our Story</a>
     </div>
   </section>
 
