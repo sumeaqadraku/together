@@ -1,6 +1,6 @@
 <?php
 include 'include/db.php';  
-
+include 'include/hearder.php';
 
 // Fetch About Us content from the database
 $about_sql = "SELECT * FROM about_us WHERE id = 1";  // assuming we have only one record for "About Us"
