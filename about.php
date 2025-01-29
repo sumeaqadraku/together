@@ -1,5 +1,6 @@
 <?php
-include 'include/db.php';  
+include 'include/db.php'; 
+include 'include/header.php'; 
 
 
 // Fetch About Us content from the database

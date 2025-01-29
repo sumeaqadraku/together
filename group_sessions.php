@@ -1,6 +1,6 @@
 <?php
 include 'include/db.php'; 
-include 'include/hearder.php'; 
+include 'include/header.php';
 
 ?>
   <link rel="stylesheet" href="assets/css/group_therapy.css">

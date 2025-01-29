@@ -1,6 +1,6 @@
 <?php
 include 'include/db.php';  
-include 'include/hearder.php';
+include 'include/header.php';
 
 // Fetch services
 $services_sql = "SELECT * FROM services";
