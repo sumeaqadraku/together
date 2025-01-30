@@ -26,12 +26,12 @@ body {
 
 /* Styling the signin card */
 .signin-card {
-  background: rgba(255, 255, 255, 0.8);  /* Optional: Semi-transparent background for the card */
+  background: rgba(255, 255, 255, 0.2);  /* Optional: Semi-transparent background for the card */
   padding: 30px;  /* Reduced padding to make the card shorter */
   border-radius: 16px;  /* Rounded corners */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 400px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 7);
   text-align: center;
   height: auto;  
   min-height: 250px;  /* Minimum height to keep the card from shrinking too much */
@@ -48,13 +48,13 @@ body {
 
 h1 {
   font-size: 24px;
-  color: #333;
+  color: #ffffff;
   margin-bottom: 10px;
 }
 
 p {
   font-size: 14px;
-  color: #666;
+  color: #ffffff;
   margin-bottom: 20px;  /* Reduced margin to shorten the card */
 }
 
@@ -91,7 +91,7 @@ input:focus {
 .divider {
   margin: 10px 0;
   font-size: 14px;
-  color: #666;
+  color: #ffffff;
   position: relative;
 }
 
@@ -150,12 +150,12 @@ input:focus {
 
 .footer-text {
   font-size: 12px;
-  color: #666;
+  color: #ffffff;
   margin-top: 20px;
 }
 
 .footer-text a {
-  color: #1a74e7;
+  color: #0e0e0e;
   text-decoration: none;
 }
 

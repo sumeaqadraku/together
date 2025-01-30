@@ -28,7 +28,7 @@
     background: white;
     padding: 30px;
     border-radius: 16px;
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 7);
     text-align: center;
     width: 400px;
   }
@@ -40,13 +40,13 @@
   
   h1 {
     font-size: 24px;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 10px;
   }
   
   p {
     font-size: 14px;
-    color: #666;
+    color: #ffffff;
     margin-bottom: 30px;
   }
   
@@ -76,7 +76,7 @@
   
   .forgot-password {
     font-size: 12px;
-    color: #7A8A6A;
+    color: #ffffff;
     text-decoration: none;
   }
   
@@ -98,7 +98,7 @@
   .divider {
     margin: 20px 0;
     font-size: 14px;
-    color: #666;
+    color: #ffffff;
     position: relative;
   }
   a {
@@ -191,10 +191,10 @@
 
 /* Styling the login card */
 .login-card {
-  background: rgba(255, 255, 255, 0.8);  /* Optional: Semi-transparent background for the card */
+  background: rgba(255, 255, 255, 0.2);  /* Optional: Semi-transparent background for the card */
   padding: 40px;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 8);
   width: 100%;
   max-width: 400px;
   text-align: center;

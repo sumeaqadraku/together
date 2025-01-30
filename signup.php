@@ -22,9 +22,7 @@ include 'include/db.php';
       <p>You can't pour from an empty cup. Join us to kickstart your wellbeing.</p>
 
       <form action="register.php" method="POST">
-        <div class="form-group">
-          <input type="text" id="username" name="username" placeholder="Username" required>
-        </div>
+        
         <div class="form-group">
           <input type="email" id="email" name="email" placeholder="Email" required>
         </div>

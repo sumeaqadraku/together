@@ -184,8 +184,8 @@ body {
   footer {
     text-align: center;
     padding: 20px;
-    background-color: #333;
-    color: #fff;
+    background-color: #f0eeee;
+    color: #5d5d5d;
   }
   
   @media (min-device-width: 320px) and (max-device-width: 900px){

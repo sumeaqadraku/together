@@ -89,14 +89,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <button type="submit" class="btn">Log In</button>
                     <a href="forgot-password.html" class="forgot-password">Forgot password?</a>
                    
-                    <a href="signin.php" class="btn">Sign Up</a>
+                    <a href="signup.php" class="btn">Sign Up</a>
 
                 </div>
             </form>
 
             <div class="divider">or sign in with</div>
             <div class="social-login">
-                <button class="social-btn google"><i class="fab fa-google"></i> Google</button>
+            <a href="https://myaccount.google.com/" class="social-btn google">
+    <i class="fab fa-google"></i> Google
+  </a>
                 <button class="social-btn facebook"><i class="fab fa-facebook-f"></i> Facebook</button>
                 <button class="social-btn apple"><i class="fab fa-apple"></i> Apple</button>
             </div>
