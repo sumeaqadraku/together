@@ -36,7 +36,17 @@ $past_appointments_result = $stmt->get_result();
     <div class="sidebar">
         <h2>Welcome</h2>
         <ul>
-            <li><a href="profile.php">Profile</a></li>
+        <li>
+          <?php if (isset($_SESSION['user_role'])): ?>
+            <?php if ($_SESSION['user_role'] !== 'admin'): ?>
+              <a href="profile.php">Profile</a>
+            <?php else: ?>
+              <a href="dashboard.php">Dashboard</a>
+            <?php endif; ?>
+          <?php else: ?>
+            <a href="profile.php">Profile</a>
+          <?php endif; ?>
+        </li>
             <li><a href="logout.php">Logout</a></li>
         </ul>
     </div>

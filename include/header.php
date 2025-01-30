@@ -22,8 +22,18 @@
         </li>
         <li><a href="resources.php">Resources</a></li>
         <li><a href="contact.php">Contact Us</a></li>
-        <li><a href="profile.php">Profile</a></li>
+        <li>
+          <?php if (isset($_SESSION['user_role'])): ?>
+            <?php if ($_SESSION['user_role'] !== 'admin'): ?>
+              <a href="profile.php">Profile</a>
+            <?php else: ?>
+              <a href="dashboard.php">Dashboard</a>
+            <?php endif; ?>
+          <?php else: ?>
+            <a href="profile.php">Profile</a>
+          <?php endif; ?>
+        </li>
       </ul>
     </nav>
     <a href="login.php" class="contact-button">Log In</a>
-  </header>
+</header>
