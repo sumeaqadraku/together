@@ -3,12 +3,12 @@ session_start();
 header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
+
 // Ensure the user is logged in and has an admin role
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
     header('Location: login.php');
     exit();
 }
-
 
 // Include the database connection
 include 'include/db.php';
@@ -33,6 +33,9 @@ $stmt = $conn->prepare("SELECT COUNT(*) AS message_count FROM contact_form");
 $stmt->execute();
 $message_count = $stmt->get_result()->fetch_assoc()['message_count'];
 
+// Fetch all users
+$users_result = $conn->query("SELECT * FROM users");
+
 // Fetch all messages
 $messages = $conn->query("SELECT * FROM contact_form ORDER BY created_at DESC");
 
@@ -41,6 +44,15 @@ if (isset($_GET['delete'])) {
     $id = intval($_GET['delete']);
     $conn->query("DELETE FROM contact_form WHERE id = $id");
     header("Location: dashboard.php?deleted=1");
+    exit();
+}
+
+// Handle making a user an admin
+if (isset($_GET['make_admin'])) {
+    $user_id = intval($_GET['make_admin']);
+    // Ensure the user is not already an admin
+    $conn->query("UPDATE users SET role = 'admin' WHERE id = $user_id");
+    header("Location: dashboard.php?role_changed=1");
     exit();
 }
 
@@ -62,6 +74,7 @@ $admin_email = $_SESSION['email'];
         <ul>
             <li><a href="index.php">Home</a></li>
             <li><a href="dashboard.php#messages"> Messages (<?= $message_count ?>)</a></li>
+            <li><a href="dashboard.php#users"> All Users (<?= $user_count ?>)</a></li>
             <li><a href="logout.php">Logout</a></li>
         </ul>
     </div>
@@ -111,12 +124,41 @@ $admin_email = $_SESSION['email'];
                 <?php while ($row = $messages->fetch_assoc()): ?>
                 <tr>
                     <td><?= $row['id'] ?></td>
-                    <td><?= htmlspecialchars($row['name']) ?></td>
                     <td><?= htmlspecialchars($row['email']) ?></td>
                     <td><?= htmlspecialchars($row['message']) ?></td>
                     <td><?= $row['created_at'] ?></td>
                     <td>
                         <a href="dashboard.php?delete=<?= $row['id'] ?>" class="delete-btn" onclick="return confirm('Are you sure you want to delete this message?')">Delete</a>
+                    </td>
+                </tr>
+                <?php endwhile; ?>
+            </table>
+        </section>
+
+        <!-- Users Table Section -->
+        <section id="users">
+            <h2>All Users</h2>
+            <?php if (isset($_GET['role_changed'])): ?>
+                <p class="success-message">User role updated successfully!</p>
+            <?php endif; ?>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+                <?php while ($row = $users_result->fetch_assoc()): ?>
+                <tr>
+                    <td><?= $row['id'] ?></td>
+                    <td><?= htmlspecialchars($row['email']) ?></td>
+                    <td><?= htmlspecialchars($row['role']) ?></td>
+                    <td>
+                        <?php if ($row['role'] != 'admin'): ?>
+                            <a href="dashboard.php?make_admin=<?= $row['id'] ?>" class="make-admin-btn" onclick="return confirm('Are you sure you want to make this user an admin?')">Make Admin</a>
+                        <?php else: ?>
+                            <span class="already-admin">Already Admin</span>
+                        <?php endif; ?>
                     </td>
                 </tr>
                 <?php endwhile; ?>
@@ -233,18 +275,12 @@ $admin_email = $_SESSION['email'];
         color: #16a085;
     }
 
-    .stat .icon {
-        font-size: 40px;
-        color: #34495e;
-        margin-bottom: 15px;
-    }
-
-    /* Contact Messages Section */
-    #messages {
+    /* Users Table Section */
+    #users {
         margin-top: 30px;
     }
 
-    #messages h2 {
+    #users h2 {
         font-size: 28px;
         color: #34495e;
     }
@@ -277,8 +313,17 @@ $admin_email = $_SESSION['email'];
         background-color: #f9f9f9;
     }
 
-    .delete-btn {
-        color: #e74c3c;
+    a {
+        text-decoration: none;
+        color: #3498db;
+    }
+
+    a:hover {
+        color: #2980b9;
+    }
+
+    .make-admin-btn {
+        color: #27ae60;
         font-weight: bold;
         text-decoration: none;
         padding: 5px 10px;
@@ -287,30 +332,19 @@ $admin_email = $_SESSION['email'];
         transition: background-color 0.3s;
     }
 
-    .delete-btn:hover {
-        background-color: #e74c3c;
+    .make-admin-btn:hover {
+        background-color: #27ae60;
         color: white;
     }
 
-    .success-message {
-        color: #2ecc71;
+    .already-admin {
+        color: #95a5a6;
         font-weight: bold;
-        margin-top: 20px;
     }
 
     .footer {
         margin-top: 40px;
         text-align: center;
         color: #7f8c8d;
-    }
-
-    @media (max-width: 768px) {
-        .sidebar {
-            width: 200px;
-        }
-
-        .main-content {
-            margin-left: 220px;
-        }
     }
 </style>

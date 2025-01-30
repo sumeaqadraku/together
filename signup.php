@@ -34,10 +34,19 @@ include 'include/db.php';
 
       <div class="divider">or sign up with</div>
       <div class="social-login">
-        <button class="social-btn google"><i class="fab fa-google"></i> Google</button>
-        <button class="social-btn facebook"><i class="fab fa-facebook-f"></i> Facebook</button>
-        <button class="social-btn apple"><i class="fab fa-apple"></i> Apple</button>
-      </div>
+            <a href="https://myaccount.google.com/" class="social-btn google">
+    <i class="fab fa-google"></i> Google
+  </a>
+
+  <a href="https://www.facebook.com/" class="social-btn google">
+    <i class="fab fa-google"></i> Facebook
+  </a>
+
+  <a href="https://www.apple.com/" class="social-btn google">
+    <i class="fab fa-google"></i> Apple
+  </a>
+              
+            </div>
 
       <p class="footer-text">
         Already have an account? <a href="login.php" class="signin-link">Log in here</a>.

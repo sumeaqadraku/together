@@ -154,6 +154,41 @@ input:focus {
   margin-top: 20px;
 }
 
+.social-login {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.social-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  flex: 1;
+  margin: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.social-btn.google {
+  background: #4285F4;
+  color: white;
+}
+
+.social-btn.facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.social-btn.apple {
+  background: #333;
+  color: white;
+}
+
 .footer-text a {
   color: #0e0e0e;
   text-decoration: none;
