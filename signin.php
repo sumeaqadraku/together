@@ -1,6 +1,5 @@
 <?php
 include 'include/db.php';  
-
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +21,7 @@ include 'include/db.php';
       <h1>Sign In</h1>
       <p>You can't pour from an empty cup. Join us to kickstart your wellbeing.</p>
 
-      <form action="welcome.html" method="POST">
+      <form action="register.php" method="POST">
         <div class="form-group">
           <input type="text" id="username" name="username" placeholder="Username" required>
         </div>
