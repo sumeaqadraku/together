@@ -13,6 +13,7 @@ include 'include/header.php';
     </div>
     <div class="hero-image">
         <img src="images/pexels-ivan-samkov-9630216.jpg" alt="Hero Image" />
+
     </div>
 </section>
 
@@ -70,7 +71,7 @@ include 'include/header.php';
 
         <div class="video-section">
             <video class="service-video" autoplay muted loop>
-                <source src="images/11025441-hd_4096_2160_30fps.mp4" type="video/mp4">
+                <source src="images/11025441-hd_4096_2160_30fps.mp4" type="video/mp4 ">
                 Your browser does not support the video tag.
             </video>
         </div>

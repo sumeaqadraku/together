@@ -1,5 +1,6 @@
 <?php
 include 'include/db.php';  
+include 'include/header.php';
 
 
 // Fetch About Us content from the database
@@ -9,10 +10,10 @@ $about = $about_result->fetch_assoc();  // Fetching the content as an associativ
 ?>
 <center>
   <br>
-
-  <h1><?php echo $about['title']; ?></h1>
-  <p><?php echo $about['description']; ?></p>
-  <p><?php echo $about['our_story']; ?></p>
+<br><br>
+  <h1><?php echo $about['title']; ?></h1><br>
+  <p><?php echo $about['description']; ?></p><br>
+  <p><?php echo $about['our_story']; ?></p><br>
   <p><?php echo $about['team_message']; ?></p>
  <br>
 
