@@ -5,7 +5,7 @@ include 'include/header.php';
 ?>
   <link rel="stylesheet" href="assets/css/individual_therapy.css">
   <!-- Header Section -->
-  <section class="video-text-section">
+  <section class="video-text-section" >
     <div class="video-container">
       <video class="service-video" autoplay muted loop>
         <source src="images/7199185-uhd_3840_2160_25fps.mp4" type="video/mp4">

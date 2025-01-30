@@ -6,7 +6,7 @@ header("Pragma: no-cache");
 
 // Ensure the user is logged in and has an admin role
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
-    header('Location: login.php');
+    header('Location: dashboard.php');
     exit();
 }
 

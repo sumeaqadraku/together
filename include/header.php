@@ -35,5 +35,8 @@
         </li>
       </ul>
     </nav>
+    <?php if (!isset($_SESSION['user_role'])): ?>
     <a href="login.php" class="contact-button">Log In</a>
-</header>
+<?php endif; ?>
+
+  </header>
