@@ -101,11 +101,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   </a>
 
   <a href="https://www.facebook.com/" class="social-btn google">
-    <i class="fab fa-google"></i> Facebook
+    <i class="fab fa-facebook"></i> Facebook
   </a>
 
   <a href="https://www.apple.com/" class="social-btn google">
-    <i class="fab fa-google"></i> Apple
+    <i class="fab fa-apple"></i> Apple
   </a>
               
             </div>
