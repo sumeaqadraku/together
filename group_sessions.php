@@ -2,7 +2,11 @@
 include 'include/db.php'; 
 include 'include/header.php';
 
+// Initialize Database Connection
+$db = new Database();
+$conn = $db->getConnection();
 ?>
+
   <link rel="stylesheet" href="assets/css/group_therapy.css">
 
   <!-- Group Therapy Section -->
@@ -27,7 +31,7 @@ include 'include/header.php';
   
     <!-- Benefits of Therapy Section -->
     <section class="therapy-benefits">
-      <h2>Benefits of Group Therapyy</h2><br>
+      <h2>Benefits of Group Therapy</h2><br>
       <ul>
         <li>Gain comfort in connecting with others who can relate to your experiences.</li>
         <li>Learn from diverse viewpoints and strategies shared by group members.</li>

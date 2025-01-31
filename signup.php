@@ -1,5 +1,53 @@
 <?php
-include 'include/db.php';  
+include 'include/db.php';
+
+// Create a new database connection object
+$db = new Database();
+$conn = $db->getConnection();  // Get the connection
+
+// Initialize variables
+$error = '';
+$success = '';
+
+// Handle form submission
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Sanitize and get input values
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
+
+    // Validate inputs
+    if (empty($email) || empty($password)) {
+        $error = "Both email and password are required!";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error = "Invalid email format!";
+    } else {
+        // Check if email already exists
+        $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->store_result();
+
+        if ($stmt->num_rows > 0) {
+            $error = "Email is already registered!";
+        } else {
+            // Hash the password before storing
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+            // Insert new user into the database
+            $stmt = $conn->prepare("INSERT INTO users (email, password, role, created_at) VALUES (?, ?, ?, NOW())");
+            $role = 'user'; // Default role
+            $stmt->bind_param("sss", $email, $hashed_password, $role);
+
+            if ($stmt->execute()) {
+                $success = "Account created successfully! You can now log in.";
+            } else {
+                $error = "Error creating account. Please try again.";
+            }
+        }
+        $stmt->close();
+    }
+    $conn->close();
+}
 ?>
 
 <!DOCTYPE html>
@@ -7,7 +55,7 @@ include 'include/db.php';
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign In - Together</title>
+  <title>Sign Up - Together</title>
   <link rel="stylesheet" href="assets/css/signin.css">
   <!-- Font Awesome for Social Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -18,11 +66,18 @@ include 'include/db.php';
       <div class="signin-icon">
         <img src="images/sign-in.png" alt="Sign In Icon">
       </div>
-      <h1>Sign In</h1>
+      <h1>Sign Up</h1>
       <p>You can't pour from an empty cup. Join us to kickstart your wellbeing.</p>
 
+      <!-- Show error or success message -->
+      <?php if (!empty($error)) : ?>
+        <p style="color: red;"><?= htmlspecialchars($error) ?></p>
+      <?php elseif (!empty($success)) : ?>
+        <p style="color: green;"><?= htmlspecialchars($success) ?></p>
+      <?php endif; ?>
+
+      <!-- Sign-up form -->
       <form action="register.php" method="POST">
-        
         <div class="form-group">
           <input type="email" id="email" name="email" placeholder="Email" required>
         </div>
@@ -34,25 +89,17 @@ include 'include/db.php';
 
       <div class="divider">or sign up with</div>
       <div class="social-login">
-            <a href="https://myaccount.google.com/" class="social-btn google">
-    <i class="fab fa-google"></i> Google
-  </a>
-
-  <a href="https://www.facebook.com/" class="social-btn google">
-    <i class="fab fa-google"></i> Facebook
-  </a>
-
-  <a href="https://www.apple.com/" class="social-btn google">
-    <i class="fab fa-google"></i> Apple
-  </a>
-              
-            </div>
+        <button class="social-btn google"><i class="fab fa-google"></i> Google</button>
+        <button class="social-btn facebook"><i class="fab fa-facebook-f"></i> Facebook</button>
+        <button class="social-btn apple"><i class="fab fa-apple"></i> Apple</button>
+      </div>
 
       <p class="footer-text">
         Already have an account? <a href="login.php" class="signin-link">Log in here</a>.
       </p>
     </div>
   </div>
+
   <script src="js/form-validation.js"></script>
 </body>
 </html>

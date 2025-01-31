@@ -1,8 +1,10 @@
-
 <?php
 include 'include/db.php';  
 include 'include/header.php';
 
+// Initialize Database Connection
+$db = new Database();
+$conn = $db->getConnection();
 ?>
 
 <head>

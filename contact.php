@@ -1,10 +1,16 @@
 <?php
 include 'include/db.php';  
 include 'include/header.php';
+
+// Initialize the database connection using the Database class
+$db = new Database();
+$conn = $db->getConnection(); // Get the connection object from the Database class
 ?>
+
 <head>
-<link rel="stylesheet" href="assets/css/contact.css">
+    <link rel="stylesheet" href="assets/css/contact.css">
 </head>
+
 <!-- Hero Section -->
 <section class="hero">
     <div class="hero-content">
@@ -13,7 +19,6 @@ include 'include/header.php';
     </div>
     <div class="hero-image">
         <img src="images/pexels-ivan-samkov-9630216.jpg" alt="Hero Image" />
-
     </div>
 </section>
 
@@ -106,6 +111,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     }
 }
 
-// Close DB connection
-$conn->close();
 ?>

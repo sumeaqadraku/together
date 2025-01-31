@@ -1,9 +1,15 @@
 <?php
 include 'include/db.php';
 include 'include/header.php';
-?>
 
-<link rel="stylesheet" href="assets/css/resources.css">
+// Include the necessary styles
+echo '<link rel="stylesheet" href="assets/css/resources.css">';
+
+// Create a new database connection object
+$db = new Database();
+$conn = $db->getConnection();  // Get the connection
+
+?>
 
 <!-- Resources Section -->
 <section class="resources">
@@ -16,24 +22,27 @@ include 'include/header.php';
         $resources_sql = "SELECT * FROM resources ORDER BY category, title";
         $resources_result = $conn->query($resources_sql);
 
+        // Categories for display
         $categories = [
             'Article' => 'Articles',
             'Video' => 'Videos',
             'Self-Help Tool' => 'Self-Help Tools'
         ];
 
+        // Organize the resources by category
         $resources = [];
         while ($row = $resources_result->fetch_assoc()) {
             $resources[$row['category']][] = $row;
         }
 
-        // Loop through each category
+        // Loop through each category and display resources
         foreach ($categories as $db_category => $display_name) {
             if (!empty($resources[$db_category])) {
                 echo "<div class='resource-category'>";
                 echo "<h2>$display_name</h2>";
                 echo "<ul>";
-                
+
+                // Loop through resources in each category
                 foreach ($resources[$db_category] as $resource) {
                     echo "<li>";
                     if (!empty($resource['url'])) {

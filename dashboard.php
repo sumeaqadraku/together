@@ -4,14 +4,23 @@ header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 
-// Ensure the user is logged in and has an admin role
-if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'admin') {
-    header('Location: dashboard.php');
+// Ensure the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
     exit();
 }
 
 // Include the database connection
 include 'include/db.php';
+
+// Create a new database connection instance
+$db = new Database();
+$conn = $db->getConnection(); // This should now return a valid connection or die on failure
+
+// Check if the connection was successful
+if (!$conn) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
 // Fetch total users
 $stmt = $conn->prepare("SELECT COUNT(*) AS user_count FROM users");
@@ -53,6 +62,19 @@ if (isset($_GET['make_admin'])) {
     // Ensure the user is not already an admin
     $conn->query("UPDATE users SET role = 'admin' WHERE id = $user_id");
     header("Location: dashboard.php?role_changed=1");
+    exit();
+}
+
+// Handle user deletion
+if (isset($_GET['delete_user'])) {
+    $user_id = intval($_GET['delete_user']);
+    // Make sure the user is not trying to delete themselves
+    if ($user_id !== $_SESSION['user_id']) {
+        $conn->query("DELETE FROM users WHERE id = $user_id");
+        header("Location: dashboard.php?user_deleted=1");
+    } else {
+        header("Location: dashboard.php?user_delete_error=1");
+    }
     exit();
 }
 
@@ -141,6 +163,15 @@ $admin_email = $_SESSION['email'];
             <?php if (isset($_GET['role_changed'])): ?>
                 <p class="success-message">User role updated successfully!</p>
             <?php endif; ?>
+
+            <?php if (isset($_GET['user_deleted'])): ?>
+                <p class="success-message">User deleted successfully!</p>
+            <?php endif; ?>
+
+            <?php if (isset($_GET['user_delete_error'])): ?>
+                <p class="error-message">You cannot delete your own account!</p>
+            <?php endif; ?>
+
             <table>
                 <tr>
                     <th>ID</th>
@@ -159,6 +190,7 @@ $admin_email = $_SESSION['email'];
                         <?php else: ?>
                             <span class="already-admin">Already Admin</span>
                         <?php endif; ?>
+                        <a href="dashboard.php?delete_user=<?= $row['id'] ?>" class="delete-btn" onclick="return confirm('Are you sure you want to delete this user?')">Delete User</a>
                     </td>
                 </tr>
                 <?php endwhile; ?>
@@ -171,8 +203,6 @@ $admin_email = $_SESSION['email'];
     </div>
 </body>
 </html>
-
-<?php $conn->close(); ?>
 
 <style>
     body {
@@ -346,5 +376,24 @@ $admin_email = $_SESSION['email'];
         margin-top: 40px;
         text-align: center;
         color: #7f8c8d;
+    }
+
+    .delete-btn {
+        color: #e74c3c;
+        font-weight: bold;
+        text-decoration: none;
+        padding: 5px 10px;
+        background-color: #ecf0f1;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
+
+    .delete-btn:hover {
+        background-color: #e74c3c;
+        color: white;
+    }
+
+    .error-message {
+        color: #e74c3c;
     }
 </style>

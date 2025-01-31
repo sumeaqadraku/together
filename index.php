@@ -2,6 +2,9 @@
 include 'include/db.php';  
 include 'include/header.php';
 
+$db = new Database();
+$conn = $db->getConnection(); // Correctly using the Database class
+
 // Fetch services
 $services_sql = "SELECT * FROM services";
 $services_result = $conn->query($services_sql);
@@ -22,6 +25,7 @@ $testimonials_result = $conn->query($testimonials_sql);
 </head>
 <body>
 
+  <main> <!-- Fixed missing <main> tag -->
   <section class="hero">
     <div class="hero-content">
       <h1>Building brighter tomorrows, together</h1>
@@ -30,46 +34,23 @@ $testimonials_result = $conn->query($testimonials_sql);
     </div>
   </section>
 
-  <section id="about-us">
-    <div class="our-story">
-      <h2>Our Story</h2>
-      <p>At Together, we understand that life can be difficult, and everyone’s journey is unique. We started this business to help people heal, grow, and thrive in a safe, compassionate space.</p>
-    </div>
-    <div class="mission-vision">
-      <div class="mission">
-        <h2>Our Mission</h2>
-        <p>Our mission is to provide compassionate, holistic care that empowers individuals to break free from life's challenges and rediscover their true potential.</p>
-      </div>
-      <div class="vision">
-        <h2>Our Vision</h2>
-        <p>Our vision is to foster a world where mental health is prioritized, where communities thrive through connection and support.</p>
-      </div>
-    </div>
-    <div class="cta">
-      <a href="about.php" class="cta-button">Learn More About Our Story</a>
-    </div>
-  </section>
-
-  
-<section id="services-overview" class="services-overview">
+  <section id="services-overview" class="services-overview">
     <h2>Our Services</h2>
     <div class="service-cards">
         <?php
         if ($services_result->num_rows > 0) {
             while ($service = $services_result->fetch_assoc()) {
                 echo "<div class='service-card'>";
-                
-               
 
-                // Display the image from the image_url field
-                if (isset($service['image_url']) && !empty($service['image_url'])) {
-                    echo "<img src='" . $service['image_url'] . "' alt='" . $service['name'] . "' class='service-icon'>";
+                // Securely display the image or a placeholder
+                if (!empty($service['image_url'])) {
+                    echo "<img src='" . htmlspecialchars($service['image_url']) . "' alt='" . htmlspecialchars($service['name']) . "' class='service-icon'>";
                 } else {
-                    echo "' alt='No image available' class='service-icon'>";
+                    echo "<img src='assets/images/placeholder.png' alt='No image available' class='service-icon'>";
                 }
 
-                echo "<h3>" . $service['name'] . "</h3>";
-                echo "<p>" . $service['description'] . "</p>";
+                echo "<h3>" . htmlspecialchars($service['name']) . "</h3>";
+                echo "<p>" . htmlspecialchars($service['description']) . "</p>";
                 echo "</div>";
             }
         } else {
@@ -77,8 +58,7 @@ $testimonials_result = $conn->query($testimonials_sql);
         }
         ?>
     </div>
-</section>
-
+  </section>
 
   <section id="testimonials" class="testimonials">
     <h2>What Our Clients Say</h2>
@@ -87,7 +67,7 @@ $testimonials_result = $conn->query($testimonials_sql);
       if ($testimonials_result->num_rows > 0) {
           while ($testimonial = $testimonials_result->fetch_assoc()) {
               echo "<div class='testimonial'>";
-              echo "<p>\"{$testimonial['quote']}\" – <strong>{$testimonial['author']}</strong></p>";
+              echo "<p>\"" . htmlspecialchars($testimonial['quote']) . "\" – <strong>" . htmlspecialchars($testimonial['author']) . "</strong></p>";
               echo "</div>";
           }
       } else {
@@ -100,10 +80,9 @@ $testimonials_result = $conn->query($testimonials_sql);
   <footer>
     <center> <p>&copy; 2025 Together. All rights reserved.</p> </center>
   </footer>
-</main>
+  </main> <!-- Closing main tag -->
 
 <script src="js/main.js"></script>
 </body>
 </html>
 
-<?php $conn->close(); ?>

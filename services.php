@@ -2,6 +2,10 @@
 include 'include/db.php';  
 include 'include/header.php';
 
+// Initialize Database Connection
+$db = new Database();
+$conn = $db->getConnection();
+
 // Fetch the introductory text from the service_intro table
 $intro_sql = "SELECT * FROM service_intro LIMIT 1"; 
 $intro_result = $conn->query($intro_sql);
@@ -26,8 +30,6 @@ $services_result = $conn->query($services_sql);
 </head>
 <body>
 
-  
-
   <!-- Header Section -->
   <section class="header-banner">
     <h1>Our Services</h1>
@@ -35,10 +37,11 @@ $services_result = $conn->query($services_sql);
   </section>
 
   <!-- Dynamic Introductory Text Section -->
- <center> <section class="intro-text">
-    <p><?php echo $intro_text; ?></p>
-  </section>
-</center>
+  <center>
+    <section class="intro-text">
+      <p><?php echo $intro_text; ?></p>
+    </section>
+  </center>
 
   <!-- Detailed Services Section -->
   <section class="detailed-services">

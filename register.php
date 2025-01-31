@@ -9,6 +9,10 @@ $success = '';
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+// Create a new database connection instance
+$db = new Database();
+$conn = $db->getConnection();  // Get the connection object
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Get input values from form
     $email = trim($_POST['email']);
@@ -45,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         $stmt->close();
     }
-    $conn->close();
+    // No need to close $conn since it will be managed by the Database class
 }
 ?>
 

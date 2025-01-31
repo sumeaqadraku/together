@@ -11,6 +11,10 @@ include 'include/db.php';
 // Initialize error variable
 $error = '';
 
+// Create a new database connection instance
+$db = new Database();
+$conn = $db->getConnection();  // Get the connection object
+
 // Check if the form was submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Get the email and password from the form
@@ -86,28 +90,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <?php endif; ?>
 
                 <div class="actions">
-                <button type="submit" class="btn">Log In</button>
+                    <button type="submit" class="btn">Log In</button>
                     <a href="forgot-password.html" class="forgot-password">Forgot password?</a>
-                   
                     <a href="signup.php" class="btn">Sign Up</a>
-
                 </div>
             </form>
 
             <div class="divider">or sign in with</div>
             <div class="social-login">
-            <a href="https://myaccount.google.com/" class="social-btn google">
-    <i class="fab fa-google"></i> Google
-  </a>
-
-  <a href="https://www.facebook.com/" class="social-btn google">
-    <i class="fab fa-facebook"></i> Facebook
-  </a>
-
-  <a href="https://www.apple.com/" class="social-btn google">
-    <i class="fab fa-apple"></i> Apple
-  </a>
-              
+                <a href="https://myaccount.google.com/" class="social-btn google">
+                    <i class="fab fa-google"></i> Google
+                </a>
+                <a href="https://www.facebook.com/" class="social-btn google">
+                    <i class="fab fa-facebook"></i> Facebook
+                </a>
+                <a href="https://www.apple.com/" class="social-btn google">
+                    <i class="fab fa-apple"></i> Apple
+                </a>
             </div>
         </div>
     </div>
