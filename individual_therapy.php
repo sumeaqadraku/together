@@ -9,6 +9,8 @@ $conn = $db->getConnection();
 ?>
 
 <link rel="stylesheet" href="assets/css/individual_therapy.css">
+<link rel="stylesheet" href="assets/css/header.css">
+
 <!-- Header Section -->
 <section class="video-text-section" >
   <div class="video-container">

@@ -7,20 +7,26 @@ $db = new Database();
 $conn = $db->getConnection();
 ?>
 
-  <link rel="stylesheet" href="assets/css/group_therapy.css">
 
-  <!-- Group Therapy Section -->
-  <section class="group-therapy">
-    <div class="text-section">
-      <h2>Find Strength in Community</h2>
-      <p>Group therapy provides an opportunity to connect with others who understand your struggles. Share, learn, and heal together in a supportive, non-judgmental environment. If you’ve been feeling isolated or overwhelmed, group therapy can help you gain valuable insights and encouragement. Come and join our community where you’re never alone.</p>
-      <a href="contact.php" class="cta-button">Book a Free Consultation</a>
-    </div>
-    <div class="image-section">
-        <img src="images/pexels-tima-miroshnichenko-5711017.jpg">
-      </img>
-    </div>
-  </section>
+  <link rel="stylesheet" href="assets/css/group_therapy.css">
+  <link rel="stylesheet" href="assets/css/individual_therapy.css">
+
+  <link rel="stylesheet" href="assets/css/header.css">
+
+  <section class="video-text-section" >
+  <div class="video-container">
+    <video class="service-video" autoplay muted loop>
+      <source src="images/7199185-uhd_3840_2160_25fps.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="text-container">
+    <h2>Find Strength in Community</h2>
+    <p>Group therapy provides an opportunity to connect with others who understand your struggles. Share, learn, and heal together in a supportive, non-judgmental environment. If you’ve been feeling isolated or overwhelmed, group therapy can help you gain valuable insights and encouragement. Come and join our community where you’re never alone.</p>
+    <br>
+    <a href="contact.php" class="cta-button">Reach Out Now</a>
+  </div>
+</section>
   <div class="contant">
     <!-- Therapy Overview Section -->
      <div class="pjesa1">

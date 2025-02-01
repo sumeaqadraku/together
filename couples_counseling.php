@@ -9,6 +9,8 @@ $conn = $db->getConnection();
 
 <head>
 <link rel="stylesheet" href="assets/css/couples_counseling.css">
+<link rel="stylesheet" href="assets/css/header.css">
+
 </head>  
 
   <!-- Header Section -->

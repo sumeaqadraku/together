@@ -37,6 +37,8 @@ class ResourcesPage {
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Resources</title>
             <link rel="stylesheet" href="assets/css/resources.css">
+            <link rel="stylesheet" href="assets/css/header.css">
+
         </head>
         <body>
 

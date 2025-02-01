@@ -45,6 +45,8 @@ $contactForm->handleFormSubmission();  // Handle the form submission
 
 <head>
     <link rel="stylesheet" href="assets/css/contact.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+
 </head>
 
 <!-- Hero Section -->

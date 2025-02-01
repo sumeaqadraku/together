@@ -36,7 +36,7 @@ $appointments_result = $conn->query($appointments_sql);
         padding: 0;
         box-sizing: border-box;
         font-family: 'Inter', sans-serif;
-    font-weight: 300; /* Lighter font weight */
+        font-weight: 300; /* Lighter font weight */
     }
 
     body {
@@ -171,6 +171,24 @@ $appointments_result = $conn->query($appointments_sql);
         footer {
             font-size: 14px;
         }
+
+        table {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        table th, table td {
+            text-align: center;
+            display: inline-block;
+            padding: 10px;
+            min-width: 200px; /* Make sure each column has space */
+        }
+
+        .table-container {
+            display: flex;
+            flex-direction: column;
+        }
     }
 
     @media screen and (max-width: 480px) {
@@ -210,43 +228,44 @@ $appointments_result = $conn->query($appointments_sql);
         <br>
         <br>
 
-
         <!-- Appointments Table -->
         <h3>Your Appointments</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Phone Number</th>
-                    <th>Appointment Date</th>
-                    <th>Service Type</th>
-                    <th>Notes</th>
-                    <th>Status</th>
-                    <th>Created At</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if ($appointments_result->rowCount() > 0): ?>
-                    <?php while ($appointment = $appointments_result->fetch(PDO::FETCH_ASSOC)): ?>
-                        <tr>
-                            <td><?= htmlspecialchars($appointment['first_name']); ?></td>
-                            <td><?= htmlspecialchars($appointment['last_name']); ?></td>
-                            <td><?= htmlspecialchars($appointment['phone_number']); ?></td>
-                            <td><?= htmlspecialchars($appointment['appointment_date']); ?></td>
-                            <td><?= htmlspecialchars($appointment['service_type']); ?></td>
-                            <td><?= htmlspecialchars($appointment['notes']); ?></td>
-                            <td><?= htmlspecialchars($appointment['status']); ?></td>
-                            <td><?= htmlspecialchars($appointment['created_at']); ?></td>
-                        </tr>
-                    <?php endwhile; ?>
-                <?php else: ?>
+        <div class="table-container">
+            <table>
+                <thead>
                     <tr>
-                        <td colspan="8">No appointments found.</td>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Phone Number</th>
+                        <th>Appointment Date</th>
+                        <th>Service Type</th>
+                        <th>Notes</th>
+                        <th>Status</th>
+                        <th>Created At</th>
                     </tr>
-                <?php endif; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php if ($appointments_result->rowCount() > 0): ?>
+                        <?php while ($appointment = $appointments_result->fetch(PDO::FETCH_ASSOC)): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($appointment['first_name']); ?></td>
+                                <td><?= htmlspecialchars($appointment['last_name']); ?></td>
+                                <td><?= htmlspecialchars($appointment['phone_number']); ?></td>
+                                <td><?= htmlspecialchars($appointment['appointment_date']); ?></td>
+                                <td><?= htmlspecialchars($appointment['service_type']); ?></td>
+                                <td><?= htmlspecialchars($appointment['notes']); ?></td>
+                                <td><?= htmlspecialchars($appointment['status']); ?></td>
+                                <td><?= htmlspecialchars($appointment['created_at']); ?></td>
+                            </tr>
+                        <?php endwhile; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="8">No appointments found.</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
     </main>
 
     <footer>

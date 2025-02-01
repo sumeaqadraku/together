@@ -118,7 +118,7 @@
   }
   
   /* Hamburger Menu: Show on mobile */
-  @media (max-width: 768px) {
+  @media (max-width: 1193px) {
     .nav-links {
       display: none;
       width: 100%;
