@@ -11,10 +11,16 @@ class Database {
     }
 
     private function connect() {
-        $this->conn = new mysqli($this->host, $this->user, $this->pass, $this->dbname);
+        try {
+            // Krijimi i lidhjes me bazën e të dhënave duke përdorur PDO
+            $dsn = "mysql:host=$this->host;dbname=$this->dbname;charset=utf8";
+            $this->conn = new PDO($dsn, $this->user, $this->pass);
 
-        if ($this->conn->connect_error) {
-            die("Database Connection Failed: " . $this->conn->connect_error);
+            // Aktivizo ndihmën për të kapur gabimet
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            // Mesazh gabimi nëse lidhja dështon
+            die("Connection failed: " . $e->getMessage());
         }
     }
 
@@ -23,9 +29,8 @@ class Database {
     }
 
     public function __destruct() {
-        if ($this->conn) {
-            $this->conn->close();
-        }
+        // Mbyll lidhjen kur objekti shkatërrohet
+        $this->conn = null;
     }
 }
 ?>

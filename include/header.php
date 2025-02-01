@@ -35,6 +35,7 @@ session_start(); // Filloni sesionin
                 <li><a href="profile.php">Profile</a></li>
             <?php endif; ?>
         <?php endif; ?>
+        <li><a href="booking.php">Booking</a></li>
       </ul>
     </nav>
 

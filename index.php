@@ -82,7 +82,7 @@ $testimonials_result = $conn->query($testimonials_sql);
   </footer>
   </main> <!-- Closing main tag -->
 
-<script src="js/main.js"></script>
+
 </body>
 </html>
 
