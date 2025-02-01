@@ -1,0 +1,149 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300; /* Lighter font weight */
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #f7f7f7;
+    border-radius: 16px;
+    margin: 1rem auto;
+    width: 100%;
+    max-width: 80%;
+    border: 1px solid #e2d6c5;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative; /* Added position */
+    z-index: 100; /* Ensure navbar stays on top */
+  }
+  .dropdown-content li {
+    list-style: none;
+  }
+  
+  .dropdown-content a {
+    display: block;
+    padding: 10px 15px; /* Adjust padding for dropdown links */
+    color: #5e4a39; /* Match existing navbar text color */
+    text-decoration: none;
+    font-weight: 300; /* Same as navbar font weight */
+    transition: background-color 0.3s ease;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #ddd; /* Highlight on hover */
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block; /* Show dropdown on hover */
+  }
+  .dropdown {
+    position: relative; /* Ensures dropdown-content is positioned relative to this element */
+  }
+  
+  .dropdown-content {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%; /* Place below the dropdown button */
+    left: 0; /* Align to the left of the button */
+    background-color: #f7f7f7; /* Same as navbar background */
+    border: 1px solid #e2d6c5; /* Subtle border for dropdown */
+    border-radius: 8px; /* Rounded corners */
+    min-width: 150px; /* Set width for dropdown */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a slight shadow */
+    z-index: 1000; /* Ensure it appears above other elements */
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #725a43;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+  
+  .nav-links li {
+    display: inline;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: #5e4a39;
+    font-weight: 300;
+    transition: color 0.3s;
+  }
+  
+  .nav-links a:hover {
+    color: #a77f5a;
+  }
+  
+  .hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 4px;
+    width: 25px;
+    height: 20px;
+  }
+  
+  .hamburger div {
+    height: 4px;
+    width: 25px;
+    background-color: #5e4a39;
+  }
+  
+  .auth-button a {
+    text-decoration: none;
+    background-color: #725a43;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    color: #fff;
+  }
+  
+  /* Hamburger Menu: Show on mobile */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      gap: 1rem;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      background-color: #f7f7f7;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  
+    .nav-links.active {
+      display: flex;
+    }
+  
+    .hamburger {
+      display: flex;
+    }
+  
+    .nav-links a {
+      color: #5e4a39;
+      font-size: 1.2rem;
+    }
+  }
+  

@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start(); // Start session
 ?>
 <!DOCTYPE html>
@@ -14,31 +14,47 @@ session_start(); // Start session
 <header class="navbar">
     <a href="index.php" class="logo">together</a>
     <nav>
-      <ul class="nav-links">
-        <li><a href="about.php">About Us</a></li>
-        <li class="dropdown">
-          <a href="services.php" class="dropbtn">Services</a>
-          <ul class="dropdown-content">
-            <li><a href="individual_therapy.php">Individual Therapy</a></li>
-            <li><a href="couples_counseling.php">Couples Counseling</a></li>
-            <li><a href="group_sessions.php">Group Sessions</a></li>
-          </ul>
-        </li>
-        <li><a href="resources.php">Resources</a></li>
-        <li><a href="contact.php">Contact Us</a></li>
-        <li><a href="profile.php">Profile</a></li>
-        <li><a href="booking.php">Booking</a></li>
-      </ul>
+        <ul class="nav-links">
+            <li><a href="about.php">About Us</a></li>
+            <li class="dropdown">
+                <a href="services.php" class="dropbtn">Services</a>
+                <ul class="dropdown-content">
+                    <li><a href="individual_therapy.php">Individual Therapy</a></li>
+                    <li><a href="couples_counseling.php">Couples Counseling</a></li>
+                    <li><a href="group_sessions.php">Group Sessions</a></li>
+                </ul>
+            </li>
+            <li><a href="resources.php">Resources</a></li>
+            <li><a href="contact.php">Contact Us</a></li>
+            <li><a href="profile.php">Profile</a></li>
+            <li><a href="booking.php">Booking</a></li>
+        </ul>
     </nav>
 
+    <!-- Hamburger Menu -->
+    <div class="hamburger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Auth Button -->
     <div class="auth-button">
-      <?php if (isset($_SESSION['user_id'])): ?>
-          <a href="logout.php" class="contact-button">Log Out</a>
-      <?php else: ?>
-          <a href="login.php" class="contact-button">Log In</a>
-      <?php endif; ?>
+        <?php if (isset($_SESSION['user_id'])): ?>
+            <a href="logout.php" class="contact-button">Log Out</a>
+        <?php else: ?>
+            <a href="login.php" class="contact-button">Log In</a>
+        <?php endif; ?>
     </div>
 </header>
+
+<!-- JavaScript -->
+<script>
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('active'); // Toggle the 'active' class for mobile view
+    }
+</script>
 
 </body>
 </html>

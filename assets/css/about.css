@@ -5,12 +5,14 @@
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
     font-weight: 300; /* Lighter font weight */
+    padding: 2px;
   }
   
   body {
     font-family: 'Inter', sans-serif;
     font-weight: 300; /* Lighter font weight */
     color: #333;
+    padding: 10px;
     
   }
   

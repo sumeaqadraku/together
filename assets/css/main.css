@@ -12,109 +12,7 @@ body {
   font-weight: 300; /* Lighter font weight */
   background-color: #f9f9f9;
   color: #333;
-  
 }
-
- /* Navbar Styles */
- .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background-color: #f7f7f7; /* Sandy beige background */
-  border-radius: 16px; /* Rounded corners */
-  margin: 1rem auto; /* Center spacing */
-  width: 100%;
-  max-width: 80%; /* Prevent stretching on large screens */
-  border: 1px solid #e2d6c5; /* Subtle border */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: 400; /* Slightly heavier for emphasis */
-  color: #725a43; /* Deep sandy tone */
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-}
-
-.nav-links li {
-  display: inline;
-}
-
-.nav-links a {
-  text-decoration: none;
-  font-size: 1rem;
-  color: #5e4a39; /* Warm brown for text */
-  font-weight: 300; /* Lighter weight for links */
-  transition: color 0.3s;
-}
-
-.nav-links a:hover {
-  color: #a77f5a; /* Highlight with a deeper sandy tone */
-}
-
-a {
-  text-decoration: none;
-}
-.contact-button {
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: #725a43;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 8px; /* Button corners */
-  font-weight: 400; /* Slightly heavier for the button */
-  transition: background-color 0.3s;
-}
-
-.contact-button:hover {
-  background-color: #bed6a7;
-}
-
-/* Dropdown Menu */
-.dropdown {
-  position: relative; /* Ensures dropdown-content is positioned relative to this element */
-}
-
-.dropdown-content {
-  display: none; /* Hidden by default */
-  position: absolute;
-  top: 100%; /* Place below the dropdown button */
-  left: 0; /* Align to the left of the button */
-  background-color: #f7f7f7; /* Same as navbar background */
-  border: 1px solid #e2d6c5; /* Subtle border for dropdown */
-  border-radius: 8px; /* Rounded corners */
-  min-width: 150px; /* Set width for dropdown */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a slight shadow */
-  z-index: 1000; /* Ensure it appears above other elements */
-}
-
-.dropdown-content li {
-  list-style: none;
-}
-
-.dropdown-content a {
-  display: block;
-  padding: 10px 15px; /* Adjust padding for dropdown links */
-  color: #5e4a39; /* Match existing navbar text color */
-  text-decoration: none;
-  font-weight: 300; /* Same as navbar font weight */
-  transition: background-color 0.3s ease;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd; /* Highlight on hover */
-}
-
-.dropdown:hover .dropdown-content {
-  display: block; /* Show dropdown on hover */
-}
-
 
 /* Main Container (Hero Section) */
 .hero-container {
@@ -129,33 +27,15 @@ a {
   font-weight: 300; /* Lighter font weight for hero section */
 }
 
-
-
-
-@media (min-device-width: 1000px) and (max-device-width: 1200px) {
-  .nav-links {
-    display: none;
-  }
-
-  .contact-button {
-    display: none;
-  }
-
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
 .hero {
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
   align-items: center;
   justify-content: center;
   text-align: center;
   background-image: url("../../images/team-386673_1280.jpg");
-
-/* Replace with your clean image */
   background-size: cover;
   background-position: center;
   height: 80vh;
@@ -167,7 +47,6 @@ a {
   width: 95%; /* Same width as navbar */
   max-width: 100%; /* Same max-width as navbar */
   margin: 1rem auto; /* Center the hero section */
-  
 }
 
 .hero::after {
@@ -183,9 +62,7 @@ a {
 .hero-content {
   position: relative;
   z-index: 1;
-
 }
-
 
 .hero h1 {
   font-size: 2.5rem;
@@ -219,7 +96,6 @@ a {
   margin: 0 auto;
   max-width: 1200px;
   padding: 3rem 0;
-  
 }
 
 .hero-image img {
@@ -250,9 +126,7 @@ h2 {
   max-width: 80%;
   margin: 50px auto;
   overflow: hidden;
-  
 }
-
 
 .carousel {
   display: flex;
@@ -279,14 +153,12 @@ h2 {
   color: #333;
 }
 
-
 #about-us {
   padding: 2rem 0;
 }
 
 .our-story {
   margin-bottom: 3rem;
-  
 }
 
 .mission-vision {
@@ -333,8 +205,6 @@ h2 {
   font-weight: bold;
 }
 
-
-
 /* Services Section */
 .services {
   padding: 2rem 0;
@@ -374,7 +244,6 @@ h2 {
   color: #555;
 }
 
-
 .cta-button {
   background: #a0ae92;
   color: #7a8a6a;
@@ -387,8 +256,6 @@ h2 {
 .cta-button:hover {
   background: #d3d3d3;
 }
-
-
 
 /* Services Overview Section */
 .services-overview {
@@ -433,7 +300,6 @@ h2 {
   transform: scale(1.1); /* Increases the image size slightly on hover */
 }
 
-
 .service-card h3 {
   font-size: 1.5rem;
   color: #7a8a6a;
@@ -470,14 +336,12 @@ h2 {
   flex-direction: row;
   gap: 2rem;
   justify-content: center;
-
   margin-bottom: 3rem;
 }
 
 .testimonial {
   background-color: #fff;
   padding: 2rem;
-  
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 300px;
@@ -489,89 +353,84 @@ h2 {
 .testimonial:hover {
   transform: translateY(-5px);
 }
-.testimonialn{
+
+.testimonialn {
   display: flex;
   flex-direction: row;
   gap: 17px;
 }
 
 @media (min-device-width: 320px) and (max-device-width: 900px){
-  
+  .body{
+    padding: 2px;
+  }
+ 
+  .hero::after {
+    content: '';
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  .testimonialn {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+  }
+  .testimonial-slider {
+    display: flex;
+    flex-direction: column;
+  }
+  .testimonial {
+    background-color: #fff;
+    padding: 2rem;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    font-style: italic;
+    color: #555;
+    transition: transform 0.3s ease;
+  }
+  .service-icon {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    text-align: center;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease-in-out;
+  }
+  .mission-vision {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 2rem 0;
+  }
+  .our-story p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    text-align: center;
+  }
 
-.hero::after {
-  content: '';
-  position: relative;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.3);
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #7a8a6a;
+  }
+  .mission h2, .vision h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  .mission p, .vision p {
+    font-size: 1rem;
+    color: #555;
+  }
+ 
 }
-.testimonialn {
-  display: flex;
-  flex-direction: column;
-  gap: 17px;
-}
-.nav-links a {
-  text-decoration: none;
-  font-size: 0px;
-  color: #5e4a39;
-  font-weight: 300;
-  transition: color 0.3s;
-}
-.testimonial {
-  background-color: #fff;
-  padding: 2rem;
-  margin: 10px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 350px;
-  font-style: italic;
-  color: #555;
-  transition: transform 0.3s ease;
-}
-.service-icon {
-  width: 200px;
-  height: 150px;
-  object-fit: cover;
-  text-align: center;
-  margin-bottom: 1rem;
-  transition: transform 0.3s ease-in-out;
-}
-.mission-vision {
-  display: flex; 
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 2rem;
-  padding: 2rem 0;
-}
-.our-story p {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #555;
-  max-width: 800px;
-  margin: 0 auto 2rem;
-  text-align: center;
-}
-
-h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  color: #7a8a6a;
-}
-.mission h2, .vision h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: #333;
-}
-.mission p, .vision p {
-  font-size: 1rem;
-  color: #555;
-}
-
-
-}
-
-
-
-
