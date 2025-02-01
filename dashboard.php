@@ -28,7 +28,7 @@ $stmt->execute();
 $user_count = $stmt->fetch(PDO::FETCH_ASSOC)['user_count'];
 
 // Fetch total appointments
-$stmt = $conn->prepare("SELECT COUNT(*) AS appointment_count FROM appointments");
+$stmt = $conn->prepare("SELECT COUNT(*) AS appointment_count FROM appointment");
 $stmt->execute();
 $appointment_count = $stmt->fetch(PDO::FETCH_ASSOC)['appointment_count'];
 
