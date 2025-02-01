@@ -25,7 +25,9 @@ session_start(); // Filloni sesionin
         </li>
         <li><a href="resources.php">Resources</a></li>
         <li><a href="contact.php">Contact Us</a></li>
+        <li><a href="profile.php">Profile</a></li>
 
+<<<<<<< Updated upstream
         <?php if (isset($_SESSION['user_role'])): ?>
             <?php if ($_SESSION['user_role'] == 'admin'): ?>
                 <!-- Menuja për admin -->
@@ -36,6 +38,8 @@ session_start(); // Filloni sesionin
             <?php endif; ?>
         <?php endif; ?>
         <li><a href="booking.php">Booking</a></li>
+=======
+>>>>>>> Stashed changes
       </ul>
     </nav>
 
