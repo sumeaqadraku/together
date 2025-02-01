@@ -26,20 +26,7 @@ session_start(); // Filloni sesionin
         <li><a href="resources.php">Resources</a></li>
         <li><a href="contact.php">Contact Us</a></li>
         <li><a href="profile.php">Profile</a></li>
-
-<<<<<<< Updated upstream
-        <?php if (isset($_SESSION['user_role'])): ?>
-            <?php if ($_SESSION['user_role'] == 'admin'): ?>
-                <!-- Menuja për admin -->
-                <li><a href="dashboard.php">Dashboard</a></li>
-            <?php else: ?>
-                <!-- Menuja për user -->
-                <li><a href="profile.php">Profile</a></li>
-            <?php endif; ?>
-        <?php endif; ?>
         <li><a href="booking.php">Booking</a></li>
-=======
->>>>>>> Stashed changes
       </ul>
     </nav>
 
