@@ -1,3 +1,6 @@
+<?php
+session_start(); // Filloni sesionin
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,10 +25,24 @@
         </li>
         <li><a href="resources.php">Resources</a></li>
         <li><a href="contact.php">Contact Us</a></li>
+
+        <?php if (isset($_SESSION['user_role'])): ?>
+            <?php if ($_SESSION['user_role'] == 'admin'): ?>
+                <!-- Menuja për admin -->
+                <li><a href="dashboard.php">Dashboard</a></li>
+            <?php else: ?>
+                <!-- Menuja për user -->
+                <li><a href="profile.php">Profile</a></li>
+            <?php endif; ?>
+        <?php endif; ?>
       </ul>
     </nav>
-    <?php if (!isset($_SESSION['user_role'])): ?>
-    <a href="login.php" class="contact-button">Log In</a>
-<?php endif; ?>
 
-  </header>
+    <?php if (isset($_SESSION['user_id'])): ?>
+        <!-- Nëse përdoruesi është i loguar, shfaq butonin "Log Out" -->
+        <a href="logout.php" class="contact-button">Log Out</a>
+    <?php else: ?>
+        <!-- Nëse përdoruesi nuk është i loguar, shfaq butonin "Log In" -->
+        <a href="login.php" class="contact-button">Log In</a>
+    <?php endif; ?>
+</header>

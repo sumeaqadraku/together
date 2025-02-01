@@ -1,5 +1,8 @@
 <?php
-// Start the session
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+header("Location: login.php");
 session_start();
 
 // Destroy the session
@@ -16,9 +19,6 @@ if (ini_get("session.use_cookies")) {
 }
 
 // Redirect to login page
-header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-header("Cache-Control: post-check=0, pre-check=0", false);
-header("Pragma: no-cache");
-header("Location: login.php");
+
 exit();
 ?>
