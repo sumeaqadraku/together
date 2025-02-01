@@ -2,55 +2,71 @@
 session_start();
 include 'include/db.php';
 
-$error = '';
-$success = '';
+class UserRegistration {
 
-// Enable error reporting (for debugging purposes)
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+    private $db;
+    private $conn;
+    public $error = '';
+    public $success = '';
 
-// Create a new database connection instance
-$db = new Database();
-$conn = $db->getConnection();  // Get the connection object
+    public function __construct() {
+        $this->db = new Database();
+        $this->conn = $this->db->getConnection(); // Get the connection object
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $this->handleFormSubmission();
+        }
+    }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Get input values from form
-    $email = trim($_POST['email']);
-    $password = trim($_POST['password']); // Only password now
+    private function handleFormSubmission() {
+        // Get input values from form
+        $email = trim($_POST['email']);
+        $password = trim($_POST['password']); // Only password now
 
-    // Validate input
-    if (empty($email) || empty($password)) {
-        $error = "All fields are required!";
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error = "Invalid email format!";
-    } else {
+        // Validate input
+        if (empty($email) || empty($password)) {
+            $this->error = "All fields are required!";
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $this->error = "Invalid email format!";
+        } else {
+            $this->checkEmailExistence($email, $password);
+        }
+    }
+
+    private function checkEmailExistence($email, $password) {
         // Check if email already exists in the database
-        $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
+        $stmt = $this->conn->prepare("SELECT id FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $stmt->store_result();
 
         if ($stmt->num_rows > 0) {
-            $error = "Email is already registered!";
+            $this->error = "Email is already registered!";
         } else {
-            // Hash the password before storing it
-            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-            $role = "user"; // Default role
-
-            // Insert the user into the database
-            $stmt = $conn->prepare("INSERT INTO users (email, password, role, created_at) VALUES (?, ?, ?, NOW())");
-            $stmt->bind_param("sss", $email, $hashed_password, $role);
-
-            if ($stmt->execute()) {
-                $success = "Account created successfully! You can now log in.";
-            } else {
-                $error = "Registration failed. Please try again.";
-            }
+            $this->registerUser($email, $password);
         }
         $stmt->close();
     }
-    // No need to close $conn since it will be managed by the Database class
+
+    private function registerUser($email, $password) {
+        // Hash the password before storing it
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $role = "user"; // Default role
+
+        // Insert the user into the database
+        $stmt = $this->conn->prepare("INSERT INTO users (email, password, role, created_at) VALUES (?, ?, ?, NOW())");
+        $stmt->bind_param("sss", $email, $hashed_password, $role);
+
+        if ($stmt->execute()) {
+            $this->success = "Account created successfully! You can now log in.";
+        } else {
+            $this->error = "Registration failed. Please try again.";
+        }
+        $stmt->close();
+    }
 }
+
+// Create an instance of the UserRegistration class
+$registration = new UserRegistration();
 ?>
 
 <!DOCTYPE html>
@@ -72,10 +88,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <p>You can't pour from an empty cup. Join us to kickstart your wellbeing.</p>
 
       <!-- Show error or success message -->
-      <?php if (!empty($error)) : ?>
-        <p style="color: red;"><?= htmlspecialchars($error) ?></p>
-      <?php elseif (!empty($success)) : ?>
-        <p style="color: green;"><?= htmlspecialchars($success) ?></p>
+      <?php if (!empty($registration->error)) : ?>
+        <p style="color: red;"><?= htmlspecialchars($registration->error) ?></p>
+      <?php elseif (!empty($registration->success)) : ?>
+        <p style="color: green;"><?= htmlspecialchars($registration->success) ?></p>
       <?php endif; ?>
 
       <!-- Sign-up form -->

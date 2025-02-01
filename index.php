@@ -1,17 +1,36 @@
 <?php
-include 'include/db.php';  
+include 'include/db.php';
 include 'include/header.php';
 
+class WebPage {
+    private $conn;
+
+    public function __construct($db) {
+        $this->conn = $db->getConnection(); // Correctly using the Database class
+        if (!$this->conn) {
+            die("Connection failed: Unable to connect to the database.");
+        }
+    }
+
+    // Fetch services
+    public function fetchServices() {
+        $services_sql = "SELECT * FROM services";
+        return $this->conn->query($services_sql)->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Fetch testimonials
+    public function fetchTestimonials() {
+        $testimonials_sql = "SELECT * FROM testimonials";
+        return $this->conn->query($testimonials_sql)->fetchAll(PDO::FETCH_ASSOC);
+    }
+}
+
 $db = new Database();
-$conn = $db->getConnection(); // Correctly using the Database class
+$page = new WebPage($db);
 
-// Fetch services
-$services_sql = "SELECT * FROM services";
-$services_result = $conn->query($services_sql);
-
-// Fetch testimonials
-$testimonials_sql = "SELECT * FROM testimonials";
-$testimonials_result = $conn->query($testimonials_sql);
+// Fetch data
+$services = $page->fetchServices();
+$testimonials = $page->fetchTestimonials();
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +57,6 @@ $testimonials_result = $conn->query($testimonials_sql);
     <h2>Our Services</h2>
     <div class="service-cards">
         <?php
-        $services = $services_result->fetchAll(PDO::FETCH_ASSOC);
         if (count($services) > 0) {
             foreach ($services as $service) {
                 echo "<div class='service-card'>";
@@ -63,7 +81,6 @@ $testimonials_result = $conn->query($testimonials_sql);
     <h2>What Our Clients Say</h2>
     <div class="testimonial-slider">
       <?php
-      $testimonials = $testimonials_result->fetchAll(PDO::FETCH_ASSOC);
       if (count($testimonials) > 0) {
           foreach ($testimonials as $testimonial) {
               echo "<div class='testimonial'>";

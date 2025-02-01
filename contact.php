@@ -1,10 +1,46 @@
 <?php
-include 'include/db.php';  
+include 'include/db.php';
 include 'include/header.php';
 
-// Initialize the database connection using the Database class
-$db = new Database();
-$conn = $db->getConnection(); // Get the connection object from the Database class
+class ContactForm {
+    private $db;
+    private $conn;
+
+    public function __construct() {
+        $this->db = new Database();
+        $this->conn = $this->db->getConnection();
+    }
+
+    public function handleFormSubmission() {
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
+            // Sanitize input data
+            $name = $this->conn->real_escape_string($_POST['name']);
+            $email = $this->conn->real_escape_string($_POST['email']);
+            $message = $this->conn->real_escape_string($_POST['message']);
+
+            // Insert data into the database
+            $sql = "INSERT INTO contact_form (name, email, message) VALUES ('$name', '$email', '$message')";
+            if ($this->conn->query($sql) === TRUE) {
+                header("Location: contact.php?success=1");
+                exit();
+            } else {
+                header("Location: contact.php?error=1");
+                exit();
+            }
+        }
+    }
+
+    public function displaySuccessMessage() {
+        if (isset($_GET['success'])) {
+            echo "<p class='success-message'>Your message has been sent successfully!</p>";
+        } elseif (isset($_GET['error'])) {
+            echo "<p class='error-message'>There was an error. Please try again.</p>";
+        }
+    }
+}
+
+$contactForm = new ContactForm();
+$contactForm->handleFormSubmission();  // Handle the form submission
 ?>
 
 <head>
@@ -48,11 +84,7 @@ $conn = $db->getConnection(); // Get the connection object from the Database cla
 
     <?php
     // Display success or error messages
-    if (isset($_GET['success'])) {
-        echo "<p class='success-message'>Your message has been sent successfully!</p>";
-    } elseif (isset($_GET['error'])) {
-        echo "<p class='error-message'>There was an error. Please try again.</p>";
-    }
+    $contactForm->displaySuccessMessage();
     ?>
 
     <div class="contact-us">
@@ -90,25 +122,3 @@ $conn = $db->getConnection(); // Get the connection object from the Database cla
 
 </body>
 </html>
-
-<?php
-// Handle form submission
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-    // Sanitize input data
-    $name = $conn->real_escape_string($_POST['name']);
-    $email = $conn->real_escape_string($_POST['email']);
-    $message = $conn->real_escape_string($_POST['message']);
-
-    // Insert data into the correct database table `contact_form`
-    $sql = "INSERT INTO contact_form (name, email, message) VALUES ('$name', '$email', '$message')";
-
-    if ($conn->query($sql) === TRUE) {
-        header("Location: contact.php?success=1");
-        exit();
-    } else {
-        header("Location: contact.php?error=1");
-        exit();
-    }
-}
-
-?>

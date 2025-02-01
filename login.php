@@ -5,32 +5,26 @@ header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 
-// Include the database connection
 include 'include/db.php';
 
-// Initialize error variable
-$error = '';
+class Login {
+    private $conn;
+    private $error;
 
-// Create a new database connection instance
-$db = new Database();
-$conn = $db->getConnection();  // Get the connection object
+    public function __construct($db) {
+        $this->conn = $db->getConnection();  // Get the connection object
+        $this->error = '';
+    }
 
-// Check if the form was submitted
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Get the email and password from the form
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    public function loginUser($email, $password) {
+        // Prepare a query to check if the email exists in the database
+        $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = :email");
+        $stmt->bindValue(':email', $email);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Prepare a query to check if the email exists in the database
-    $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email");
-    $stmt->bindValue(':email', $email);
-    $stmt->execute();
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    // Check if the user exists
-    if ($user) {
-        // Verify the password
-        if (password_verify($password, $user['password'])) {
+        // Check if the user exists and verify the password
+        if ($user && password_verify($password, $user['password'])) {
             // Store user data in the session
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['email'] = $user['email'];
@@ -38,17 +32,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             // Redirect based on role
             if ($user['role'] == 'admin') {
-                header('Location: profile.php'); // Admin goes to profile
+                header('Location: profile.php');
             } else {
-                header('Location: index.php'); // Regular users go to index
+                header('Location: index.php');
             }
             exit();
         } else {
-            $error = 'Invalid email or password.';
+            $this->error = 'Invalid email or password.';
         }
-    } else {
-        $error = 'Invalid email or password.';
     }
+
+    public function getError() {
+        return $this->error;
+    }
+}
+
+// Initialize error variable and handle login
+$login = new Login(new Database());
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $login->loginUser($email, $password);
+    $error = $login->getError();
 }
 ?>
 

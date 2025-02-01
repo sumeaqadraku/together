@@ -1,86 +1,109 @@
 <?php
 session_start();
+
 header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 
-// Ensure the user is logged in
-if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
-    exit();
-}
+class AdminDashboard {
+    private $conn;
+    private $user_id;
 
-// Include the database connection
-include 'include/db.php';
-
-// Create a new database connection instance
-$db = new Database();
-$conn = $db->getConnection(); // This should now return a valid connection or die on failure
-
-// Check if the connection was successful
-if (!$conn) {
-    die("Connection failed: Unable to connect to the database.");
-}
-
-// Fetch total users
-$stmt = $conn->prepare("SELECT COUNT(*) AS user_count FROM users");
-$stmt->execute();
-$user_count = $stmt->fetch(PDO::FETCH_ASSOC)['user_count'];
-
-// Fetch total appointments
-$stmt = $conn->prepare("SELECT COUNT(*) AS appointment_count FROM appointment");
-$stmt->execute();
-$appointment_count = $stmt->fetch(PDO::FETCH_ASSOC)['appointment_count'];
-
-// Fetch total services
-$stmt = $conn->prepare("SELECT COUNT(*) AS service_count FROM services");
-$stmt->execute();
-$service_count = $stmt->fetch(PDO::FETCH_ASSOC)['service_count'];
-
-// Fetch total messages
-$stmt = $conn->prepare("SELECT COUNT(*) AS message_count FROM contact_form");
-$stmt->execute();
-$message_count = $stmt->fetch(PDO::FETCH_ASSOC)['message_count'];
-
-// Fetch all users
-$users_result = $conn->query("SELECT * FROM users");
-
-// Fetch all messages
-$messages = $conn->query("SELECT * FROM contact_form ORDER BY created_at DESC");
-
-// Handle message deletion
-if (isset($_GET['delete'])) {
-    $id = intval($_GET['delete']);
-    $stmt = $conn->prepare("DELETE FROM contact_form WHERE id = :id");
-    $stmt->execute(['id' => $id]);
-    header("Location: dashboard.php?deleted=1");
-    exit();
-}
-
-// Handle making a user an admin
-if (isset($_GET['make_admin'])) {
-    $user_id = intval($_GET['make_admin']);
-    $stmt = $conn->prepare("UPDATE users SET role = 'admin' WHERE id = :id");
-    $stmt->execute(['id' => $user_id]);
-    header("Location: dashboard.php?role_changed=1");
-    exit();
-}
-
-// Handle user deletion
-if (isset($_GET['delete_user'])) {
-    $user_id = intval($_GET['delete_user']);
-    if ($user_id !== $_SESSION['user_id']) {
-        $stmt = $conn->prepare("DELETE FROM users WHERE id = :id");
-        $stmt->execute(['id' => $user_id]);
-        header("Location: dashboard.php?user_deleted=1");
-    } else {
-        header("Location: dashboard.php?user_delete_error=1");
+    public function __construct($db) {
+        $this->conn = $db->getConnection();
+        if (!$this->conn) {
+            die("Connection failed: Unable to connect to the database.");
+        }
+        $this->user_id = $_SESSION['user_id'];
     }
-    exit();
+
+    // Ensure the user is logged in
+    public function ensureLoggedIn() {
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: login.php');
+            exit();
+        }
+    }
+
+    // Fetch counts for users, appointments, services, and messages
+    public function fetchCounts() {
+        return [
+            'user_count' => $this->fetchCount('users'),
+            'appointment_count' => $this->fetchCount('appointment'),
+            'service_count' => $this->fetchCount('services'),
+            'message_count' => $this->fetchCount('contact_form')
+        ];
+    }
+
+    // Function to fetch count for any table
+    private function fetchCount($table) {
+        $stmt = $this->conn->prepare("SELECT COUNT(*) AS count FROM $table");
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC)['count'];
+    }
+
+    // Fetch all users and contact form messages
+    public function fetchAllUsers() {
+        return $this->conn->query("SELECT * FROM users");
+    }
+
+    public function fetchMessages() {
+        return $this->conn->query("SELECT * FROM contact_form ORDER BY created_at DESC");
+    }
+
+    // Handle message deletion
+    public function deleteMessage($id) {
+        $stmt = $this->conn->prepare("DELETE FROM contact_form WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+    }
+
+    // Make a user an admin
+    public function makeAdmin($user_id) {
+        $stmt = $this->conn->prepare("UPDATE users SET role = 'admin' WHERE id = :id");
+        $stmt->execute(['id' => $user_id]);
+    }
+
+    // Handle user deletion
+    public function deleteUser($user_id) {
+        if ($user_id !== $_SESSION['user_id']) {
+            $stmt = $this->conn->prepare("DELETE FROM users WHERE id = :id");
+            $stmt->execute(['id' => $user_id]);
+        }
+    }
+
+    // Handle form submission actions
+    public function handleActions() {
+        if (isset($_GET['delete'])) {
+            $this->deleteMessage(intval($_GET['delete']));
+            header("Location: dashboard.php?deleted=1");
+            exit();
+        }
+
+        if (isset($_GET['make_admin'])) {
+            $this->makeAdmin(intval($_GET['make_admin']));
+            header("Location: dashboard.php?role_changed=1");
+            exit();
+        }
+
+        if (isset($_GET['delete_user'])) {
+            $this->deleteUser(intval($_GET['delete_user']));
+            header("Location: dashboard.php?user_deleted=1");
+            exit();
+        }
+    }
 }
 
-// Fetch admin email
-$admin_email = $_SESSION['email'];
+include 'include/db.php';
+$db = new Database();
+$adminDashboard = new AdminDashboard($db);
+
+$adminDashboard->ensureLoggedIn();
+$adminDashboard->handleActions();
+
+// Fetch required data
+$counts = $adminDashboard->fetchCounts();
+$users_result = $adminDashboard->fetchAllUsers();
+$messages = $adminDashboard->fetchMessages();
 ?>
 
 <!DOCTYPE html>
@@ -96,41 +119,40 @@ $admin_email = $_SESSION['email'];
         <h2>Admin Dashboard</h2>
         <ul>
             <li><a href="index.php">Home</a></li>
-            <li><a href="dashboard.php#messages">Messages (<?= $message_count ?>)</a></li>
-            <li><a href="dashboard.php#users">All Users (<?= $user_count ?>)</a></li>
+            <li><a href="dashboard.php#messages">Messages (<?= $counts['message_count'] ?>)</a></li>
+            <li><a href="dashboard.php#users">All Users (<?= $counts['user_count'] ?>)</a></li>
             <li><a href="logout.php">Logout</a></li>
         </ul>
     </div>
 
     <div class="main-content">
         <div class="dashboard-header">
-            <h1>Welcome, <?= htmlspecialchars($admin_email) ?>!</h1>
+            <h1>Welcome, <?= htmlspecialchars($_SESSION['email']) ?>!</h1>
             <p>Here’s a quick overview of the system:</p>
         </div>
 
         <div class="dashboard-stats">
             <div class="stat">
                 <h3>Total Users</h3>
-                <p><?= $user_count ?></p>
+                <p><?= $counts['user_count'] ?></p>
             </div>
             <div class="stat">
                 <h3>Total Appointments</h3>
-                <p><?= $appointment_count ?></p>
+                <p><?= $counts['appointment_count'] ?></p>
             </div>
             <div class="stat">
                 <h3>Total Services</h3>
-                <p><?= $service_count ?></p>
+                <p><?= $counts['service_count'] ?></p>
             </div>
             <div class="stat">
                 <h3>Messages Received</h3>
-                <p><?= $message_count ?></p>
+                <p><?= $counts['message_count'] ?></p>
             </div>
         </div>
 
         <!-- Contact Messages Section -->
         <section id="messages">
             <h2>Contact Messages</h2>
-
             <?php if (isset($_GET['deleted'])): ?>
                 <p class="success-message">Message deleted successfully!</p>
             <?php endif; ?>
