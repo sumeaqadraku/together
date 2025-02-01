@@ -38,7 +38,7 @@ $testimonials_result = $conn->query($testimonials_sql);
     <h2>Our Services</h2>
     <div class="service-cards">
         <?php
-        if ($services_result->num_rows > 0) {
+        if ($services_result-> num_rows > 0) {
             while ($service = $services_result->fetch_assoc()) {
                 echo "<div class='service-card'>";
 
