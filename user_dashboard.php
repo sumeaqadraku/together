@@ -144,7 +144,7 @@ $appointments_result = $conn->query($appointments_sql);
     }
 
     .btn:hover {
-        background-color: #0056b3;
+        background-color:rgb(90, 108, 90);
     }
 
     /* Responsiveness for smaller screens */
