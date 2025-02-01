@@ -1,5 +1,5 @@
 <?php
-session_start(); // Filloni sesionin
+session_start(); // Start session
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +10,7 @@ session_start(); // Filloni sesionin
   <title>Together</title>
 </head>
 <body>
+
 <header class="navbar">
     <a href="index.php" class="logo">together</a>
     <nav>
@@ -30,11 +31,14 @@ session_start(); // Filloni sesionin
       </ul>
     </nav>
 
-    <?php if (isset($_SESSION['user_id'])): ?>
-        <!-- Nëse përdoruesi është i loguar, shfaq butonin "Log Out" -->
-        <a href="logout.php" class="contact-button">Log Out</a>
-    <?php else: ?>
-        <!-- Nëse përdoruesi nuk është i loguar, shfaq butonin "Log In" -->
-        <a href="login.php" class="contact-button">Log In</a>
-    <?php endif; ?>
+    <div class="auth-button">
+      <?php if (isset($_SESSION['user_id'])): ?>
+          <a href="logout.php" class="contact-button">Log Out</a>
+      <?php else: ?>
+          <a href="login.php" class="contact-button">Log In</a>
+      <?php endif; ?>
+    </div>
 </header>
+
+</body>
+</html>
