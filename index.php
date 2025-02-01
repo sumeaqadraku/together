@@ -25,7 +25,7 @@ $testimonials_result = $conn->query($testimonials_sql);
 </head>
 <body>
 
-  <main> <!-- Fixed missing <main> tag -->
+<main>
   <section class="hero">
     <div class="hero-content">
       <h1>Building brighter tomorrows, together</h1>
@@ -38,17 +38,16 @@ $testimonials_result = $conn->query($testimonials_sql);
     <h2>Our Services</h2>
     <div class="service-cards">
         <?php
-        if ($services_result-> num_rows > 0) {
-            while ($service = $services_result->fetch_assoc()) {
+        $services = $services_result->fetchAll(PDO::FETCH_ASSOC);
+        if (count($services) > 0) {
+            foreach ($services as $service) {
                 echo "<div class='service-card'>";
-
                 // Securely display the image or a placeholder
                 if (!empty($service['image_url'])) {
                     echo "<img src='" . htmlspecialchars($service['image_url']) . "' alt='" . htmlspecialchars($service['name']) . "' class='service-icon'>";
                 } else {
                     echo "<img src='assets/images/placeholder.png' alt='No image available' class='service-icon'>";
                 }
-
                 echo "<h3>" . htmlspecialchars($service['name']) . "</h3>";
                 echo "<p>" . htmlspecialchars($service['description']) . "</p>";
                 echo "</div>";
@@ -64,8 +63,9 @@ $testimonials_result = $conn->query($testimonials_sql);
     <h2>What Our Clients Say</h2>
     <div class="testimonial-slider">
       <?php
-      if ($testimonials_result->num_rows > 0) {
-          while ($testimonial = $testimonials_result->fetch_assoc()) {
+      $testimonials = $testimonials_result->fetchAll(PDO::FETCH_ASSOC);
+      if (count($testimonials) > 0) {
+          foreach ($testimonials as $testimonial) {
               echo "<div class='testimonial'>";
               echo "<p>\"" . htmlspecialchars($testimonial['quote']) . "\" – <strong>" . htmlspecialchars($testimonial['author']) . "</strong></p>";
               echo "</div>";
@@ -80,9 +80,7 @@ $testimonials_result = $conn->query($testimonials_sql);
   <footer>
     <center> <p>&copy; 2025 Together. All rights reserved.</p> </center>
   </footer>
-  </main> <!-- Closing main tag -->
-
+</main>
 
 </body>
 </html>
-

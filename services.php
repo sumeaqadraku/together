@@ -10,9 +10,10 @@ $conn = $db->getConnection();
 $intro_sql = "SELECT * FROM service_intro LIMIT 1"; 
 $intro_result = $conn->query($intro_sql);
 $intro_text = '';
-if ($intro_result->num_rows > 0) {
-  $row = $intro_result->fetch_assoc();
-  $intro_text = $row['intro_text'];
+
+if ($intro_result && $intro_result->rowCount() > 0) {
+    $row = $intro_result->fetch(PDO::FETCH_ASSOC);
+    $intro_text = $row['intro_text'];
 }
 
 // Fetch all services from the 'explore_services' table
@@ -39,7 +40,7 @@ $services_result = $conn->query($services_sql);
   <!-- Dynamic Introductory Text Section -->
   <center>
     <section class="intro-text">
-      <p><?php echo $intro_text; ?></p>
+      <p><?php echo htmlspecialchars($intro_text); ?></p>
     </section>
   </center>
 
@@ -49,14 +50,19 @@ $services_result = $conn->query($services_sql);
     <br>
     <div class="service-list">
       <?php
-      // Loop through each service and display it
-      while ($service = $services_result->fetch_assoc()) {
-        echo '<div class="service-item">';
-        echo '<img src="' . $service['image_path'] . '" alt="' . $service['title'] . '">'; // Use image_path
-        echo '<h3>' . $service['title'] . '</h3>';
-        echo '<p>' . $service['description'] . '</p>';
-        echo '<a href="' . $service['link'] . '" class="cta-button">Learn More</a>'; // Use link
-        echo '</div>';
+      // Check if there are any services to display
+      if ($services_result && $services_result->rowCount() > 0) {
+          // Loop through each service and display it
+          while ($service = $services_result->fetch(PDO::FETCH_ASSOC)) {
+              echo '<div class="service-item">';
+              echo '<img src="' . htmlspecialchars($service['image_path']) . '" alt="' . htmlspecialchars($service['title']) . '">'; // Use image_path
+              echo '<h3>' . htmlspecialchars($service['title']) . '</h3>';
+              echo '<p>' . htmlspecialchars($service['description']) . '</p>';
+              echo '<a href="' . htmlspecialchars($service['link']) . '" class="cta-button">Learn More</a>'; // Use link
+              echo '</div>';
+          }
+      } else {
+          echo '<p>No services available at the moment.</p>';
       }
       ?>
     </div>

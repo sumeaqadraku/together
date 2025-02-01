@@ -22,15 +22,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
 
     // Prepare a query to check if the email exists in the database
-    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
-    $stmt->bind_param("s", $email);
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email = :email");
+    $stmt->bindValue(':email', $email);
     $stmt->execute();
-    $result = $stmt->get_result();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Fetch the user data from the database
-    if ($result->num_rows > 0) {
-        $user = $result->fetch_assoc();
-
+    // Check if the user exists
+    if ($user) {
         // Verify the password
         if (password_verify($password, $user['password'])) {
             // Store user data in the session
@@ -40,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             // Redirect based on role
             if ($user['role'] == 'admin') {
-                header('Location: profile.php'); // Admin goes to dashboard
+                header('Location: profile.php'); // Admin goes to profile
             } else {
                 header('Location: index.php'); // Regular users go to index
             }
@@ -51,9 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         $error = 'Invalid email or password.';
     }
-
-    // Close the statement
-    $stmt->close();
 }
 ?>
 
