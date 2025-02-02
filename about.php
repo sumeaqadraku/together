@@ -89,15 +89,15 @@ $video_url = $aboutUs->getVideoUrl();
                 </div>
                 <div class="slide">
                     <img src="images/66e0393b9ffcf0b7467bd9bb-66e078c69b00ce6cdd63f2d6-thumbnail.jpg" alt="Dr. Anna Anderson">
-                    <div class="caption">Dr. Anna Anderson</div>
+                    <div class="caption">Dr. James Thompson</div>
                 </div>
                 <div class="slide">
                     <img src="images/674feb9ae4bbb8c6416767ea-674ff769eba7a54dcff4d432-thumbnail.jpg" alt="Dr. Anna Anderson">
-                    <div class="caption">Dr. Anna Anderson</div>
+                    <div class="caption">Dr. Olivia Martinez</div>
                 </div>
                 <div class="slide">
                     <img src="images/66ddb4a724feda18e1731e8a-66ddc2f94b01c76d93729c68-thumbnail.jpg" alt="Dr. Anna Anderson">
-                    <div class="caption">Dr. Anna Anderson</div>
+                    <div class="caption">Dr. Thomas Collins</div>
                 </div>
                 
             </div>
