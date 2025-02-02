@@ -1,64 +1,80 @@
 <?php
-include 'include/db.php';  // Përfshini klasën e databazës
+include 'include/db.php';  
 include 'include/header.php';
 
+// AboutUs Class
 class AboutUs {
-    private $db;
-    private $aboutContent;
+    private $conn;
+    private $about;
 
-    public function __construct() {
-        $this->db = new Database();  // Krijimi i një objekti të klasës Database
-        $this->aboutContent = $this->db->fetchAboutUsContent(4);  // Thirra metodën për të marrë të dhënat
+    public function __construct($conn) {
+        $this->conn = $conn;
     }
 
-    public function displayContent() {
-        if ($this->aboutContent) {
-            $about = $this->aboutContent;
-            $video_url = !empty($about['video_url']) ? $about['video_url'] : 'default-video.mp4';
-        } else {
-            $about = [
-                'title' => 'About Us',
-                'description' => 'Description not available.',
-                'team_message' => 'Our team is dedicated to helping you.',
-                'our_story' => 'Our story is currently unavailable.',
-                'video_url' => 'default-video.mp4'
-            ];
-            $video_url = $about['video_url'];
-        }
+    // Fetch content from the database
+    public function fetchContent($id) {
+        $sql = "SELECT * FROM about_us WHERE id = :id";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $this->about = $stmt->fetch(PDO::FETCH_ASSOC);  // Fetching the content as an associative array
+    }
 
-        // HTML output starts here
-        ?>
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title><?php echo htmlspecialchars($about['title']); ?></title>
-            <link rel="stylesheet" href="assets/css/about.css">
-            <link rel="stylesheet" href="assets/css/header.css">
+    // Get the about data
+    public function getAbout() {
+        return $this->about;
+    }
 
-        </head>
-        <body>
-        <center>
-            <br><br><br>
-            <h1><?php echo htmlspecialchars($about['title']); ?></h1><br>
-            <p><?php echo htmlspecialchars($about['description']); ?></p><br>
-            <p><?php echo htmlspecialchars($about['team_message']); ?></p>
-            <br>
+    // Handle missing video URL
+    public function getVideoUrl() {
+        return !empty($this->about['video_url']) ? $this->about['video_url'] : 'default-video.mp4';
+    }
+}
 
-            <!-- Video Section -->
-            <div class="video-container">
-                <video autoplay muted loop width="600">
-                    <source src="<?php echo htmlspecialchars($video_url); ?>" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            <br>
-        </center>
+// Create a new instance of AboutUs
+$db = new Database();
+$conn = $db->getConnection();
+$aboutUs = new AboutUs($conn);
 
+// Fetch About Us content with id 4
+$aboutUs->fetchContent(4);
+$about = $aboutUs->getAbout();
+$video_url = $aboutUs->getVideoUrl();
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?php echo htmlspecialchars($about['title']); ?></title>
+    <link rel="stylesheet" href="assets/css/about.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+
+</head>
+<body>
+    <center>
+        <br><br>
+        <h1><?php echo htmlspecialchars($about['title']); ?></h1><br>
+        <p><?php echo htmlspecialchars($about['description']); ?></p><br>
+        <p><?php echo htmlspecialchars($about['our_story']); ?></p><br>
+        <p><?php echo htmlspecialchars($about['team_message']); ?></p>
+        <br><br>
+
+        <!-- Video Section -->
+        <div class="video-container">
+            <video autoplay muted loop width="600">
+                <source src="<?php echo htmlspecialchars($video_url); ?>" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <br>
+
+        <!-- Our Story Section -->
         <section class="our-story">
             <h2>Our Story</h2>
-           <center><p><?php echo htmlspecialchars($about['our_story']); ?></p></center>
+            <center><p><?php echo htmlspecialchars($about['our_story']); ?></p></center>
         </section>
 
         <!-- Meet Our Team Section (Slider) -->
@@ -66,7 +82,31 @@ class AboutUs {
             <center><h3><?php echo htmlspecialchars($about['team_message']); ?></h3></center>
             <br>
             <div class="carousel">
-                <!-- Carousel items -->
+                <div class="slide">
+                    <img src="images/66e07c26223c0345b2705eb7-66e08f9fc5edea00ff7a9c9b-thumbnail.jpg" alt="Dr. Emily Parker">
+                    <div class="caption">Dr. Emily Parker</div>
+                </div>
+                <div class="slide">
+                    <img src="images/66ddf4376745c476c5c794ef-66de06815eaa4a2a0d6ce7e2-thumbnail.jpg" alt="Dr. Oliver Benett">
+                    <div class="caption">Dr. Oliver Benett</div>
+                </div>
+                <div class="slide">
+                    <img src="images/66df00c7af792f4f099d4641-66df0ddb949d822c43bf9c01-thumbnail.jpg" alt="Dr. Anna Anderson">
+                    <div class="caption">Dr. Anna Anderson</div>
+                </div>
+                <div class="slide">
+                    <img src="images/66e0393b9ffcf0b7467bd9bb-66e078c69b00ce6cdd63f2d6-thumbnail.jpg" alt="Dr. Anna Anderson">
+                    <div class="caption">Dr. Anna Anderson</div>
+                </div>
+                <div class="slide">
+                    <img src="images/674feb9ae4bbb8c6416767ea-674ff769eba7a54dcff4d432-thumbnail.jpg" alt="Dr. Anna Anderson">
+                    <div class="caption">Dr. Anna Anderson</div>
+                </div>
+                <div class="slide">
+                    <img src="images/66ddb4a724feda18e1731e8a-66ddc2f94b01c76d93729c68-thumbnail.jpg" alt="Dr. Anna Anderson">
+                    <div class="caption">Dr. Anna Anderson</div>
+                </div>
+                
             </div>
         </div>
 
@@ -96,15 +136,8 @@ class AboutUs {
         <section class="cta">
             <p>Ready to start your journey? <a href="services.php">Learn more about our services</a> or <a href="contact.php">contact us</a> to take the first step.</p>
         </section>
+    </center>
 
-        <script src="js/main.js"></script>
-        </body>
-        </html>
-        <?php
-    }
-}
-
-// Përdorimi i klasës
-$aboutPage = new AboutUs();
-$aboutPage->displayContent();
-?>
+    <script src="js/main.js"></script>
+</body>
+</html>

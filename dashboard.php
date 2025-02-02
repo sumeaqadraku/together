@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 
@@ -241,6 +242,10 @@ $messages = $adminDashboard->fetchMessages();
 
             <?php if (isset($_GET['user_deleted'])): ?>
                 <p class="success-message">User deleted successfully!</p>
+            <?php endif; ?>
+
+            <?php if (isset($_GET['user_delete_error'])): ?>
+                <p class="error-message">You cannot delete your own account!</p>
             <?php endif; ?>
 
             <table>

@@ -4,74 +4,58 @@ header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 
-include 'include/db.php';
+include 'include/db.php'; // Përfshirja e lidhjes me DB
 
 class Login {
     private $conn;
     private $error;
 
+    // Konstruktor që merr lidhjen e DB
     public function __construct($db) {
-        $this->conn = $db->getConnection();  // Get the connection object
+        $this->conn = $db->getConnection();
         $this->error = '';
     }
 
+    // Funksioni për login-in
     public function loginUser($email, $password) {
-        // Check if email and password are provided
-        if (empty($email) || empty($password)) {
-            $this->error = 'Both email and password are required.';
-            return false;  // Return false to indicate login failure
-        }
-
-        // Validate email format
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $this->error = 'Please enter a valid email address.';
-            return false;  // Return false to indicate login failure
-        }
-
-        // Prepare a query to check if the email exists in the database
         $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = :email");
         $stmt->bindValue(':email', $email);
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Check if the user exists and verify the password
+        // Kontrollo nëse përdoruesi ekziston
         if ($user && password_verify($password, $user['password'])) {
-            // Store user data in the session
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['email'] = $user['email'];
             $_SESSION['role'] = $user['role'];
 
-            // Redirect based on role
+            // Drejto përdoruesin sipas rolit
             if ($user['role'] == 'admin') {
                 header('Location: profile.php');
+                exit();
             } else {
                 header('Location: index.php');
+                exit();
             }
-            exit();
         } else {
             $this->error = 'Invalid email or password.';
-            return false;  // Return false to indicate login failure
         }
     }
 
+    // Funksioni për marrjen e gabimit
     public function getError() {
         return $this->error;
     }
 }
 
-// Initialize error variable and handle login
-$login = new Login(new Database());
-$loginSuccessful = false;  // Flag to track if login was successful
-
+// Kontrollo nëse formulari është dërguar
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Attempt login
-    if ($login->loginUser($email, $password)) {
-        $loginSuccessful = true;
-    }
-    $error = $login->getError();
+    $login = new Login(new Database());
+    $login->loginUser($email, $password);
+    $error = $login->getError();  // Merr gabimin për ta shfaqur
 }
 ?>
 
@@ -105,8 +89,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 <?php if (!empty($error)) : ?>
                     <p style="color: red;"><?= htmlspecialchars($error) ?></p>
-                <?php elseif ($loginSuccessful) : ?>
-                    <p style="color: green;">The form is valid! Redirecting...</p>
                 <?php endif; ?>
 
                 <div class="actions">

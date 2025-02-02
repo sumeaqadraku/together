@@ -28,15 +28,6 @@ class Database {
         return $this->conn;
     }
 
-    // Kjo metodë merr të dhënat për About Us
-    public function fetchAboutUsContent($id) {
-        $sql = "SELECT * FROM about_us WHERE id = :id";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
-
     public function __destruct() {
         // Mbyll lidhjen kur objekti shkatërrohet
         $this->conn = null;

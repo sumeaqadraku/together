@@ -1,48 +1,61 @@
 <?php
 // Include the database connection file
-// Include the database connection file
 include 'include/db.php';
 include 'include/header.php';
 
-// Check if the connection was successful
+class Booking {
+    private $conn;
+    
+    public function __construct($database) {
+        $this->conn = $database->getConnection();
+    }
+
+    // Handle form submission for booking an appointment
+    public function createAppointment($first_name, $last_name, $user_email, $phone_number, $appointment_date, $service_type, $notes) {
+        $status = 'pending';  // Default status
+
+        // Prepare the SQL query to insert the data into the database
+        $sql = "INSERT INTO appointment (first_name, last_name, user_email, phone_number, appointment_date, service_type, notes, status) 
+                VALUES (:first_name, :last_name, :user_email, :phone_number, :appointment_date, :service_type, :notes, :status)";
+
+        // Execute the query and check if it was successful
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':first_name', $first_name);
+        $stmt->bindParam(':last_name', $last_name);
+        $stmt->bindParam(':user_email', $user_email);
+        $stmt->bindParam(':phone_number', $phone_number);
+        $stmt->bindParam(':appointment_date', $appointment_date);
+        $stmt->bindParam(':service_type', $service_type);
+        $stmt->bindParam(':notes', $notes);
+        $stmt->bindParam(':status', $status);
+
+        return $stmt->execute();
+    }
+}
+
+// Create an instance of the Database class
 $database = new Database();
-$conn = $database->getConnection();
+$booking = new Booking($database);
 
 // Check if the form was submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get the form data
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
-    $user_email = $_POST['user_email']; // Fetch email from the form
+    $user_email = $_POST['user_email'];
     $phone_number = $_POST['phone_number'];
     $appointment_date = $_POST['appointment_date'];
-    $service_type = $_POST['service_type'];  // Individual, Group, or Couple
+    $service_type = $_POST['service_type'];
     $notes = $_POST['notes'];
-    $status = 'pending';  // Default status
 
-    // Prepare the SQL query to insert the data into the database
-    $sql = "INSERT INTO appointment (first_name, last_name, user_email, phone_number, appointment_date, service_type, notes, status) 
-            VALUES (:first_name, :last_name, :user_email, :phone_number, :appointment_date, :service_type, :notes, :status)";
-
-    // Execute the query and check if it was successful
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':first_name', $first_name);
-    $stmt->bindParam(':last_name', $last_name);
-    $stmt->bindParam(':user_email', $user_email); // Bind email to the SQL query
-    $stmt->bindParam(':phone_number', $phone_number);
-    $stmt->bindParam(':appointment_date', $appointment_date);
-    $stmt->bindParam(':service_type', $service_type);
-    $stmt->bindParam(':notes', $notes);
-    $stmt->bindParam(':status', $status);
-
-    if ($stmt->execute()) {
+    // Call the createAppointment method
+    if ($booking->createAppointment($first_name, $last_name, $user_email, $phone_number, $appointment_date, $service_type, $notes)) {
         // If the booking is successful, show a JavaScript alert
         echo "<script>alert('Your booking was successful!');</script>";
     } else {
-        echo "Error: " . $stmt->errorInfo()[2];
+        echo "Error: Could not complete your booking.";
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +66,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Appointment Booking</title>
     <link rel="stylesheet" href="assets/css/booking.css">
     <link rel="stylesheet" href="assets/css/header.css">
-
 </head>
 <body>
     <div class="container">
@@ -70,9 +82,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             
             <div class="form-group">
-            <label for="user_email">Email</label>
-            <input type="email" id="user_email" name="user_email" required>
-        </div>
+                <label for="user_email">Email</label>
+                <input type="email" id="user_email" name="user_email" required>
+            </div>
 
             <div class="form-group">
                 <label for="phone_number">Phone Number</label>
@@ -103,6 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
 </body>
 </html>
+
 <style>
 /* Global styles */
 * {

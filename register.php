@@ -1,72 +1,71 @@
 <?php
 session_start();
-include 'include/db.php';
+include 'include/db.php';  // Përfshijmë klasën Database për lidhjen me DB
 
-class UserRegistration {
-
+class User {
     private $db;
     private $conn;
-    public $error = '';
-    public $success = '';
 
-    public function __construct() {
-        $this->db = new Database();
-        $this->conn = $this->db->getConnection(); // Get the connection object
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->handleFormSubmission();
-        }
+    // Konstruktori merr lidhjen e DB si argument
+    public function __construct($db) {
+        $this->db = $db;
+        $this->conn = $this->db->getConnection();
     }
 
-    private function handleFormSubmission() {
-        // Get input values from form
-        $email = trim($_POST['email']);
-        $password = trim($_POST['password']); // Only password now
-
-        // Validate input
+    // Funksioni për regjistrimin e përdoruesit
+    public function register($email, $password) {
+        // Validimi i të dhënave
         if (empty($email) || empty($password)) {
-            $this->error = "All fields are required!";
+            return "All fields are required!";
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $this->error = "Invalid email format!";
-        } else {
-            $this->checkEmailExistence($email, $password);
+            return "Invalid email format!";
         }
-    }
 
-    private function checkEmailExistence($email, $password) {
-        // Check if email already exists in the database
+        // Kontrollo nëse email-i ekziston në DB
         $stmt = $this->conn->prepare("SELECT id FROM users WHERE email = ?");
-        $stmt->bindParam(1, $email, PDO::PARAM_STR); // Using PDO's bindParam
-        $stmt->execute();
-        
-        // Check if any result is returned
+        $stmt->execute([$email]);
+
         if ($stmt->rowCount() > 0) {
-            $this->error = "Email is already registered!";
+            return "Email is already registered!";
         } else {
-            $this->registerUser($email, $password);
-        }
-    }
+            // Hash password dhe ruaj përdoruesin në DB
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            $role = "user"; // Roli default
 
-    private function registerUser($email, $password) {
-        // Hash the password before storing it
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $role = "user"; // Default role
+            // Komanda për të regjistruar përdoruesin në DB
+            $stmt = $this->conn->prepare("INSERT INTO users (email, password, role, created_at) VALUES (?, ?, ?, NOW())");
+            $stmt->execute([$email, $hashed_password, $role]);
 
-        // Insert the user into the database
-        $stmt = $this->conn->prepare("INSERT INTO users (email, password, role, created_at) VALUES (?, ?, ?, NOW())");
-        $stmt->bindParam(1, $email, PDO::PARAM_STR);
-        $stmt->bindParam(2, $hashed_password, PDO::PARAM_STR);
-        $stmt->bindParam(3, $role, PDO::PARAM_STR);
-
-        if ($stmt->execute()) {
-            $this->success = "Account created successfully! You can now log in.";
-        } else {
-            $this->error = "Registration failed. Please try again.";
+            return "Account created successfully! You can now log in.";
         }
     }
 }
 
-// Create an instance of the UserRegistration class
-$registration = new UserRegistration();
+$error = '';
+$success = '';
+
+// Aktivizo raportimin e gabimeve për debugging
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+// Verifikimi nëse është postuar formulari
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Krijo një instance të klasës User
+    $user = new User(new Database());
+
+    // Regjistro përdoruesin dhe merr mesazhin përkatës
+    $result = $user->register($email, $password);
+
+    // Verifikoni nëse regjistrimi ishte me sukses
+    if (strpos($result, 'successfully') !== false) {
+        $success = $result;
+    } else {
+        $error = $result;
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -88,10 +87,10 @@ $registration = new UserRegistration();
       <p>You can't pour from an empty cup. Join us to kickstart your wellbeing.</p>
 
       <!-- Show error or success message -->
-      <?php if (!empty($registration->error)) : ?>
-        <p style="color: red;"><?= htmlspecialchars($registration->error) ?></p>
-      <?php elseif (!empty($registration->success)) : ?>
-        <p style="color: green;"><?= htmlspecialchars($registration->success) ?></p>
+      <?php if (!empty($error)) : ?>
+        <p style="color: red;"><?= htmlspecialchars($error) ?></p>
+      <?php elseif (!empty($success)) : ?>
+        <p style="color: green;"><?= htmlspecialchars($success) ?></p>
       <?php endif; ?>
 
       <!-- Sign-up form -->
