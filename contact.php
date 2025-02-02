@@ -13,12 +13,22 @@ class ContactForm {
 
     public function handleFormSubmission() {
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-            $name = $this->conn->real_escape_string($_POST['name']);
-            $email = $this->conn->real_escape_string($_POST['email']);
-            $message = $this->conn->real_escape_string($_POST['message']);
+            // Get user input safely using POST data
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $message = $_POST['message'];
 
-            $sql = "INSERT INTO contact_form (name, email, message) VALUES ('$name', '$email', '$message')";
-            if ($this->conn->query($sql) === TRUE) {
+            // Use a prepared statement to prevent SQL injection
+            $sql = "INSERT INTO contact_form (name, email, message) VALUES (:name, :email, :message)";
+            $stmt = $this->conn->prepare($sql);
+
+            // Bind the parameters
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':message', $message);
+
+            // Execute the statement and check if the insertion was successful
+            if ($stmt->execute()) {
                 header("Location: contact.php?success=1");
                 exit();
             } else {
@@ -38,13 +48,12 @@ class ContactForm {
 }
 
 $contactForm = new ContactForm();
-$contactForm->handleFormSubmission(); 
+$contactForm->handleFormSubmission();
 ?>
 
 <head>
     <link rel="stylesheet" href="assets/css/contact.css">
     <link rel="stylesheet" href="assets/css/header.css">
-
 </head>
 
 <section class="hero">
@@ -104,7 +113,7 @@ $contactForm->handleFormSubmission();
 
         <div class="video-section">
             <video class="service-video" autoplay muted loop>
-                <source src="images/11025441-hd_4096_2160_30fps.mp4" type="video/mp4 ">
+                <source src="images/11025441-hd_4096_2160_30fps.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
