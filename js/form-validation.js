@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const validateForm = (event) => {
     event.preventDefault();
-    errorMessages.innerHTML = "";
+    errorMessages.innerHTML = "";  // Çdo herë që forma dërgohet, pastro mesazhet e gabimit
 
     const emailValue = emailField.value.trim();
     const passwordValue = passwordField.value.trim();
@@ -47,9 +47,26 @@ document.addEventListener("DOMContentLoaded", function () {
       isValid = false;
     }
 
+    // Nëse formulari është valid, dërgoje atë përmes AJAX
     if (isValid) {
-      alert("The form is valid!");
-      form.submit();
+      const formData = new FormData(form);
+
+      fetch('login.php', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          alert("The form is valid!");
+          window.location.href = data.redirect_url;  // Redirektoni në faqen përkatëse
+        } else {
+          errorMessages.innerHTML = `<p>${data.error}</p>`;  // Shfaq gabimin nga serveri
+        }
+      })
+      .catch(error => {
+        errorMessages.innerHTML = "<p>There was an error processing your request. Please try again.</p>";
+      });
     }
   };
 

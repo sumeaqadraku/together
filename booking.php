@@ -1,5 +1,6 @@
 <?php
 // Include the database connection file
+// Include the database connection file
 include 'include/db.php';
 include 'include/header.php';
 
@@ -12,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get the form data
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
+    $user_email = $_POST['user_email']; // Fetch email from the form
     $phone_number = $_POST['phone_number'];
     $appointment_date = $_POST['appointment_date'];
     $service_type = $_POST['service_type'];  // Individual, Group, or Couple
@@ -19,13 +21,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $status = 'pending';  // Default status
 
     // Prepare the SQL query to insert the data into the database
-    $sql = "INSERT INTO appointment (first_name, last_name, phone_number, appointment_date, service_type, notes, status) 
-            VALUES (:first_name, :last_name, :phone_number, :appointment_date, :service_type, :notes, :status)";
+    $sql = "INSERT INTO appointment (first_name, last_name, user_email, phone_number, appointment_date, service_type, notes, status) 
+            VALUES (:first_name, :last_name, :user_email, :phone_number, :appointment_date, :service_type, :notes, :status)";
 
     // Execute the query and check if it was successful
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':first_name', $first_name);
     $stmt->bindParam(':last_name', $last_name);
+    $stmt->bindParam(':user_email', $user_email); // Bind email to the SQL query
     $stmt->bindParam(':phone_number', $phone_number);
     $stmt->bindParam(':appointment_date', $appointment_date);
     $stmt->bindParam(':service_type', $service_type);
@@ -39,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Error: " . $stmt->errorInfo()[2];
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -64,6 +68,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="last_name">Last Name</label>
                 <input type="text" id="last_name" name="last_name" required>
             </div>
+            
+            <div class="form-group">
+            <label for="user_email">Email</label>
+            <input type="email" id="user_email" name="user_email" required>
+        </div>
 
             <div class="form-group">
                 <label for="phone_number">Phone Number</label>

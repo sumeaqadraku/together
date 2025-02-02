@@ -35,16 +35,15 @@ class UserRegistration {
     private function checkEmailExistence($email, $password) {
         // Check if email already exists in the database
         $stmt = $this->conn->prepare("SELECT id FROM users WHERE email = ?");
-        $stmt->bind_param("s", $email);
+        $stmt->bindParam(1, $email, PDO::PARAM_STR); // Using PDO's bindParam
         $stmt->execute();
-        $stmt->store_result();
-
-        if ($stmt->num_rows > 0) {
+        
+        // Check if any result is returned
+        if ($stmt->rowCount() > 0) {
             $this->error = "Email is already registered!";
         } else {
             $this->registerUser($email, $password);
         }
-        $stmt->close();
     }
 
     private function registerUser($email, $password) {
@@ -54,14 +53,15 @@ class UserRegistration {
 
         // Insert the user into the database
         $stmt = $this->conn->prepare("INSERT INTO users (email, password, role, created_at) VALUES (?, ?, ?, NOW())");
-        $stmt->bind_param("sss", $email, $hashed_password, $role);
+        $stmt->bindParam(1, $email, PDO::PARAM_STR);
+        $stmt->bindParam(2, $hashed_password, PDO::PARAM_STR);
+        $stmt->bindParam(3, $role, PDO::PARAM_STR);
 
         if ($stmt->execute()) {
             $this->success = "Account created successfully! You can now log in.";
         } else {
             $this->error = "Registration failed. Please try again.";
         }
-        $stmt->close();
     }
 }
 

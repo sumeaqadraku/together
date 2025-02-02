@@ -47,6 +47,12 @@ class AdminDashboard {
         return $this->conn->query("SELECT * FROM users");
     }
 
+    // Fetch all appointments
+    public function fetchAppointments() {
+        return $this->conn->query("SELECT * FROM appointment ORDER BY appointment_date DESC");
+    }
+
+    // Fetch contact form messages
     public function fetchMessages() {
         return $this->conn->query("SELECT * FROM contact_form ORDER BY created_at DESC");
     }
@@ -54,6 +60,12 @@ class AdminDashboard {
     // Handle message deletion
     public function deleteMessage($id) {
         $stmt = $this->conn->prepare("DELETE FROM contact_form WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+    }
+
+    // Handle appointment deletion
+    public function deleteAppointment($id) {
+        $stmt = $this->conn->prepare("DELETE FROM appointment WHERE id = :id");
         $stmt->execute(['id' => $id]);
     }
 
@@ -90,6 +102,12 @@ class AdminDashboard {
             header("Location: dashboard.php?user_deleted=1");
             exit();
         }
+
+        if (isset($_GET['delete_appointment'])) {
+            $this->deleteAppointment(intval($_GET['delete_appointment']));
+            header("Location: dashboard.php?appointment_deleted=1");
+            exit();
+        }
     }
 }
 
@@ -103,6 +121,7 @@ $adminDashboard->handleActions();
 // Fetch required data
 $counts = $adminDashboard->fetchCounts();
 $users_result = $adminDashboard->fetchAllUsers();
+$appointments = $adminDashboard->fetchAppointments();
 $messages = $adminDashboard->fetchMessages();
 ?>
 
@@ -121,6 +140,7 @@ $messages = $adminDashboard->fetchMessages();
             <li><a href="index.php">Home</a></li>
             <li><a href="dashboard.php#messages">Messages (<?= $counts['message_count'] ?>)</a></li>
             <li><a href="dashboard.php#users">All Users (<?= $counts['user_count'] ?>)</a></li>
+            <li><a href="dashboard.php#appointments">Appointments (<?= $counts['appointment_count'] ?>)</a></li>
             <li><a href="logout.php">Logout</a></li>
         </ul>
     </div>
@@ -149,6 +169,39 @@ $messages = $adminDashboard->fetchMessages();
                 <p><?= $counts['message_count'] ?></p>
             </div>
         </div>
+
+        <!-- Appointments Section -->
+        <section id="appointments">
+            <h2>All Appointments</h2>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Appointment Date</th>
+                    <th>Service Type</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                <?php while ($row = $appointments->fetch(PDO::FETCH_ASSOC)): ?>
+                <tr>
+                    <td><?= $row['id'] ?></td>
+                    <td><?= htmlspecialchars($row['first_name']) ?></td>
+                    <td><?= htmlspecialchars($row['last_name']) ?></td>
+                    <td><?= htmlspecialchars($row['user_email']) ?></td>
+                    <td><?= htmlspecialchars($row['phone_number']) ?></td>
+                    <td><?= $row['appointment_date'] ?></td>
+                    <td><?= htmlspecialchars($row['service_type']) ?></td>
+                    <td><?= htmlspecialchars($row['status']) ?></td>
+                    <td>
+                        <a href="dashboard.php?delete_appointment=<?= $row['id'] ?>" class="delete-btn" onclick="return confirm('Are you sure you want to delete this appointment?')">Delete</a>
+                    </td>
+                </tr>
+                <?php endwhile; ?>
+            </table>
+        </section>
 
         <!-- Contact Messages Section -->
         <section id="messages">
@@ -188,10 +241,6 @@ $messages = $adminDashboard->fetchMessages();
 
             <?php if (isset($_GET['user_deleted'])): ?>
                 <p class="success-message">User deleted successfully!</p>
-            <?php endif; ?>
-
-            <?php if (isset($_GET['user_delete_error'])): ?>
-                <p class="error-message">You cannot delete your own account!</p>
             <?php endif; ?>
 
             <table>

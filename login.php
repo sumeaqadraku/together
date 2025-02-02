@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 header("Cache-Control: post-check=0, pre-check=0", false);
@@ -17,6 +16,18 @@ class Login {
     }
 
     public function loginUser($email, $password) {
+        // Check if email and password are provided
+        if (empty($email) || empty($password)) {
+            $this->error = 'Both email and password are required.';
+            return false;  // Return false to indicate login failure
+        }
+
+        // Validate email format
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $this->error = 'Please enter a valid email address.';
+            return false;  // Return false to indicate login failure
+        }
+
         // Prepare a query to check if the email exists in the database
         $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = :email");
         $stmt->bindValue(':email', $email);
@@ -39,6 +50,7 @@ class Login {
             exit();
         } else {
             $this->error = 'Invalid email or password.';
+            return false;  // Return false to indicate login failure
         }
     }
 
@@ -49,12 +61,16 @@ class Login {
 
 // Initialize error variable and handle login
 $login = new Login(new Database());
+$loginSuccessful = false;  // Flag to track if login was successful
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $login->loginUser($email, $password);
+    // Attempt login
+    if ($login->loginUser($email, $password)) {
+        $loginSuccessful = true;
+    }
     $error = $login->getError();
 }
 ?>
@@ -89,6 +105,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 <?php if (!empty($error)) : ?>
                     <p style="color: red;"><?= htmlspecialchars($error) ?></p>
+                <?php elseif ($loginSuccessful) : ?>
+                    <p style="color: green;">The form is valid! Redirecting...</p>
                 <?php endif; ?>
 
                 <div class="actions">

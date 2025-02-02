@@ -16,7 +16,7 @@ $conn = $db->getConnection();
   <section class="video-text-section" >
   <div class="video-container">
     <video class="service-video" autoplay muted loop>
-      <source src="images/7199185-uhd_3840_2160_25fps.mp4" type="video/mp4">
+      <source src="images/3253970-uhd_3840_2160_25fps.mp4">
       Your browser does not support the video tag.
     </video>
   </div>
