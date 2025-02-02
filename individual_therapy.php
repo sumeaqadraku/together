@@ -2,7 +2,6 @@
 include 'include/db.php';  
 include 'include/header.php';
 
-// Initialize Database Connection
 $db = new Database();
 $conn = $db->getConnection();
 
@@ -11,7 +10,6 @@ $conn = $db->getConnection();
 <link rel="stylesheet" href="assets/css/individual_therapy.css">
 <link rel="stylesheet" href="assets/css/header.css">
 
-<!-- Header Section -->
 <section class="video-text-section" >
   <div class="video-container">
     <video class="service-video" autoplay muted loop>
@@ -28,14 +26,13 @@ $conn = $db->getConnection();
 </section>
 
 <div class="contant">
-  <!-- Therapy Overview Section -->
   <div class="pjesa1">
     <section class="therapy-overview">
       <h2>What is Individual Therapy?</h2>
       <p>Individual therapy offers a safe, confidential space where you can work with a licensed therapist to explore your thoughts, feelings, and behaviors. Whether you're facing anxiety, depression, trauma, or simply looking to improve your mental well-being, our therapists are here to guide you through your personal growth journey.</p>
     </section>
 
-    <!-- Benefits of Therapy Section -->
+   
     <section class="therapy-benefits">
       <h2>Benefits of Individual Therapy</h2>
       <ul>
@@ -48,7 +45,7 @@ $conn = $db->getConnection();
     </section>
   </div>
   <div class="pjesa2">
-    <!-- How It Works Section -->
+ 
     <section class="how-it-works">
       <h2>How Individual Therapy Works</h2>
       <p>Our individual therapy sessions are tailored to your unique needs. After an initial consultation, you and your therapist will work together to set goals and create a personalized treatment plan. Sessions typically last 50 minutes and are held on a weekly or bi-weekly basis.</p>
@@ -60,7 +57,7 @@ $conn = $db->getConnection();
   </div>
 </div>
 
-<!-- Call to Action Section -->
+
 <section class="cta-section">
   <h2>Ready to Start Your Therapy Journey?</h2><br><br>
   <p>If you're ready to begin therapy or want to learn more about how it can help you, schedule a free consultation with one of our therapists today. Together, we can help you navigate life's challenges with support, compassion, and understanding.</p>
@@ -68,7 +65,6 @@ $conn = $db->getConnection();
   <a href="contact.php" class="cta-button">Book a Free Consultation</a>
 </section>
 
-<!-- Footer -->
 <footer>
   <p>&copy; 2025 Together Mental Health Platform</p>
 </footer>

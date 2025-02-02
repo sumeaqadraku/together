@@ -4,32 +4,28 @@ header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 
-include 'include/db.php'; // Përfshirja e lidhjes me DB
+include 'include/db.php';
 
 class Login {
     private $conn;
     private $error;
 
-    // Konstruktor që merr lidhjen e DB
     public function __construct($db) {
         $this->conn = $db->getConnection();
         $this->error = '';
     }
 
-    // Funksioni për login-in
     public function loginUser($email, $password) {
         $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = :email");
         $stmt->bindValue(':email', $email);
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Kontrollo nëse përdoruesi ekziston
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['email'] = $user['email'];
             $_SESSION['role'] = $user['role'];
 
-            // Drejto përdoruesin sipas rolit
             if ($user['role'] == 'admin') {
                 header('Location: profile.php');
                 exit();
@@ -42,20 +38,18 @@ class Login {
         }
     }
 
-    // Funksioni për marrjen e gabimit
     public function getError() {
         return $this->error;
     }
 }
 
-// Kontrollo nëse formulari është dërguar
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
     $login = new Login(new Database());
     $login->loginUser($email, $password);
-    $error = $login->getError();  // Merr gabimin për ta shfaqur
+    $error = $login->getError(); 
 }
 ?>
 

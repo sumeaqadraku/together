@@ -8,12 +8,10 @@ class UserRedirect {
     }
 
     private function redirectUser() {
-        // Check if the user is logged in
         if (!$this->isLoggedIn()) {
             $this->redirectToLogin();
         }
 
-        // Redirect based on role
         if ($_SESSION['role'] == 'admin') {
             $this->redirectToDashboard();
         } else {
@@ -41,6 +39,5 @@ class UserRedirect {
     }
 }
 
-// Instantiate the UserRedirect class to trigger the redirection process
 new UserRedirect();
 ?>

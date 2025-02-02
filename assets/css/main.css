@@ -1,30 +1,29 @@
-/* General Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
-  font-weight: 300; /* Lighter font weight */
+  font-weight: 300;
 }
 
 body {
   font-family: 'Inter', sans-serif;
-  font-weight: 300; /* Lighter font weight */
+  font-weight: 300; 
   background-color: #f9f9f9;
   color: #333;
 }
 
-/* Main Container (Hero Section) */
+
 .hero-container {
   margin: 1rem auto;
   padding: 2rem;
   background-color: #fff;
-  border-radius: 24px; /* Larger rounded corners for hero */
+  border-radius: 24px; 
   max-width: 1200px;
   width: 95%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Slight shadow */
-  overflow: hidden; /* Clip child elements to stay within rounded edges */
-  font-weight: 300; /* Lighter font weight for hero section */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden; 
+  font-weight: 300; 
 }
 
 .hero {
@@ -42,11 +41,11 @@ body {
   color: #fff;
   padding: 0 1.5rem;
   position: relative;
-  border-radius: 24px; /* Rounded corners */
-  overflow: hidden; /* Ensures content stays within rounded corners */
-  width: 95%; /* Same width as navbar */
-  max-width: 100%; /* Same max-width as navbar */
-  margin: 1rem auto; /* Center the hero section */
+  border-radius: 24px; 
+  overflow: hidden; 
+  width: 95%; 
+  max-width: 100%; 
+  margin: 1rem auto;
 }
 
 .hero::after {
@@ -90,7 +89,6 @@ body {
   background-color: #7a8a6a;
 }
 
-/* General About Section Styles */
 #about-us {
   width: 95%;
   margin: 0 auto;
@@ -100,7 +98,7 @@ body {
 
 .hero-image img {
   width: 100%;
-  height: 400px; /* Adjust based on your image */
+  height: 400px; 
   object-fit: cover;
   border-radius: 12px;
 }
@@ -108,10 +106,10 @@ body {
 h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
-  color: #7a8a6a; /* Soft, welcoming color */
+  color: #7a8a6a; 
 }
 
-/* Our Story Section */
+
 .our-story p {
   font-size: 1.2rem;
   line-height: 1.6;
@@ -188,7 +186,7 @@ h2 {
   color: #555;
 }
 
-/* CTA */
+
 .cta {
   padding: 1.5rem;
   text-align: center;
@@ -205,7 +203,7 @@ h2 {
   font-weight: bold;
 }
 
-/* Services Section */
+
 .services {
   padding: 2rem 0;
   background-color: #f7f7f7;
@@ -257,7 +255,7 @@ h2 {
   background: #d3d3d3;
 }
 
-/* Services Overview Section */
+
 .services-overview {
   padding: 4rem 0;
   background-color: #f1f4ee;
@@ -286,18 +284,18 @@ h2 {
   text-align: center;
 }
 
-/* Service Card Image Styling */
+
 .service-icon {
-  width: 100px; /* Increase the size of the image */
-  height: 100px; /* Make the height proportional to the width */
-  object-fit: cover; /* Ensures the image fits within the bounds without distortion */
+  width: 100px; 
+  height: 100px;
+  object-fit: cover; 
   margin-bottom: 1rem;
-  transition: transform 0.3s ease-in-out; /* Optional: adds a smooth effect when hovered */
+  transition: transform 0.3s ease-in-out; 
 }
 
-/* Optionally, you can enlarge the image when hovering */
+
 .service-icon:hover {
-  transform: scale(1.1); /* Increases the image size slightly on hover */
+  transform: scale(1.1);
 }
 
 .service-card h3 {
@@ -316,7 +314,6 @@ h2 {
   transition: transform 0.3s ease-in-out;
 }
 
-/* Testimonials Section */
 .testimonials {
   padding: 4rem 0;
   background-color: #f8f8f8;

@@ -1,10 +1,10 @@
-/* General Reset */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
-    font-weight: 300; /* Lighter font weight */
+    font-weight: 300; 
   }
   
   body {
@@ -26,8 +26,8 @@
     max-width: 80%;
     border: 1px solid #e2d6c5;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    position: relative; /* Added position */
-    z-index: 100; /* Ensure navbar stays on top */
+    position: relative;
+    z-index: 100; 
   }
   .dropdown-content li {
     list-style: none;
@@ -35,41 +35,42 @@
   
   .dropdown-content a {
     display: block;
-    padding: 10px 15px; /* Adjust padding for dropdown links */
-    color: #5e4a39; /* Match existing navbar text color */
+    padding: 10px 15px; 
+    color: #5e4a39; 
     text-decoration: none;
-    font-weight: 300; /* Same as navbar font weight */
+    font-weight: 300; 
     transition: background-color 0.3s ease;
   }
   
   .dropdown-content a:hover {
-    background-color: #ddd; /* Highlight on hover */
+    background-color: #ddd; 
   }
   
   .dropdown:hover .dropdown-content {
-    display: block; /* Show dropdown on hover */
+    display: block;
   }
   .dropdown {
-    position: relative; /* Ensures dropdown-content is positioned relative to this element */
+    position: relative;
   }
   
   .dropdown-content {
-    display: none; /* Hidden by default */
+    display: none;
     position: absolute;
-    top: 100%; /* Place below the dropdown button */
-    left: 0; /* Align to the left of the button */
-    background-color: #f7f7f7; /* Same as navbar background */
-    border: 1px solid #e2d6c5; /* Subtle border for dropdown */
-    border-radius: 8px; /* Rounded corners */
-    min-width: 150px; /* Set width for dropdown */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a slight shadow */
-    z-index: 1000; /* Ensure it appears above other elements */
+    top: 100%; 
+    left: 0; 
+    background-color: #f7f7f7; 
+    border: 1px solid #e2d6c5;
+    border-radius: 8px;
+    min-width: 150px; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    z-index: 1000; 
   }
   
   .logo {
     font-size: 1.5rem;
     font-weight: 400;
     color: #725a43;
+    text-decoration: none;
   }
   
   .nav-links {
@@ -117,7 +118,7 @@
     color: #fff;
   }
   
-  /* Hamburger Menu: Show on mobile */
+ 
   @media (max-width: 1193px) {
     .nav-links {
       display: none;

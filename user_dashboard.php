@@ -2,27 +2,22 @@
 session_start();
 require_once '<include/db.php'; 
 
-// Kontrolloni nëse përdoruesi është i kyçur
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php"); // Riorientoni në login nëse nuk është i kyçur
+    header("Location: login.php"); 
     exit();
 }
 
-// Merrni detajet e përdoruesit nga sesioni
 $user_email = $_SESSION['email'];
 
-// Krijoni një klasë për appointment-et
 class Appointment {
     private $conn;
 
-    // Constructor që merr lidhjen e bazës së të dhënave
     public function __construct($db) {
         $this->conn = $db;
     }
 
-    // Metodë për të marrë appointment-et e përdoruesit aktual
     public function getAppointments($user_email) {
-        $sql = "SELECT * FROM appointment WHERE user_email = :user_email"; // Ndryshoni emrin e kolonës nëse është e nevojshme
+        $sql = "SELECT * FROM appointment WHERE user_email = :user_email"; 
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':user_email', $user_email);
         $stmt->execute();
@@ -30,7 +25,6 @@ class Appointment {
     }
 }
 
-// Inicializoni objektin e appointment-it dhe merrni të dhënat
 $db = new Database();
 $conn = $db->getConnection();
 $appointmentObj = new Appointment($conn);
@@ -44,7 +38,6 @@ $appointments = $appointmentObj->getAppointments($user_email);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
     <style>
-        /* Global styles */
         * {
             margin: 0;
             padding: 0;

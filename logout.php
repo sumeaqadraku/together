@@ -13,11 +13,9 @@ class Logout {
     private function logoutUser() {
         session_start();
 
-        // Destroy the session
-        session_unset();  // Removes all session variables
-        session_destroy(); // Destroys the session
+        session_unset();  
+        session_destroy(); 
 
-        // Clear all cookies (optional, if sessions use cookies)
         if (ini_get("session.use_cookies")) {
             $params = session_get_cookie_params();
             setcookie(session_name(), '', time() - 42000,
@@ -26,12 +24,11 @@ class Logout {
             );
         }
 
-        // Redirect to login page
         header("Location: login.php");
         exit();
     }
 }
 
-// Instantiate the Logout class to trigger the logout process
+
 new Logout();
 ?>

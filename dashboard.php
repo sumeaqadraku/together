@@ -18,7 +18,6 @@ class AdminDashboard {
         $this->user_id = $_SESSION['user_id'];
     }
 
-    // Ensure the user is logged in
     public function ensureLoggedIn() {
         if (!isset($_SESSION['user_id'])) {
             header('Location: login.php');
@@ -26,7 +25,6 @@ class AdminDashboard {
         }
     }
 
-    // Fetch counts for users, appointments, services, and messages
     public function fetchCounts() {
         return [
             'user_count' => $this->fetchCount('users'),
@@ -36,47 +34,39 @@ class AdminDashboard {
         ];
     }
 
-    // Function to fetch count for any table
     private function fetchCount($table) {
         $stmt = $this->conn->prepare("SELECT COUNT(*) AS count FROM $table");
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC)['count'];
     }
 
-    // Fetch all users and contact form messages
     public function fetchAllUsers() {
         return $this->conn->query("SELECT * FROM users");
     }
 
-    // Fetch all appointments
     public function fetchAppointments() {
         return $this->conn->query("SELECT * FROM appointment ORDER BY appointment_date DESC");
     }
 
-    // Fetch contact form messages
     public function fetchMessages() {
         return $this->conn->query("SELECT * FROM contact_form ORDER BY created_at DESC");
     }
 
-    // Handle message deletion
     public function deleteMessage($id) {
         $stmt = $this->conn->prepare("DELETE FROM contact_form WHERE id = :id");
         $stmt->execute(['id' => $id]);
     }
 
-    // Handle appointment deletion
     public function deleteAppointment($id) {
         $stmt = $this->conn->prepare("DELETE FROM appointment WHERE id = :id");
         $stmt->execute(['id' => $id]);
     }
 
-    // Make a user an admin
     public function makeAdmin($user_id) {
         $stmt = $this->conn->prepare("UPDATE users SET role = 'admin' WHERE id = :id");
         $stmt->execute(['id' => $user_id]);
     }
 
-    // Handle user deletion
     public function deleteUser($user_id) {
         if ($user_id !== $_SESSION['user_id']) {
             $stmt = $this->conn->prepare("DELETE FROM users WHERE id = :id");
@@ -84,7 +74,6 @@ class AdminDashboard {
         }
     }
 
-    // Handle form submission actions
     public function handleActions() {
         if (isset($_GET['delete'])) {
             $this->deleteMessage(intval($_GET['delete']));
@@ -171,7 +160,7 @@ $messages = $adminDashboard->fetchMessages();
             </div>
         </div>
 
-        <!-- Appointments Section -->
+      
         <section id="appointments">
             <h2>All Appointments</h2>
             <table>
@@ -204,7 +193,6 @@ $messages = $adminDashboard->fetchMessages();
             </table>
         </section>
 
-        <!-- Contact Messages Section -->
         <section id="messages">
             <h2>Contact Messages</h2>
             <?php if (isset($_GET['deleted'])): ?>
@@ -233,7 +221,6 @@ $messages = $adminDashboard->fetchMessages();
             </table>
         </section>
 
-        <!-- Users Table Section -->
         <section id="users">
             <h2>All Users</h2>
             <?php if (isset($_GET['role_changed'])): ?>

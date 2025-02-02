@@ -2,7 +2,7 @@
 include 'include/db.php';  
 include 'include/header.php';
 
-// AboutUs Class
+
 class AboutUs {
     private $conn;
     private $about;
@@ -11,32 +11,28 @@ class AboutUs {
         $this->conn = $conn;
     }
 
-    // Fetch content from the database
+    
     public function fetchContent($id) {
         $sql = "SELECT * FROM about_us WHERE id = :id";
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-        $this->about = $stmt->fetch(PDO::FETCH_ASSOC);  // Fetching the content as an associative array
+        $this->about = $stmt->fetch(PDO::FETCH_ASSOC); 
     }
 
-    // Get the about data
     public function getAbout() {
         return $this->about;
     }
 
-    // Handle missing video URL
     public function getVideoUrl() {
         return !empty($this->about['video_url']) ? $this->about['video_url'] : 'default-video.mp4';
     }
 }
 
-// Create a new instance of AboutUs
 $db = new Database();
 $conn = $db->getConnection();
 $aboutUs = new AboutUs($conn);
 
-// Fetch About Us content with id 4
 $aboutUs->fetchContent(4);
 $about = $aboutUs->getAbout();
 $video_url = $aboutUs->getVideoUrl();
@@ -62,7 +58,6 @@ $video_url = $aboutUs->getVideoUrl();
         <p><?php echo htmlspecialchars($about['team_message']); ?></p>
         <br><br>
 
-        <!-- Video Section -->
         <div class="video-container">
             <video autoplay muted loop width="600">
                 <source src="<?php echo htmlspecialchars($video_url); ?>" type="video/mp4">
@@ -71,13 +66,11 @@ $video_url = $aboutUs->getVideoUrl();
         </div>
         <br>
 
-        <!-- Our Story Section -->
         <section class="our-story">
             <h2>Our Story</h2>
             <center><p><?php echo htmlspecialchars($about['our_story']); ?></p></center>
         </section>
 
-        <!-- Meet Our Team Section (Slider) -->
         <div class="slider">
             <center><h3><?php echo htmlspecialchars($about['team_message']); ?></h3></center>
             <br>
@@ -110,7 +103,6 @@ $video_url = $aboutUs->getVideoUrl();
             </div>
         </div>
 
-        <!-- Our Values Section -->
         <section class="our-values">
             <div class="values-container">
                 <div class="values-video">
@@ -132,7 +124,6 @@ $video_url = $aboutUs->getVideoUrl();
             </div>
         </section>
 
-        <!-- Call to Action Section -->
         <section class="cta">
             <p>Ready to start your journey? <a href="services.php">Learn more about our services</a> or <a href="contact.php">contact us</a> to take the first step.</p>
         </section>

@@ -1,4 +1,4 @@
-/* General Styles */
+
 * {
   margin: 0;
   padding: 0;
@@ -24,23 +24,23 @@ body {
   overflow: hidden;
 }
 
-/* Styling the signin card */
+
 .signin-card {
-  background: rgba(255, 255, 255, 0.2);  /* Optional: Semi-transparent background for the card */
-  padding: 30px;  /* Reduced padding to make the card shorter */
-  border-radius: 16px;  /* Rounded corners */
+  background: rgba(255, 255, 255, 0.2);
+  padding: 30px;  
+  border-radius: 16px; 
   width: 100%;
   max-width: 400px;
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 7);
   text-align: center;
   height: auto;  
-  min-height: 250px;  /* Minimum height to keep the card from shrinking too much */
+  min-height: 250px;  
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;  /* Ensures content starts from the top */
+  justify-content: flex-start; 
 }
 
-/* Icon styling */
+
 .signin-icon img {
   width: 50px;
   margin-bottom: 20px;
@@ -55,16 +55,16 @@ h1 {
 p {
   font-size: 14px;
   color: #ffffff;
-  margin-bottom: 20px;  /* Reduced margin to shorten the card */
+  margin-bottom: 20px;  
 }
 
 .form-group {
-  margin-bottom: 15px;  /* Reduced margin for inputs */
+  margin-bottom: 15px;  
 }
 
 input {
   width: 100%;
-  padding: 12px;  /* Reduced padding to make the inputs shorter */
+  padding: 12px;  
   font-size: 14px;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -78,7 +78,7 @@ input:focus {
 .btn {
   background: #7A8A6A;
   color: white;
-  padding: 8px 18px;  /* Reduced padding for the button */
+  padding: 8px 18px;  
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -120,7 +120,7 @@ input:focus {
 }
 
 .social-btn {
-  padding: 8px 18px;  /* Reduced padding for social buttons */
+  padding: 8px 18px;  
   border: none;
   border-radius: 8px;
   font-size: 14px;
@@ -198,20 +198,20 @@ input:focus {
   text-decoration: underline;
 }
 
-/* Background image with blur */
+
 .background {
   background-image: url("../../images/yoga-4489430_1280.jpg");
-  background-size: cover;  /* Ensures the background covers the entire screen */
-  background-position: center;  /* Centers the image */
+  background-size: cover;  
+  background-position: center;  
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;  /* Full height of the viewport */
-  position: relative;  /* Ensures the background image stays in place */
-  overflow: hidden;  /* Hides any excess blur from the image */
+  height: 100vh;  
+  position: relative;  
+  overflow: hidden;  
 }
 
-/* Apply blur effect only to the image */
+
 .background::before {
   content: "";
   position: absolute;
@@ -222,7 +222,7 @@ input:focus {
   background-image: inherit;
   background-size: inherit;
   background-position: inherit;
-  filter: blur(8px);  /* Adjust blur amount here */
-  z-index: -1;  /* Ensure the blurred image stays behind the content */
-  pointer-events: none;  /* Ensure the background doesn't interfere with interactions */
+  filter: blur(8px);  
+  z-index: -1;  
+  pointer-events: none; 
 }

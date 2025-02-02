@@ -4,36 +4,33 @@ function changeSlide(direction) {
     const carousel = document.querySelector('.carousel');
     const slides = document.querySelectorAll('.slide');
     const totalSlides = slides.length;
-    const visibleSlides = 4; // Number of slides visible at a time
+    const visibleSlides = 4; 
 
     currentSlide += direction;
 
     if (currentSlide < 0) {
-        currentSlide = totalSlides - visibleSlides; // Wrap to the last slide
+        currentSlide = totalSlides - visibleSlides; 
     } else if (currentSlide > totalSlides - visibleSlides) {
-        currentSlide = 0; // Wrap to the first slide
+        currentSlide = 0; 
     }
 
     const translateX = -currentSlide * (100 / visibleSlides);
     carousel.style.transform = `translateX(${translateX}%)`;
 }
 
-// Set up the automatic slide transition (every 2 seconds for forward direction)
-setInterval(() => changeSlide(1), 3000); // Change slide every 2 seconds (direction: 1 means forward)
+
+setInterval(() => changeSlide(1), 3000);
 
 
-
-// Function to create the cursor trail
 document.addEventListener('mousemove', function(event) {
     const cursorTrail = document.createElement('div');
     cursorTrail.classList.add('cursor-trail');
     document.body.appendChild(cursorTrail);
   
-    // Position the trail at the current cursor position
-    cursorTrail.style.left = `${event.pageX - 7.5}px`;  // Center the circle at the cursor
+    cursorTrail.style.left = `${event.pageX - 7.5}px`;  
     cursorTrail.style.top = `${event.pageY - 7.5}px`;
   
-    // Remove the trail after the animation completes (1s)
+   
     setTimeout(() => {
       cursorTrail.remove();
     }, 1000);
@@ -42,7 +39,6 @@ document.addEventListener('mousemove', function(event) {
 
 
 
-// Add scrolling effect for navbar
 document.addEventListener("scroll", () => {
     const navbar = document.querySelector(".navbar");
     if (window.scrollY > 50) {
@@ -52,7 +48,6 @@ document.addEventListener("scroll", () => {
     }
   });
   
-  // Fade-in effect for sections
   const sections = document.querySelectorAll(".fade-in");
   const observer = new IntersectionObserver(
     (entries) => {
@@ -62,7 +57,7 @@ document.addEventListener("scroll", () => {
         }
       });
     },
-    { threshold: 0.2 } // Trigger when 20% of the section is visible
+    { threshold: 0.2 } 
   );
   
   sections.forEach((section) => observer.observe(section));

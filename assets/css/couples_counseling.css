@@ -10,7 +10,6 @@
   flex-direction: row;
   width: 100%;
 }
-  /* Counseling Overview Section */
   .counseling-overview {
     background-color: #e6e6e6;
     padding: 5rem;
@@ -29,8 +28,7 @@
     line-height: 1.6;
   }
   
-  /* Counseling Benefits Section */
-  .counseling-benefits {
+.counseling-benefits {
     background-color: #fff;
     padding: 5rem;
     width: 50%;
@@ -73,7 +71,7 @@
     line-height: 1.6;
   }
   
-  /* Call to Action Section */
+
   .cta-section {
     background-color: #456859;
     color: white;
@@ -120,7 +118,7 @@
     color: #444;
     line-height: 1.6;
   }
-  /* Footer */
+
   footer {
     background-color: #ffffff;
     color: rgb(116, 116, 116);
@@ -132,12 +130,12 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
-    font-weight: 300; /* Lighter font weight */
+    font-weight: 300; 
   }
   
   body {
     font-family: 'Inter', sans-serif;
-    font-weight: 300; /* Lighter font weight */
+    font-weight: 300;
     background-color: #f9f9f9;
     color: #333;
   }
@@ -147,8 +145,8 @@
     background-color: #725a43;
     color: #fff;
     text-decoration: none;
-    border-radius: 8px; /* Button corners */
-    font-weight: 400; /* Slightly heavier for the button */
+    border-radius: 8px; 
+    font-weight: 400; 
     transition: background-color 0.3s;
   }
   

@@ -7,8 +7,8 @@ class ResourcesPage {
     private $resources;
 
     public function __construct() {
-        $this->db = new Database(); // Krijo një objekt të klasës Database
-        $this->loadResources();      // Ngarko burimet nga baza e të dhënave
+        $this->db = new Database(); 
+        $this->loadResources();      
     }
 
     private function loadResources() {
@@ -28,7 +28,6 @@ class ResourcesPage {
     }
 
     public function display() {
-        // HTML output begins here
         ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -42,28 +41,24 @@ class ResourcesPage {
         </head>
         <body>
 
-        <!-- Resources Section -->
         <section class="resources">
             <h1>Our Resources</h1>
             <p>Explore a range of resources designed to support your mental health journey. Whether you're looking for informative articles, self-help tools, or educational videos, you'll find what you need here.</p>
 
             <div class="resource-categories">
                 <?php
-                // Categories for display
                 $categories = [
                     'Article' => 'Articles',
                     'Video' => 'Videos',
                     'Self-Help Tool' => 'Self-Help Tools'
                 ];
 
-                // Loop through each category and display resources
                 foreach ($categories as $db_category => $display_name) {
                     if (!empty($this->resources[$db_category])) {
                         echo "<div class='resource-category'>";
                         echo "<h2>$display_name</h2>";
                         echo "<ul>";
 
-                        // Loop through resources in each category
                         foreach ($this->resources[$db_category] as $resource) {
                             echo "<li>";
                             if (!empty($resource['url'])) {
@@ -82,7 +77,6 @@ class ResourcesPage {
                 }
 
                 if (empty($this->resources)) {
-                    // Display a fallback message if there are no resources
                     echo "<p>No resources available at the moment. Please check back later or <a href='contact.php'>contact us</a> for more information.</p>";
                 }
                 ?>
@@ -92,7 +86,6 @@ class ResourcesPage {
             <a href="contact.php" class="cta-button">Contact Us for More Resources</a>
         </section>
 
-        <!-- Footer -->
         <footer>
             <p>&copy; 2025 Together Mental Health Platform</p>
         </footer>
@@ -103,7 +96,6 @@ class ResourcesPage {
     }
 }
 
-// Përdorimi i klasës
 $resourcesPage = new ResourcesPage();
 $resourcesPage->display();
 ?>

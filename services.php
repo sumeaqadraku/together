@@ -8,9 +8,9 @@ class ServicePage {
     private $services;
 
     public function __construct() {
-        $this->db = new Database(); // Krijo një objekt të klasës Database
-        $this->loadIntroText();     // Ngarko tekstin hyrës
-        $this->loadServices();      // Ngarko shërbimet
+        $this->db = new Database(); 
+        $this->loadIntroText();     
+        $this->loadServices();  
     }
 
     private function loadIntroText() {
@@ -39,7 +39,6 @@ class ServicePage {
     }
 
     public function display() {
-        // HTML output begins here
         ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -53,20 +52,17 @@ class ServicePage {
         </head>
         <body>
 
-            <!-- Header Section -->
             <section class="header-banner">
                 <h1>Our Services</h1>
                 <p>Support, compassion, and understanding to guide you through life's challenges.</p>
             </section>
 
-            <!-- Dynamic Introductory Text Section -->
             <center>
                 <section class="intro-text">
                     <p><?php echo htmlspecialchars($this->introText); ?></p>
                 </section>
             </center>
 
-            <!-- Detailed Services Section -->
             <section class="detailed-services">
                 <h2>Explore Our Services</h2>
                 <br>
@@ -88,7 +84,6 @@ class ServicePage {
                 </div>
             </section>
 
-            <!-- Footer -->
             <footer>
                 <center><p>&copy; 2025 Together Mental Health Platform</p></center>
             </footer>
@@ -98,7 +93,6 @@ class ServicePage {
     }
 }
 
-// Përdorimi i klasës
 $servicePage = new ServicePage();
 $servicePage->display();
 ?>

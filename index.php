@@ -6,19 +6,17 @@ class WebPage {
     private $conn;
 
     public function __construct($db) {
-        $this->conn = $db->getConnection(); // Correctly using the Database class
+        $this->conn = $db->getConnection();
         if (!$this->conn) {
             die("Connection failed: Unable to connect to the database.");
         }
     }
 
-    // Fetch services
     public function fetchServices() {
         $services_sql = "SELECT * FROM services";
         return $this->conn->query($services_sql)->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Fetch testimonials
     public function fetchTestimonials() {
         $testimonials_sql = "SELECT * FROM testimonials";
         return $this->conn->query($testimonials_sql)->fetchAll(PDO::FETCH_ASSOC);
@@ -28,7 +26,6 @@ class WebPage {
 $db = new Database();
 $page = new WebPage($db);
 
-// Fetch data
 $services = $page->fetchServices();
 $testimonials = $page->fetchTestimonials();
 ?>
@@ -61,7 +58,6 @@ $testimonials = $page->fetchTestimonials();
         if (count($services) > 0) {
             foreach ($services as $service) {
                 echo "<div class='service-card'>";
-                // Securely display the image or a placeholder
                 if (!empty($service['image_url'])) {
                     echo "<img src='" . htmlspecialchars($service['image_url']) . "' alt='" . htmlspecialchars($service['name']) . "' class='service-icon'>";
                 } else {

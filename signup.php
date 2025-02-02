@@ -10,14 +10,13 @@ class UserRegistration {
 
     public function __construct() {
         $this->db = new Database();
-        $this->conn = $this->db->getConnection(); // Get the connection object
+        $this->conn = $this->db->getConnection();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $this->handleFormSubmission();
         }
     }
 
     private function handleFormSubmission() {
-        // Sanitize and get input values
         $email = trim($_POST['email']);
         $password = trim($_POST['password']);
 
@@ -32,7 +31,6 @@ class UserRegistration {
     }
 
     private function checkEmailExistence($email, $password) {
-        // Check if email already exists
         $stmt = $this->conn->prepare("SELECT id FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
@@ -47,11 +45,9 @@ class UserRegistration {
     }
 
     private function registerUser($email, $password) {
-        // Hash the password before storing it
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $role = 'user'; // Default role
+        $role = 'user';
 
-        // Insert new user into the database
         $stmt = $this->conn->prepare("INSERT INTO users (email, password, role, created_at) VALUES (?, ?, ?, NOW())");
         $stmt->bind_param("sss", $email, $hashed_password, $role);
 
@@ -72,7 +68,6 @@ class UserRegistration {
     }
 }
 
-// Create an instance of the UserRegistration class
 $registration = new UserRegistration();
 ?>
 
@@ -83,7 +78,6 @@ $registration = new UserRegistration();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign Up - Together</title>
   <link rel="stylesheet" href="assets/css/signin.css">
-  <!-- Font Awesome for Social Icons -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -95,14 +89,12 @@ $registration = new UserRegistration();
       <h1>Sign Up</h1>
       <p>You can't pour from an empty cup. Join us to kickstart your wellbeing.</p>
 
-      <!-- Show error or success message -->
       <?php if (!empty($registration->getErrorMessage())) : ?>
         <p style="color: red;"><?= htmlspecialchars($registration->getErrorMessage()) ?></p>
       <?php elseif (!empty($registration->getSuccessMessage())) : ?>
         <p style="color: green;"><?= htmlspecialchars($registration->getSuccessMessage()) ?></p>
       <?php endif; ?>
 
-      <!-- Sign-up form -->
       <form action="register.php" method="POST">
         <div class="form-group">
           <input type="email" id="email" name="email" placeholder="Email" required>

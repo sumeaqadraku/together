@@ -1,15 +1,14 @@
-/* General Styles for Resources */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
-  font-weight: 300; /* Lighter font weight */
+  font-weight: 300; 
 }
 
 body {
   font-family: 'Inter', sans-serif;
-  font-weight: 300; /* Lighter font weight */
+  font-weight: 300; 
   background-color: #f9f9f9;
   color: #333;
 }
@@ -20,8 +19,8 @@ body {
     background-color: #725a43;
     color: #fff;
     text-decoration: none;
-    border-radius: 8px; /* Button corners */
-    font-weight: 400; /* Slightly heavier for the button */
+    border-radius: 8px; 
+    font-weight: 400;
     transition: background-color 0.3s;
   }
   
@@ -39,7 +38,7 @@ body {
   }
   
   
-  /* Resources Section Styles */
+
   .resources {
     padding: 50px;
     background-color: #f9f9f9;
@@ -97,7 +96,7 @@ body {
     text-decoration: underline;
   }
   
-  /* Footer Styles */
+ 
   footer {
     text-align: center;
     padding: 20px;

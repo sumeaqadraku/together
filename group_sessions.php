@@ -2,7 +2,6 @@
 include 'include/db.php'; 
 include 'include/header.php';
 
-// Initialize Database Connection
 $db = new Database();
 $conn = $db->getConnection();
 ?>
@@ -28,14 +27,12 @@ $conn = $db->getConnection();
   </div>
 </section>
   <div class="contant">
-    <!-- Therapy Overview Section -->
      <div class="pjesa1">
     <section class="therapy-overview">
       <h2>What is Group Therapy?</h2><br>
       <p>Group therapy provides a supportive environment where individuals come together to share experiences, learn from one another, and work toward personal growth under the guidance of a trained therapist. It’s a space where you can feel heard, understood, and empowered while building connections with others facing similar challenges. Whether you’re dealing with anxiety, depression, grief, or relationship struggles, group therapy can help you realize you’re not alone in your journey.</p>
     </section>
   
-    <!-- Benefits of Therapy Section -->
     <section class="therapy-benefits">
       <h2>Benefits of Group Therapy</h2><br>
       <ul>
@@ -48,7 +45,6 @@ $conn = $db->getConnection();
     </section>
   </div>
   <div class="pjesa2">
-    <!-- How It Works Section -->
     <section class="how-it-works">
       <h2>How Group Therapy Works</h2><br>
       <p>Group therapy sessions typically consist of 6–12 members and are led by a licensed therapist who facilitates discussions and activities. Each session lasts about 60–90 minutes and may focus on specific themes, such as emotional regulation, relationship dynamics, or coping strategies. While participants share their stories and insights, the therapist provides guidance to foster a supportive and productive environment. Sessions can be held weekly or bi-weekly, depending on the group’s needs.</p>
@@ -58,7 +54,6 @@ $conn = $db->getConnection();
       <p>Group therapy is more than just a treatment—it’s a chance to grow and heal through the power of connection. In a group setting, you’ll discover that your struggles are shared by others and gain strength from mutual support. Together, you’ll learn new skills, celebrate progress, and build lasting relationships that inspire continued growth.</p>
     </section>
   </div></div>
-   <!-- Call to Action Section -->
    <section class="cta-section">
     <h2>Strengthen Your Relationship Today</h2><br><br>
     <p>If you're ready to take the first step toward healing and connection—join a group therapy session today.</p>
@@ -66,7 +61,6 @@ $conn = $db->getConnection();
     <a href="contact.php" class="cta-button">Book a Free Consultation</a>
   </section>
 
-  <!-- Footer -->
   <footer>
     <p>&copy; 2025 Together Mental Health Platform</p>
   </footer>

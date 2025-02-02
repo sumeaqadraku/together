@@ -13,12 +13,10 @@ class ContactForm {
 
     public function handleFormSubmission() {
         if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
-            // Sanitize input data
             $name = $this->conn->real_escape_string($_POST['name']);
             $email = $this->conn->real_escape_string($_POST['email']);
             $message = $this->conn->real_escape_string($_POST['message']);
 
-            // Insert data into the database
             $sql = "INSERT INTO contact_form (name, email, message) VALUES ('$name', '$email', '$message')";
             if ($this->conn->query($sql) === TRUE) {
                 header("Location: contact.php?success=1");
@@ -40,7 +38,7 @@ class ContactForm {
 }
 
 $contactForm = new ContactForm();
-$contactForm->handleFormSubmission();  // Handle the form submission
+$contactForm->handleFormSubmission(); 
 ?>
 
 <head>
@@ -49,7 +47,6 @@ $contactForm->handleFormSubmission();  // Handle the form submission
 
 </head>
 
-<!-- Hero Section -->
 <section class="hero">
     <div class="hero-content">
         <h1>We’re Here For You</h1>
@@ -60,7 +57,6 @@ $contactForm->handleFormSubmission();  // Handle the form submission
     </div>
 </section>
 
-<!-- Contact Information Section -->
 <section class="contact-info">
     <div class="contact-details">
         <div class="contact-item">
@@ -79,13 +75,11 @@ $contactForm->handleFormSubmission();  // Handle the form submission
 </section>
 <br>
 
-<!-- Contact Form Section -->
 <section class="contact-form-container">
     <h2>Send Us a Message</h2>
     <br>
 
     <?php
-    // Display success or error messages
     $contactForm->displaySuccessMessage();
     ?>
 
@@ -117,7 +111,6 @@ $contactForm->handleFormSubmission();  // Handle the form submission
     </div>
 </section>
 
-<!-- Footer Section -->
 <footer>
     <p>&copy; 2025 Together Mental Health Platform. All rights reserved.</p>
 </footer>

@@ -1,5 +1,4 @@
 <?php
-// Include the database connection file
 include 'include/db.php';
 include 'include/header.php';
 
@@ -10,15 +9,12 @@ class Booking {
         $this->conn = $database->getConnection();
     }
 
-    // Handle form submission for booking an appointment
     public function createAppointment($first_name, $last_name, $user_email, $phone_number, $appointment_date, $service_type, $notes) {
-        $status = 'pending';  // Default status
+        $status = 'pending';  
 
-        // Prepare the SQL query to insert the data into the database
         $sql = "INSERT INTO appointment (first_name, last_name, user_email, phone_number, appointment_date, service_type, notes, status) 
                 VALUES (:first_name, :last_name, :user_email, :phone_number, :appointment_date, :service_type, :notes, :status)";
 
-        // Execute the query and check if it was successful
         $stmt = $this->conn->prepare($sql);
         $stmt->bindParam(':first_name', $first_name);
         $stmt->bindParam(':last_name', $last_name);
@@ -33,13 +29,10 @@ class Booking {
     }
 }
 
-// Create an instance of the Database class
 $database = new Database();
 $booking = new Booking($database);
 
-// Check if the form was submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get the form data
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
     $user_email = $_POST['user_email'];
@@ -48,9 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $service_type = $_POST['service_type'];
     $notes = $_POST['notes'];
 
-    // Call the createAppointment method
     if ($booking->createAppointment($first_name, $last_name, $user_email, $phone_number, $appointment_date, $service_type, $notes)) {
-        // If the booking is successful, show a JavaScript alert
         echo "<script>alert('Your booking was successful!');</script>";
     } else {
         echo "Error: Could not complete your booking.";
@@ -117,7 +108,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </html>
 
 <style>
-/* Global styles */
 * {
     margin: 0;
     padding: 0;
@@ -131,7 +121,6 @@ body {
     font-size: 16px;
 }
 
-/* Container for form */
 .container {
     background: #fff;
     border-radius: 8px;
@@ -148,7 +137,6 @@ body {
     color: #333;
 }
 
-/* Form group */
 .form-group {
     margin-bottom: 20px;
 }
@@ -174,7 +162,6 @@ body {
     resize: vertical;
 }
 
-/* Submit button */
 .cta-button {
     background-color: #7A8A6A;
     color: white;
@@ -191,7 +178,6 @@ body {
     background-color: #0056b3;
 }
 
-/* Responsiveness for mobile */
 @media (max-width: 768px) {
     .container {
         padding: 20px;

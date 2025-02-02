@@ -1,5 +1,5 @@
 <?php 
-session_start(); // Start session
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,14 +31,13 @@ session_start(); // Start session
         </ul>
     </nav>
 
-    <!-- Hamburger Menu -->
+   
     <div class="hamburger" onclick="toggleMenu()">
         <div></div>
         <div></div>
         <div></div>
     </div>
 
-    <!-- Auth Button -->
     <div class="auth-button">
         <?php if (isset($_SESSION['user_id'])): ?>
             <a href="logout.php" class="contact-button">Log Out</a>
@@ -48,11 +47,10 @@ session_start(); // Start session
     </div>
 </header>
 
-<!-- JavaScript -->
 <script>
     function toggleMenu() {
         const navLinks = document.querySelector('.nav-links');
-        navLinks.classList.toggle('active'); // Toggle the 'active' class for mobile view
+        navLinks.classList.toggle('active');
     }
 </script>
 

@@ -1,46 +1,44 @@
-/* General Reset */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
-  font-weight: 300; /* Lighter font weight */
+  font-weight: 300; 
   padding: 2px;
 }
 
 body {
   font-family: 'Inter', sans-serif;
-  font-weight: 300; /* Lighter font weight */
+  font-weight: 300;
   color: #333;
   padding: 10px;
 }
 
 .content-container {
-  display: flex; /* Enable Flexbox */
-  justify-content: space-between; /* Distribute space between text and video */
-  align-items: center; /* Vertically align content */
-  gap: 20px; /* Optional: Adds some space between the text and video */
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  gap: 20px; 
 }
 
 video {
-  width: 100%; /* Make the video take up the full width of its container */
-  max-width: 600px; /* Limit the video width to 600px */
+  width: 100%; 
+  max-width: 600px; 
 }
-
-/* Responsive Design */
 @media (max-width: 900px) {
   .our-story-content {
-      flex-direction: column; /* Stack text and video vertically on smaller screens */
-      align-items: center; /* Center align items */
+      flex-direction: column; 
+      align-items: center; 
   }
 
   .text-left,
   .video-right {
-      max-width: 100%; /* Ensure they take up full width on mobile */
+      max-width: 100%; 
   }
 
   .video-right {
-      width: 70%; /* Increase video width on small screens to be 70% */
+      width: 70%;
   }
 }
 
@@ -64,7 +62,7 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: 2rem;
-  background-color: #f9f9f9; /* Optional background color */
+  background-color: #f9f9f9; 
   height: 450px;
 }
 
@@ -95,12 +93,12 @@ a {
 
 @keyframes fadeIn {
   0% {
-      opacity: 0; /* Start with 0 opacity */
-      transform: translateY(50px); /* Start with it slightly below */
+      opacity: 0; 
+      transform: translateY(50px); 
   }
   100% {
-      opacity: 1; /* End with full opacity */
-      transform: translateY(0); /* End at its original position */
+      opacity: 1; 
+      transform: translateY(0); 
   }
 }
 
@@ -130,9 +128,9 @@ a {
   object-fit: cover;
 }
 
-/* Footer styling */
+
 .footer {
-  text-align: center; /* Center-align text */
+  text-align: center;
   position: relative;
   width: 100%;
 }
@@ -143,7 +141,7 @@ a {
   color: #333;
 }
 
-/* Our Values */
+
 .our-values {
   padding: 2rem;
   text-align: center;
@@ -159,7 +157,7 @@ a {
   margin: 0.5rem 0;
 }
 
-/* CTA */
+
 .cta {
   padding: 2rem;
   text-align: center;
